@@ -63,7 +63,7 @@ class AcuteCoronarySyndrome: EvaluationItem {
 }
 
 
-// MARK: - CVProfile -> Coronary Heart Disease -> Acute Coronary Syndrome -> STEMI
+// MARK: - Coronary Heart Disease -> Acute Coronary Syndrome -> STEMI
 
 class STEMI: EvaluationItem {
 	
@@ -81,7 +81,7 @@ class STEMI: EvaluationItem {
 }
 
 
-// MARK: - CVProfile -> Coronary Heart Disease -> PCI/CABG
+// MARK: - Coronary Heart Disease -> PCI/CABG
 
 class PCICABG: EvaluationItem {
 	
@@ -101,7 +101,7 @@ class PCICABG: EvaluationItem {
 }
 
 
-// MARK: - CVProfile -> Coronary Heart Disease -> PCI/CABG -> CABG
+// MARK: - Coronary Heart Disease -> PCI/CABG -> CABG
 
 class CABG: EvaluationItem {
 	
@@ -119,7 +119,7 @@ class CABG: EvaluationItem {
 }
 
 
-// MARK: - CVProfile -> Coronary Heart Disease -> STABLE ANG
+// MARK: - Coronary Heart Disease -> STABLE ANG
 
 class StableAng: EvaluationItem {
 	

@@ -9,6 +9,8 @@
 import UIKit
 
 
+// MARK: - HeartFailure
+
 class HeartFailure: EvaluationItem {
 	
 	let history = History(literal: Presentation.history)
@@ -34,6 +36,8 @@ class HeartFailure: EvaluationItem {
 	}
 }
 
+
+// MARK: - HeartFailure -> History
 
 class History : EvaluationItem {
 	
@@ -69,6 +73,8 @@ class History : EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> History -> Dyspneaonexe
+
 class Dyspneaonexe : EvaluationItem {
 
 	let class1 = EvaluationItem(literal: Presentation.class1)
@@ -85,6 +91,8 @@ class Dyspneaonexe : EvaluationItem {
 	
 }
 
+
+// MARK: - HeartFailure -> Etiology
 
 class Etiology : EvaluationItem {
 	
@@ -114,6 +122,8 @@ class Etiology : EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> Etiology -> Cardiotoxins
+
 class Cardiotoxins : EvaluationItem {
 	
 	let radiationtherapy = RadiationTherapy(literal: Presentation.radiationtherapy)
@@ -142,6 +152,8 @@ class Cardiotoxins : EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> Etiology -> Cardiotoxins -> RadiationTherapy
+
 class RadiationTherapy: EvaluationItem {
 	
 	let anteriorchest = EvaluationItem(literal: Presentation.anteriorchest)
@@ -164,6 +176,8 @@ class RadiationTherapy: EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> Etiology -> HOCM
+
 class HOCM : EvaluationItem {
 	
 	let lvhmore = EvaluationItem(literal: Presentation.lvmore)
@@ -182,21 +196,23 @@ class HOCM : EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> Clinical
+
 class Clinical : EvaluationItem {
 	
 	let lvef = EvaluationItem(literal: Presentation.lvef)
 	let rasat = EvaluationItem(literal: Presentation.rasat)
 	let vo2sat = EvaluationItem(literal: Presentation.vo2sat)
-	let hjr = EvaluationItem(literal: Presentation.hepatojulularRefluxInPhysicalExam)
-	let jugular = EvaluationItem(literal: Presentation.jugularVenousDistentionInPhysicalExam)
-	let edema = EvaluationItem(literal: Presentation.edemaInPhysicalExam)
+	let hjr = EvaluationItem(literal: Presentation.hepatojulularReflux)
+	let jugular = EvaluationItem(literal: Presentation.jugularVenousDistention)
+	let edema = EvaluationItem(literal: Presentation.edemaInHeartFailure)
 	let leftside = EvaluationItem(literal: Presentation.leftSidedS3S4Gallop)
-	let newrales = EvaluationItem(literal: Presentation.newRalesInPhysicalExam)
+	let newrales = EvaluationItem(literal: Presentation.newRales)
 	let pulmonaryedema = EvaluationItem(literal: Presentation.pulmonaryEdema)
 	let lowurine = EvaluationItem(literal: Presentation.lowurine)
-	let anycns = EvaluationItem(literal: Presentation.anyCNSSymptomsInPhysicalExam)
-	let coldclammy = EvaluationItem(literal: Presentation.coldClammyExtremitiesInPhysicalExam)
-	let cyanosis = EvaluationItem(literal: Presentation.cyanosisInPhysicalExam)
+	let anycns = EvaluationItem(literal: Presentation.anyCNSSymptoms)
+	let coldclammy = EvaluationItem(literal: Presentation.coldClammyExtremities)
+	let cyanosis = EvaluationItem(literal: Presentation.cyanosisInHeartFailure)
 	
 	override var items : [EvaluationItem] {
 		return [
@@ -217,6 +233,8 @@ class Clinical : EvaluationItem {
 	}
 }
 
+
+// MARK: - HeartFailure -> AHAStage
 
 class AHAStage : EvaluationItem {
 	
@@ -244,6 +262,8 @@ class AHAStage : EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> AHAStage -> AdvancedHF
+
 class AdvancedHF : EvaluationItem {
 	
 	let calculatehfss = EvaluationItem(literal: Presentation.calculateHFSS)
@@ -259,6 +279,8 @@ class AdvancedHF : EvaluationItem {
 	}
 }
 
+
+// MARK: - HeartFailure -> Hometherapeutics
 
 class Hometherapeutics : EvaluationItem {
 	
@@ -282,7 +304,7 @@ class Hometherapeutics : EvaluationItem {
 }
 
 
-// MARK: - HSR -> POMeds -> B Blocker
+// MARK: - HeartFailure -> Hometherapeutics -> B Blocker
 
 class BBlocker: EvaluationItem {
 	
@@ -312,7 +334,7 @@ class BBlocker: EvaluationItem {
 }
 
 
-// MARK: - HSR -> POMeds -> Acel/ARB
+// MARK: - HeartFailure -> Hometherapeutics -> Acel/ARB
 
 class AcelARB: EvaluationItem {
 	
@@ -336,7 +358,7 @@ class AcelARB: EvaluationItem {
 }
 
 
-// MARK: - HSR -> POMeds -> PO Diuretic
+// MARK: - HeartFailure -> Hometherapeutics -> PO Diuretic
 
 class PODiuretic: EvaluationItem {
 	
@@ -372,6 +394,7 @@ class PODiuretic: EvaluationItem {
 }
 
 
+// MARK: - HeartFailure -> Acutely
 
 class Acutely : EvaluationItem {
 	
@@ -390,6 +413,8 @@ class Acutely : EvaluationItem {
 	}
 }
 
+
+// MARK: - HeartFailure -> InHospitalTherapies
 
 class InHospitalTherapies : EvaluationItem {
 	
@@ -431,7 +456,7 @@ class InHospitalTherapies : EvaluationItem {
 	}
 }
 
-// MARK: - HSR -> InHospital -> IV Antiarrythmic
+// MARK: - HeartFailure -> InHospitalTherapies -> IV Antiarrythmic
 
 class IVAntiarrythmic: EvaluationItem {
 	
@@ -453,7 +478,7 @@ class IVAntiarrythmic: EvaluationItem {
 }
 
 
-// MARK: - HSR -> InHospital -> iv Antihypertensive
+// MARK: - HeartFailure -> InHospitalTherapies -> iv Antihypertensive
 
 class IVAntihypertensive: EvaluationItem {
 	
@@ -473,7 +498,7 @@ class IVAntihypertensive: EvaluationItem {
 }
 
 
-// MARK: - HSR -> InHospital -> IV Vasoactive
+// MARK: - HeartFailure -> InHospitalTherapies -> IV Vasoactive
 
 class IVVasoactive: EvaluationItem {
 	
@@ -499,7 +524,7 @@ class IVVasoactive: EvaluationItem {
 }
 
 
-// MARK: - HSR -> InHospital -> IV Diuretic
+// MARK: - HeartFailure -> InHospitalTherapies -> IV Diuretic
 
 class IVDiuretic: EvaluationItem {
 	
@@ -517,7 +542,7 @@ class IVDiuretic: EvaluationItem {
 }
 
 
-// MARK: - HSR -> InHospital -> Mechanical Ventiallation or NIPPV
+// MARK: - HeartFailure -> InHospitalTherapies -> Mechanical Ventiallation or NIPPV
 
 class MechanicalVentiallationOrNIPPV: EvaluationItem {
 	
@@ -528,6 +553,8 @@ class MechanicalVentiallationOrNIPPV: EvaluationItem {
 	}
 }
 
+
+// MARK: - HeartFailure -> Discharge
 
 class Discharge : EvaluationItem {
 	
