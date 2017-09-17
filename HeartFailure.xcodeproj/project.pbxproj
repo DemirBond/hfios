@@ -12,8 +12,12 @@
 		78BF73EF1E3F640F0040EC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78BF73EE1E3F640F0040EC81 /* Assets.xcassets */; };
 		78BF73FD1E3F640F0040EC81 /* HeartFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF73FC1E3F640F0040EC81 /* HeartFailureTests.swift */; };
 		78BF74081E3F640F0040EC81 /* HeartFailureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */; };
-		BA395C401F5EED95000C5A33 /* Pulmonary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA395C3F1F5EED95000C5A33 /* Pulmonary.swift */; };
-		BA395C441F5EF993000C5A33 /* Renal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA395C431F5EF993000C5A33 /* Renal.swift */; };
+		BA2EF1F81F6CA35E00098BC0 /* HeartFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1F71F6CA35E00098BC0 /* HeartFailure.swift */; };
+		BA2EF1FA1F6CA91C00098BC0 /* CoronaryHeartDisease.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1F91F6CA91C00098BC0 /* CoronaryHeartDisease.swift */; };
+		BA2EF1FC1F6CA96700098BC0 /* AtrialFibrilation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1FB1F6CA96700098BC0 /* AtrialFibrilation.swift */; };
+		BA2EF1FE1F6CA98500098BC0 /* ThromboembolicVKA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1FD1F6CA98500098BC0 /* ThromboembolicVKA.swift */; };
+		BA2EF2001F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1FF1F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift */; };
+		BA2EF2021F6CA9D400098BC0 /* VentricularTachyarrthymias.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF2011F6CA9D400098BC0 /* VentricularTachyarrthymias.swift */; };
 		BA49CC491F3339360040060A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC411F3339360040060A /* Crashlytics.framework */; };
 		BA49CC4A1F3339360040060A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC421F3339360040060A /* Fabric.framework */; };
 		BA49CC531F333E2C0040060A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC451F3339360040060A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -51,17 +55,11 @@
 		BA49CCD51F33A35E0040060A /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCAB1F33A35E0040060A /* Evaluation.swift */; };
 		BA49CCD61F33A35E0040060A /* EvaluationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCAC1F33A35E0040060A /* EvaluationItem.swift */; };
 		BA49CCD71F33A35E0040060A /* BioPersonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCAE1F33A35E0040060A /* BioPersonal.swift */; };
-		BA49CCD81F33A35E0040060A /* CVProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCAF1F33A35E0040060A /* CVProfile.swift */; };
 		BA49CCE21F33A35E0040060A /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCBA1F33A35E0040060A /* Diagnostics.swift */; };
 		BA49CCE31F33A35E0040060A /* HeartSpecialistManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCBB1F33A35E0040060A /* HeartSpecialistManagement.swift */; };
-		BA49CCE61F33A35E0040060A /* HSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCBF1F33A35E0040060A /* HSR.swift */; };
 		BA49CCE71F33A35E0040060A /* Laboratories.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC01F33A35E0040060A /* Laboratories.swift */; };
 		BA49CCE81F33A35E0040060A /* MajorCVRisks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC11F33A35E0040060A /* MajorCVRisks.swift */; };
 		BA49CCE91F33A35E0040060A /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC21F33A35E0040060A /* Output.swift */; };
-		BA49CCEA1F33A35E0040060A /* PhysicalExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC31F33A35E0040060A /* PhysicalExam.swift */; };
-		BA49CCEB1F33A35E0040060A /* ReviewOfSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC41F33A35E0040060A /* ReviewOfSystem.swift */; };
-		BA49CCEC1F33A35E0040060A /* SurgicalRisk.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC51F33A35E0040060A /* SurgicalRisk.swift */; };
-		BA49CCED1F33A35E0040060A /* Symptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCC61F33A35E0040060A /* Symptoms.swift */; };
 		BA49CCEF1F33A35E0040060A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCCA1F33A35E0040060A /* Profile.swift */; };
 		BA49CCF11F33A35E0040060A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCCC1F33A35E0040060A /* About.swift */; };
 		BA49CCF21F33A35E0040060A /* ObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CCCD1F33A35E0040060A /* ObjectLoader.swift */; };
@@ -151,8 +149,12 @@
 		78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartFailureUITests.swift; sourceTree = "<group>"; };
 		78BF74091E3F640F0040EC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78BF74171E3F690F0040EC81 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
-		BA395C3F1F5EED95000C5A33 /* Pulmonary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulmonary.swift; sourceTree = "<group>"; };
-		BA395C431F5EF993000C5A33 /* Renal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renal.swift; sourceTree = "<group>"; };
+		BA2EF1F71F6CA35E00098BC0 /* HeartFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartFailure.swift; sourceTree = "<group>"; };
+		BA2EF1F91F6CA91C00098BC0 /* CoronaryHeartDisease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaryHeartDisease.swift; sourceTree = "<group>"; };
+		BA2EF1FB1F6CA96700098BC0 /* AtrialFibrilation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtrialFibrilation.swift; sourceTree = "<group>"; };
+		BA2EF1FD1F6CA98500098BC0 /* ThromboembolicVKA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThromboembolicVKA.swift; sourceTree = "<group>"; };
+		BA2EF1FF1F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BradyarrthymiaSyncope.swift; sourceTree = "<group>"; };
+		BA2EF2011F6CA9D400098BC0 /* VentricularTachyarrthymias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VentricularTachyarrthymias.swift; sourceTree = "<group>"; };
 		BA49CC401F3339360040060A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Frameworks/Alamofire.framework; sourceTree = "<group>"; };
 		BA49CC411F3339360040060A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		BA49CC421F3339360040060A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Frameworks/Fabric.framework; sourceTree = "<group>"; };
@@ -189,17 +191,11 @@
 		BA49CCAB1F33A35E0040060A /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		BA49CCAC1F33A35E0040060A /* EvaluationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluationItem.swift; sourceTree = "<group>"; };
 		BA49CCAE1F33A35E0040060A /* BioPersonal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BioPersonal.swift; sourceTree = "<group>"; };
-		BA49CCAF1F33A35E0040060A /* CVProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVProfile.swift; sourceTree = "<group>"; };
 		BA49CCBA1F33A35E0040060A /* Diagnostics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
 		BA49CCBB1F33A35E0040060A /* HeartSpecialistManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartSpecialistManagement.swift; sourceTree = "<group>"; };
-		BA49CCBF1F33A35E0040060A /* HSR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSR.swift; sourceTree = "<group>"; };
 		BA49CCC01F33A35E0040060A /* Laboratories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laboratories.swift; sourceTree = "<group>"; };
 		BA49CCC11F33A35E0040060A /* MajorCVRisks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MajorCVRisks.swift; sourceTree = "<group>"; };
 		BA49CCC21F33A35E0040060A /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
-		BA49CCC31F33A35E0040060A /* PhysicalExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalExam.swift; sourceTree = "<group>"; };
-		BA49CCC41F33A35E0040060A /* ReviewOfSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewOfSystem.swift; sourceTree = "<group>"; };
-		BA49CCC51F33A35E0040060A /* SurgicalRisk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurgicalRisk.swift; sourceTree = "<group>"; };
-		BA49CCC61F33A35E0040060A /* Symptoms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symptoms.swift; sourceTree = "<group>"; };
 		BA49CCCA1F33A35E0040060A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BA49CCCC1F33A35E0040060A /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		BA49CCCD1F33A35E0040060A /* ObjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectLoader.swift; sourceTree = "<group>"; };
@@ -453,17 +449,15 @@
 			isa = PBXGroup;
 			children = (
 				BA49CCAE1F33A35E0040060A /* BioPersonal.swift */,
-				BA49CCC61F33A35E0040060A /* Symptoms.swift */,
-				BA49CCC41F33A35E0040060A /* ReviewOfSystem.swift */,
-				BA49CCC31F33A35E0040060A /* PhysicalExam.swift */,
-				BA49CCAF1F33A35E0040060A /* CVProfile.swift */,
-				BA395C3F1F5EED95000C5A33 /* Pulmonary.swift */,
-				BA395C431F5EF993000C5A33 /* Renal.swift */,
+				BA2EF1F71F6CA35E00098BC0 /* HeartFailure.swift */,
+				BA2EF1F91F6CA91C00098BC0 /* CoronaryHeartDisease.swift */,
+				BA2EF1FB1F6CA96700098BC0 /* AtrialFibrilation.swift */,
+				BA2EF1FD1F6CA98500098BC0 /* ThromboembolicVKA.swift */,
+				BA2EF1FF1F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift */,
+				BA2EF2011F6CA9D400098BC0 /* VentricularTachyarrthymias.swift */,
 				BA49CCC11F33A35E0040060A /* MajorCVRisks.swift */,
-				BA49CCC51F33A35E0040060A /* SurgicalRisk.swift */,
 				BA49CCC01F33A35E0040060A /* Laboratories.swift */,
 				BA49CCBA1F33A35E0040060A /* Diagnostics.swift */,
-				BA49CCBF1F33A35E0040060A /* HSR.swift */,
 				BA49CCBB1F33A35E0040060A /* HeartSpecialistManagement.swift */,
 				BA49CCC21F33A35E0040060A /* Output.swift */,
 			);
@@ -753,25 +747,23 @@
 				BA49CC861F33A0410040060A /* BioController.swift in Sources */,
 				BA49CC791F339FDD0040060A /* RegistraionController.swift in Sources */,
 				BA49CD261F33A6B00040060A /* ItemType.swift in Sources */,
-				BA49CCED1F33A35E0040060A /* Symptoms.swift in Sources */,
-				BA49CCEA1F33A35E0040060A /* PhysicalExam.swift in Sources */,
-				BA49CCE61F33A35E0040060A /* HSR.swift in Sources */,
 				BA49CC8A1F33A0410040060A /* GeneratedController.swift in Sources */,
 				BA49CCF41F33A35E0040060A /* Specialist.swift in Sources */,
 				BA49CD1B1F33A6650040060A /* AuxiliaryFunctions.swift in Sources */,
 				BA49CC891F33A0410040060A /* EvaluationListController.swift in Sources */,
 				BA49CCF51F33A35E0040060A /* StoredValue.swift in Sources */,
+				BA2EF1FC1F6CA96700098BC0 /* AtrialFibrilation.swift in Sources */,
+				BA2EF2001F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift in Sources */,
 				BAC5E5C41F390E400093E5A3 /* TaskCompletedController.swift in Sources */,
-				BA49CCD81F33A35E0040060A /* CVProfile.swift in Sources */,
 				BA49CD241F33A6B00040060A /* General.swift in Sources */,
 				BA49CC991F33A0C90040060A /* HelpSupportController.swift in Sources */,
-				BA49CCEC1F33A35E0040060A /* SurgicalRisk.swift in Sources */,
 				BA49CC8D1F33A0410040060A /* MessageController.swift in Sources */,
 				BA49CCF31F33A35E0040060A /* RadioGroup.swift in Sources */,
 				BA49CD331F33A6FE0040060A /* RestClient.swift in Sources */,
 				BA49CD191F33A6440040060A /* GeneratedCell.swift in Sources */,
 				BA49CC9E1F33A0C90040060A /* TermsController.swift in Sources */,
 				BA49CCE91F33A35E0040060A /* Output.swift in Sources */,
+				BA2EF1F81F6CA35E00098BC0 /* HeartFailure.swift in Sources */,
 				BA49CC901F33A0410040060A /* StyleController.swift in Sources */,
 				BA49CCF81F33A4220040060A /* DemoController.swift in Sources */,
 				BA49CD0E1F33A5F80040060A /* ExpyTableView.swift in Sources */,
@@ -783,13 +775,12 @@
 				BA49CD0A1F33A54E0040060A /* UIToolBarSubclassExample.swift in Sources */,
 				BA49CCD21F33A35E0040060A /* CVDToolbar.swift in Sources */,
 				BA49CCD61F33A35E0040060A /* EvaluationItem.swift in Sources */,
-				BA395C401F5EED95000C5A33 /* Pulmonary.swift in Sources */,
 				BA49CC8F1F33A0410040060A /* SpecialistController.swift in Sources */,
 				BA49CD301F33A6FE0040060A /* EvaluationRequest.swift in Sources */,
 				BA49CD091F33A54E0040060A /* UIAlertControllerExtention.swift in Sources */,
+				BA2EF2021F6CA9D400098BC0 /* VentricularTachyarrthymias.swift in Sources */,
 				BA49CD311F33A6FE0040060A /* RegisterRequest.swift in Sources */,
 				BA49CCD41F33A35E0040060A /* DataManager.swift in Sources */,
-				BA395C441F5EF993000C5A33 /* Renal.swift in Sources */,
 				BA49CCF91F33A4220040060A /* RootViewController.swift in Sources */,
 				BA49CC9C1F33A0C90040060A /* RateController.swift in Sources */,
 				BA49CC7A1F339FDD0040060A /* ResetAccountController.swift in Sources */,
@@ -798,7 +789,6 @@
 				BA49CD231F33A6B00040060A /* ControllerStyle.swift in Sources */,
 				BA49CCE71F33A35E0040060A /* Laboratories.swift in Sources */,
 				789268A51E6478C80018FEF5 /* Evaluation.xcdatamodeld in Sources */,
-				BA49CCEB1F33A35E0040060A /* ReviewOfSystem.swift in Sources */,
 				BA49CD081F33A54E0040060A /* StringExtentions.swift in Sources */,
 				78BF73E81E3F640F0040EC81 /* AppDelegate.swift in Sources */,
 				BA49CD3C1F33FB860040060A /* HomeController.swift in Sources */,
@@ -808,11 +798,13 @@
 				BA49CC6D1F339AC80040060A /* SplashController.swift in Sources */,
 				BA49CC771F339FDD0040060A /* CodeAutorizationController.swift in Sources */,
 				BA49CCF21F33A35E0040060A /* ObjectLoader.swift in Sources */,
+				BA2EF1FE1F6CA98500098BC0 /* ThromboembolicVKA.swift in Sources */,
 				BA49CD381F33D1F90040060A /* LoginController.swift in Sources */,
 				BA49CCEF1F33A35E0040060A /* Profile.swift in Sources */,
 				BA49CD281F33A6B00040060A /* Presentation.swift in Sources */,
 				BA49CD161F33A62D0040060A /* FontSetView.swift in Sources */,
 				BA49CCD71F33A35E0040060A /* BioPersonal.swift in Sources */,
+				BA2EF1FA1F6CA91C00098BC0 /* CoronaryHeartDisease.swift in Sources */,
 				BA49CC8E1F33A0410040060A /* ReferencesController.swift in Sources */,
 				BA49CC9D1F33A0C90040060A /* AboutController.swift in Sources */,
 				BA49CCA21F33A0F40040060A /* BaseController.swift in Sources */,

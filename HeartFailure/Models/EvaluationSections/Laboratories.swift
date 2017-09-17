@@ -22,18 +22,6 @@ class Laboratories: EvaluationItem {
 	let gfrMlMin173M2 = EvaluationItem(literal: Presentation.gfrMlMin173M2)
 	let worseningRenalFx = EvaluationItem(literal: Presentation.worseningRenalFx)
 	
-	let lipidProfileLabel = EvaluationItem(literal: Presentation.lipidProfileLabel)
-	let alreadyOnStatin = EvaluationItem(literal: Presentation.alreadyOnStatin)
-	let statinIntolerance = EvaluationItem(literal: Presentation.statinIntolerance)
-	let cholesterol = EvaluationItem(literal: Presentation.cholesterol)
-	let trg = EvaluationItem(literal: Presentation.trg)
-	let ldlc = EvaluationItem(literal: Presentation.ldlc)
-	let hdlc = EvaluationItem(literal: Presentation.hdlc)
-	let apoB = EvaluationItem(literal: Presentation.apoB)
-	let ldlp = EvaluationItem(literal: Presentation.ldlp)
-	let lpaMgdl = EvaluationItem(literal: Presentation.lpaMgdl)
-	let ascvdRisk = EvaluationItem(literal: Presentation.ascvdRisk)
-	
 	let othersLabel = EvaluationItem(literal: Presentation.othersLabel)
 	let hba1c = EvaluationItem(literal: Presentation.hba1c)
 	let crpMgl = EvaluationItem(literal: Presentation.crpMgl)
@@ -52,19 +40,7 @@ class Laboratories: EvaluationItem {
 			fastingPlasmaGlucose,
 			gfrMlMin173M2,
 			worseningRenalFx,
-			
-			lipidProfileLabel,
-			alreadyOnStatin,
-			statinIntolerance,
-			cholesterol,
-			trg,
-			ldlc,
-			hdlc,
-			apoB,
-			ldlp,
-			lpaMgdl,
-			ascvdRisk,
-			
+						
 			othersLabel,
 			hba1c,
 			crpMgl,

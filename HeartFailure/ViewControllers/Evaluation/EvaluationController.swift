@@ -102,19 +102,17 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			model.completeScreen()
 		}
 		
-		unlockItems(array: [model.symptoms, model.physicalExam, model.reviewOfSystem, model.cvProfile, model.pulmonary, model.renal, model.riskFactors,
-			model.surgicalRisk, model.laboratories, model.diagnostics, model.nsr])
+		unlockItems(array: [model.riskFactors, model.laboratories, model.diagnostics])
 		
 		switch model.evaluationStatus {
 			case .initialized:
-				lockItems(array: [model.symptoms, model.physicalExam, model.cvProfile, model.reviewOfSystem, model.pulmonary, model.renal, model.riskFactors,
-				                  model.surgicalRisk, model.laboratories, model.diagnostics, model.nsr])
+				lockItems(array: [model.riskFactors, model.laboratories, model.diagnostics])
 			
 			case .bioViewed:
 				()
 			
 			case .bioCompleted:
-				lockItems(array: [model.surgicalRisk, model.laboratories, model.diagnostics, model.nsr])
+				lockItems(array: [model.laboratories, model.diagnostics])
 			
 			case .riskCompleted:
 				()
@@ -214,19 +212,17 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			let navigateAction = CVDAction(title: "Open " + model.bio.title, type: CVDActionType.done, handler: handler1, short: false)
 			self.showCVDAlert(title: alertTitle, message: alertDescription, actions: [navigateAction, cancelAction])
 			
-		} else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted  {
+		}
 			
-			let alertDescription = "Please fill out the form \(model.cvProfile.title) or \(model.riskFactors.title)"
-			showAlert(title: alertTitle, description: alertDescription, models: [model.cvProfile, model.riskFactors])
+		else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted  {
 		}
 			
 		else if DataManager.manager.evaluation!.evaluationStatus == .riskCompleted {
 			let alertDescription = "Please fill out the form \(model.diagnostics.title)"
 			showAlert(title: alertTitle, description: alertDescription, models: [model.diagnostics])
+		}
 			
-		} else if DataManager.manager.evaluation!.evaluationStatus == .diagnosticCompleted {
-			let alertDescription = "Please fill out the form \(model.nsr.title)"
-			showAlert(title: alertTitle, description: alertDescription, models: [model.nsr])
+		else if DataManager.manager.evaluation!.evaluationStatus == .diagnosticCompleted {
 		}
 	}
 	
@@ -257,9 +253,6 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			self.showCVDAlert(title: alertTitle, message: alertDescription, actions: [navigateAction, cancelAction])
 			
 		} else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted {
-			
-			let alertDescription = "Please fill out the form \(model.cvProfile.title) or \(model.riskFactors.title)"
-			showAlert(title: alertTitle, description: alertDescription, models: [model.cvProfile, model.riskFactors])
 			
 		}
 			

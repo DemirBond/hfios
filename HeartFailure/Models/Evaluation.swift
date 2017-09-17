@@ -52,12 +52,9 @@ class Evaluation: EvaluationItem {
 	
 	func completeScreen() {
 		
-		if nsr.isFilled && (nsr.form.status == .viewed || nsr.form.status == .valued) {
-			evaluationStatus = .therapieCompleted
-		} else if diagnostics.isFilled && (diagnostics.form.status == .viewed || diagnostics.form.status == .valued) {
+		if diagnostics.isFilled && (diagnostics.form.status == .viewed || diagnostics.form.status == .valued) {
 			evaluationStatus = .diagnosticCompleted
-		} else if (cvProfile.isFilled && (cvProfile.form.status == .viewed || cvProfile.form.status == .valued)) ||
-			(riskFactors.isFilled && (riskFactors.form.status == .viewed || riskFactors.form.status == .valued)) {
+		} else if riskFactors.isFilled && (riskFactors.form.status == .viewed || riskFactors.form.status == .valued) {
 			evaluationStatus = .riskCompleted
 		} else if isBioViewed {
 			evaluationStatus = .bioViewed
@@ -70,34 +67,30 @@ class Evaluation: EvaluationItem {
 	
 
 	let bio = BioPersonal(literal: Presentation.bio)
-	let symptoms = Symptoms(literal: Presentation.symptoms)
-	let reviewOfSystem = ReviewOfSystem(literal: Presentation.reviewOfSystem)
-	let physicalExam = PhysicalExam(literal: Presentation.physicalExam)
-	let cvProfile = CVProfile(literal: Presentation.cvProfile)
-	let pulmonary = Pulmonary(literal: Presentation.pulmonary)
-	let renal = Renal(literal: Presentation.renal)
+	let heartFailure = HeartFailure(literal: Presentation.heartFailure)
+	let coronaryHeartDisease = CoronaryHeartDisease(literal: Presentation.coronaryHeartDisease)
+	let atrialFibrillation = AtrialFibrilation(literal: Presentation.atrialFibrillation)
+	let thromboembolicVKA = ThromboembolicVKA(literal: Presentation.thromboembolicVKA)
+	let bradyarrthymiaSyncope = BradyarrthymiaSyncope(literal: Presentation.bradyarrthymiaSyncope)
+	let ventricularTachyarrthymias = VentricularTachyarrthymias(literal: Presentation.ventricularTachyarrthymias)
 	let riskFactors = MajorCVRisks(literal: Presentation.riskFactors)
-	let surgicalRisk = SurgicalRisk(literal: Presentation.surgicalRisk)
 	let laboratories = Laboratories(literal: Presentation.laboratories)
 	let diagnostics = Diagnostics(literal: Presentation.diagnostics)
-	let nsr = HSR(literal: Presentation.hsr)
 	let heartSpecialistManagement = HeartSpecialistManagement(literal: Presentation.heartSpecialistManagement)
 	let outputInMain = Output(literal: Presentation.outputInMain)
 	
 	override var items: [EvaluationItem] {
 		return [
 			bio,
-			symptoms,
-			reviewOfSystem,
-			physicalExam,
-			cvProfile,
-			pulmonary,
-			renal,
+			heartFailure,
+			coronaryHeartDisease,
+			atrialFibrillation,
+			thromboembolicVKA,
+			bradyarrthymiaSyncope,
+			ventricularTachyarrthymias,
 			riskFactors,
-			surgicalRisk,
 			laboratories,
-			diagnostics,
-			nsr
+			diagnostics
 		]
 	}
 	

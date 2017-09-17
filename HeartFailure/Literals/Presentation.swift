@@ -149,7 +149,21 @@ struct Presentation {
 	
 	static let dyspneaAtRestOrphopnea = "#id:chkdysp|    #title:Dyspnea at Rest|    #type:#check"
 	static let weightGain = "#id:chkWeight|    #title:Weight Gain|    #type:#check"
+	static let hfDiagnosisDurationPerWeek = "#id:txtdur|    #title:Duration / Week | #type:#integerRight|   #min:0|  #max:999|  #placeholder: "
 	
+	static let previousHFHospitalization = "#id:chkfoutput|    #title:Previous HF Hospitalization|    #type:#check"
+	static let spicd = "#id:chkICD |    #title:S/P AICD|    #type:#check"
+	static let lvef = "#id:txtCHF | #title:LVEF | #type:#integerRight|   #min:1|  #max:80|  #placeholder: "
+
+	static let atHighRiskOfHF = "#id:chkA|    #title:At High Risk for HF, but without Structural Heart Disease or Symptoms of HF NYHA/CCVS Class 0|    #type:#check"
+	static let structuralHeartDeseaseNoSymptoms = "#id:chkB| #title:Structural Heart Disease, but without signs/symptoms of HF|    #type:#check"
+	static let structuralHeartDeseaseSymptoms = "#id:chkC| #title:Structural Heart Diseasewith prior or current symptoms of HF|    #type:#check"
+	
+	static let calculateHFSS = "#id:CalculateHFSS | #title:Calculate HFSS, enter NAmeq, VO₂ max, Heart Rate, and ECG QRS Duration | #type:#label"
+	static let noSignificantComorbidities = "#id:chkcom | #title:No Significant Comorbidities |#type:#disclosureWeather | #alert: Refer to Heart Failure Specialist for Management"
+	static let vo2maxkg = "#id:vo2maxkg | #title:VO₂ max kg/ | #type:#decimalRight | #min:6 | #max:40 | #placeholder: "
+	
+
 	// Symptoms -> Chest Pain https://zpl.io/xUvxt
 	static let emergencyRoomInChestPain = "#id:chkER | #title:Emergency Room | #type:#disclosureControl"
 	static let typicalAnginaNewInChestPain = "#id:chkTA | #title:Typical Angina  | #type:#disclosureControlExpandable"
@@ -548,43 +562,103 @@ struct Presentation {
 	static let lipidRichPlaque = "#id:chklipidrich| #title:Lipid Rich Plaque | #type:#check"
 	static let documentedVasospasm = "#id:chkvasospasm | #title:Documented Vasospasm | #type:#check"
 	
-	//	CurrentPast CV Profile -> Heart Failure https://zpl.io/Z1oLKLR
-	static let hfDiagnosisDurationPerWeekInHF = "#id:txtdur |    #title:HF Diagnosis Duration/Week| #type:#integerRight|   #min:0|  #max:999|  #placeholder: Value"
-	static let previousHFHospitalizationInHF = "#id:chkfoutpt |    #title:Previous HF Hospitalization|    #type:#check"
+	static let history = "#id:sechistory|#title:History |#type:#disclosureSimple"
+    static let etiology = "#id:secEtiology|#title:Etiology |#type:#disclosureSimple"
+    static let clinical = "#id:secclinical|#title:Clinical Presentation |#type:#disclosureSimple"
+    static let ahastage = "#id:secahastage|#title:AHA Stage |#type:#disclosureSimple"
+    static let hometherapeutics = "#id:sechometherapeutics|#title:Home Therapeutics |#type:#disclosureSimple"
+    static let acutely = "#id:secacutely|#title:Acutely Decompensated / Hospitalized |#type:#disclosureSimple"
+    static let inhospitaltherapies = "#id:secinhospital|#title:In Hospital / IV Therapies |#type:#disclosureSimple"
+    static let discharge = "#id:secdischarge|#title:Discharge Therapeutics |#type:#disclosureSimple"
+    
+    //Heart Failure -> History
+    static let newOnsetHF = "#id:chknewHF |    #title:New onset HF/initial evaluation |    #type:#check"
+    static let chronicHF = "#id:chkchronic |    #title:Chronic known HF |    #type:#check"
+    static let oneormorehf = "#id:chkHFPLVF |    #title:One or more HF admissions in 12 months |    #type:#check"
+    static let twounscheduled = "#id:chkfoutpt |    #title:Two unscheduled ED or clinic visits in 12 months |    #type:#check"
+    static let chestpain = "#id:chkTA |    #title:Chest Pain | #type: #check"
+    static let dyspneaonexe = "#id:chkDOE | #title:Dyspnea on exertion | #type:#disclosureControl"
+    static let spbivppm = "#id:chkCRTI |    #title:S/P BIVPACER | #type: #check"
+    static let spppmrv = "#id:chkPPM |    #title:S/P PPM RV LEAD ONLY | #type: #check"
+    
+    //Heart Failure -> History -> Dyspneaonexe
+    static let class1 = "#id:chkclass1 |    #title:Dyspnea on strenous exertion | #type: #check"
+    static let class2 = "#id:chkclass2 |    #title:Dyspnea on more than routine activities | #type: #check"
+    static let class3 = "#id:chkclass3 |    #title:Dyspnea on minimun activities | #type: #check"
+    
+    //Heart Failure -> Etiology -> Cardiotoxins
+    static let radiationtherapy = "#id:chkXRT | #title:Radiation therapy | #type:#disclosureControl"
+    static let antracyclines = "#id:chkantracyclines |  #title:Antracyclines | #type: #check"
+    static let antiher2 = "#id:chktrastuzumab |  #title:AntiHER2/ Trastuzumab | #type: #check"
+    static let alkylating = "#id:chkhormonal |  #title:Alkylating | #type: #check"
+    static let immuno = "#id:chkimmuno |  #title:5-FU | #type: #check"
+    static let protease = "#id:chkprotease |  #title:Protease inhibitor | #type: #check"
+    static let thyrosine = "#id:chkthyrosine |  #title:Thyrosine kinase inhibitor | #type: #check"
+    static let atezo = "#id:chkatezo | #title:PDL/PDL-1 | #type: #check"
+    static let vegf = "#id:chkVEGF | #title:VEGF inhibitor | #type: #check"
+    
+    //Heart Failure -> Etiology -> Cardiotoxins -> RadiationTherapy
+    static let anteriorchest = "#id:chkanteriorchest |  #title:Anterior chest | #type: #check"
+    static let tumor = "#id:chktumor |  #title:Tumor next to heart | #type: #check"
+    static let shield = "#id:chkshield |  #title:No shielding | #type: #check"
+    static let highdosert = "#id:chkhighdoseRT |  #title:High dose XRT > 2Gy/day | #type: #check"
+    static let cumulative = "#id:chkcumulative |  #title:Cumulative > 30Gy | #type: #check"
+    static let concomitant = "#id:chkconchem |  #title:Concomitant chemo | #type: #check"
+    
+    //Heart Failure -> Etiology -> HOCM
+    static let lvmore = "#id:chklvhg |  #title:LVH ≥ 30mm | #type: #check"
+    static let historysudden = "#id:chkfamhistsudden |  #title:History of Sudden Death | #type: #check"
+    
+    
+    //Heart Failure -> Clinical
+    static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight|   #min:30|  #max:100|  #placeholder: "
+    static let rasat = "#id:txtO2sat | #title:RA O2 SAT | #type:#integerRight|   #min:30|  #max:100|  #placeholder: "
+    static let lowurine = "#id:chklowurine |  #title:Low Urine Output < 30ml/hr | #type: #check"
+    
+    //Heart Failure -> AHAStage
+    static let advancedHF = "#id:chkadvancedHF | #title:Advanced HF | #type:#disclosureControl"
+    
+    //Heart Failure -> Hometherapeutics
+    static let vasodilator = "#id:chkvasodilator |  #title:Vasodilator | #type: #check"
+    
+    //Heart Failure -> Acutely
+    static let predischarge = "#id:chkpredischarge |  #title:Pre-discharge or Discharge day  | #type: #check"
+    
+    //Heart Failure -> InHospitalTherapies
+    static let onmaximumtole = "#id:chkonmaximumtole |  #title:On Maximum Tolerated or Intolerant Acel/ARB | #type: #check"
+    static let onmaximumtoleB = "#id:chkonmaximumtoleB |  #title:On Maximum Tolerated B Blocker | #type: #check"
+    static let chronicintro = "#id:chkchronicintro |  #title:Chronic Inotrope Dependence | #type: #check"
+    static let intermitt = "#id:chkintermitt |  #title:Intermittent Inotrope Dependence | #type: #check"
+    
+    //Heart Failure -> Discharge
+    static let dischargedaily = "#id:txtdischargedaily | #title:Discharge daily diuretic dose, furosemide equivalent | #type:#integerRight|   #min:10|  #max:240|  #placeholder: "
+    static let predischarge6mw = "#id:txtpredischarge6mw | #title:Predischarge 6MW distance | #type:#integerRight|   #min:10|  #max:800|  #placeholder: "
+    static let predischargebnp = "#id:txtpredischargebnp | #title:Predischarge BNP pg/ml | #type:#integerRight|   #min:10|  #max:80000|  #placeholder: "
+    static let bblockerinto = "#id:chkbblockerinto |  #title:B blocker intolerance | #type: #check"
+    static let noncardiac = "#id:chknoncardiac |  #title:Non cardiac morbidities | #type: #check"
+           
+	static let lvefInHF = "#id:txtCHF | #title:LVEF | #type:#integerRight | #min:10 | #max:80 | #placeholder: "
+	static let hfDiagnosisDurationPerWeekInHF = "#id:txtdur |    #title:HF Diagnosis Duration/Week| #type:#integerRight|   #min:0|  #max:999|  #placeholder: "
+	
+	static let sysemb = "#id:chksysemb |    #title:Systemic Embolism |    #type:#check"
+	
+	static let previousHFHospitalizationInHF = "#id:txtfoutput |    #title:Previous HF Hospitalization|    #type:#check"
 	static let spicdInHF = "#id:chkICD |    #title:Status Post ICD|    #type:#check"
-	static let cRTI = "#id:chkCRTI |    #title:Status Post CRTI|    #type:#check"
-	static let lvefInHF = "#id:txtCHF | #title:LVEF | #type:#integerRight | #min:10 | #max:80 | #placeholder: Value"
-	static let nyhaClass = "#id:nyhaClass|#title:Heart Failure Stage |#type:#disclosureSimple"
+	
+	static let cRTI = "#id:chkICD |    #title:Status Post CRTI|    #type:#check"
+	static let lVEF = "#id:txtCHF |    #title:LVEF|    #type:#integerRight"
+	
 	static let idiopathicDCMNonischemic = "#id:chkNonischemicCMP | #title:Idiopathic/DCM/Nonischemic | #type:#check"
+	static let postMIMore45Days = "#id:chkMI | #title:Post MI > 45 Days | #type: #check"
 	static let ischemicPostMILess45Day = "#id:chkIschemic | #title:Ischemic Post MI < 45 days | #type:#check"
-	static let cardiotoxis = "#id:chkCardiotoxins | #title:Cardiotoxins | #type:#check"
-	static let familiarCMPSuddenDeath = "#id:chkFamHXofCMP | #title:Familiar CMP Associated with Sudden Death | #type:#check"
+	static let cardiotoxis = "#id:chkCardiotoxins | #title:Cardiotoxins | #type:#disclosureControl"
+	static let familiarCMPSuddenDeath = "#id:chkFamHXofCMP | #title:Familial CMP Associated with Sudden Death | #type:#check"
 	static let myocarditis = "#id:chkmyocarditis | #title:Myocarditis | #type:#check"
 	static let rvDysplasia = "#id:chkSuspectedRVDysplasia | #title:RV Dysplasia | #type:#check"
 	static let hocm = "#id:chkIschemicCMP| #title:HOCM | #type:#disclosureControl"
 	static let peripartumCMP = "#id:chkrestrictive | #title:Peripartum CMP | #type:#check"
-	
-	//	CurrentPast CV Profile -> Heart Failure -> Heart Failure Stage
-	static let atHighRiskOfHF = "#id:chkA|    #title:At High Risk for HF, but without Structural Heart Disease or Symptoms of HF NYHA/CCVS Class 0|    #type:#check"
-	static let structuralHeartDeseaseNoSymptoms = "#id:chkB| #title:Structural Heart Disease, but without signs/symptoms of HF|    #type:#check"
-	static let structuralHeartDeseaseSymptoms = "#id:chkC| #title:Structural Heart Diseasewith prior or current symptoms of HF|    #type:#check"
-	static let refactoryHFInterventions = "#id:chkD | #title:Refactory HF Requiring Specialized Interventions | #type:#disclosureControl"
-	
-	//	CurrentPast CV Profile -> Heart Failure -> Heart Failure Stage -> Refactory HF Requiring Specialized Interventions https://zpl.io/Z1LXV1U
-	static let calculateHFSS = "#id:CalculateHFSS | #title:Calculate HFSS, enter NAmeq, VO₂ max, Heart Rate, and ECG QRS Duration | #type:#label"
-	static let noSignificantComorbidities = "#id:chkcom | #title:No Significant Comorbidities |#type:#disclosureWeather | #alert: Refer to Heart Failure Specialist for Management"
-	static let vo2maxkg = "#id:TxtVO2 | #title:VO₂ max kg/ | #type:#decimalRight | #min:6 | #max:40 | #placeholder: VO₂ max kg"
-	
-	//	CurrentPast CV Profile -> Heart Failure -> Post MI>45 Days https://zpl.io/ZcwnUr
-	static let postMIMore45Days = "#id:chkMI | #title:Post MI > 45 Days | #type:#disclosureControlExpandable"
-	static let lvAneurysm = "#id:chkLVaneurysm | #title:LV Aneurysm | #type:#check"
-	
-	//	CurrentPast CV Profile -> Heart Failure -> HOCM https://zpl.io/2oywbi
-	static let lvh30mm = "#id:chkLVHGreater30| #title:LVH ≥ 30mm | #type:#check"
-	static let abnormalBPResponsetoExercise = "#id:chkAbnormBP | #title:Abnormal BP Response to Exercise | #type:#check"
-	static let familyHistoryOfSuddenDeath = "#id:chkFamHistSuddenDeath | #title:Family History of Sudden Death | #type:#check"
 	static let restDynamicPeakLVOT = "#id:chkLVOT | #title:Rest/Dynamic Peak LVOT Gradient > 50mmHg | #type:#check"
-	
+    
 	//	CurrentPast CV Profile -> Atrial Fibrillation https://zpl.io/1NE0A3
 	static let chronicAF = "#id:chkchronicAF | #title:Chronic AF | #type:#check"
 	static let persistentAF = "#id:chkpersistent | #title:Persistent AF | #type:#check"
@@ -613,9 +687,6 @@ struct Presentation {
 	
 	//	CurrentPast CV Profile -> Atrial Fibrillation -> Ventricular Heart Control https://zpl.io/Z28fdgd
 	static let heartRateWithActivity = "#id:txtCMP| #title:Heart Rate with Activity | #type:#check"
-	
-	//	CurrentPast CV Profile -> Atrial Fibrillation -> Symptomatic https://zpl.io/2tGE7i
-	static let acutely = "#id:chkacutely | #title:Acutely | #type:#check"
 	
 	//	CurrentPast CV Profile -> Atrial Fibrillation -> Previous TIA/CVA
 	static let lastthromboembolicevent = "#id:TxtPrevious| #title:Last embolic event/ months ago | #type:#integerRight | #min:0|  #max:199|  #placeholder: Value"
@@ -717,6 +788,7 @@ struct Presentation {
 	static let idiopathicVT = "#id:chkidioVT | #title:Idiopathic VT | #type:#check"
 	
 	// CurrentPast CV Profile -> Bradyarrthymia
+	static let clinicalSynscopeBradyarrthymia = "#id:clinicalSynscope | #title:Clinical Synscope | #type:#check"
 	static let symptomaticSinusNodeDysfunction = "#id:chkSinusNodeDysfunction | #title:Symptomatic Sinus Node Dysfunction | #type:#check"
 	static let highGradeAVNodeDisease = "#id:chkAVNodeDisease | #title:High Grade AV Node Disease | #type:#check"
 	static let isolatedNeurocardionegicUnexplainedSyncope = "#id:chkVasoDepressorSyncope | #title:Isolated Neurocardionegic / Unexplained Syncope | #type:#check"

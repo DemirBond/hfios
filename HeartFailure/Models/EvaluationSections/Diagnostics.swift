@@ -16,20 +16,14 @@ class Diagnostics: EvaluationItem {
 	let ekg = EKG(literal: Presentation.ekg)
 	let stressTesting = StressTesting(literal: Presentation.stressTesting)
 	let echocardiography = Echocardiography(literal: Presentation.echocardiography)
-	let chestXRay = ChestXRay(literal: Presentation.chestXRay)
 	let rhc = RHC(literal: Presentation.rhc)
-	let coronaryCalciumScore = EvaluationItem(literal: Presentation.coronaryCalciumScore)
-	let total = EvaluationItem(literal: Presentation.total)
 
 	override var items: [EvaluationItem] {
 		return [
 			ekg,
 			stressTesting,
 			echocardiography,
-			chestXRay,
 			rhc,
-			coronaryCalciumScore,
-			total
 		]
 	}
 }
@@ -67,10 +61,6 @@ class EKG: EvaluationItem {
 	let secondDegreeAVBlock = SecondDegreeAVBlock(literal: Presentation.secondDegreeAVBlock)
 	let thirdDegreeAVBlock = EvaluationItem(literal: Presentation.thirdDegreeAVBlock)
 	
-//	let urineNaMeqlInEKG = EvaluationItem(literal: Presentation.urineNaMeqlInEKG)
-//	let serumOsmolalityInEKG = EvaluationItem(literal: Presentation.serumOsmolalityInEKG)
-//	let stressTestingInEKG = EvaluationItem(literal: Presentation.stressTestingInEKG)
-
 	override var items: [EvaluationItem] {
 		return [
 			NSRInEKG,
@@ -240,34 +230,6 @@ class Echocardiography: EvaluationItem {
 			lvLaterealAnnulusEE,
 			lvefInEchocardiography,
 			trjVelocityMsec
-		]
-	}
-}
-
-
-// MARK: - Diagnostics -> Chest X-Ray
-
-class ChestXRay: EvaluationItem {
-	
-	let rightPleuralEffusion = EvaluationItem(literal: Presentation.rightPleuralEffusion)
-	let leftPleuralEffusion = EvaluationItem(literal: Presentation.leftPleuralEffusion)
-	let pulmonaryEdema = EvaluationItem(literal: Presentation.pulmonaryEdema)
-	let enlargedCardiacSolhouette = EvaluationItem(literal: Presentation.enlargedCardiacSolhouette)
-	let widenedMediasteneum = EvaluationItem(literal: Presentation.widenedMediasteneum)
-	let pneumothorax = EvaluationItem(literal: Presentation.pneumothorax)
-	let infiltrate = EvaluationItem(literal: Presentation.infiltrate)
-	let consolidation = EvaluationItem(literal: Presentation.consolidation)
-	
-	override var items: [EvaluationItem] {
-		return [
-			rightPleuralEffusion,
-			leftPleuralEffusion,
-			pulmonaryEdema,
-			enlargedCardiacSolhouette,
-			widenedMediasteneum,
-			pneumothorax,
-			infiltrate,
-			consolidation
 		]
 	}
 }

@@ -55,7 +55,7 @@ class BioPersonal: EvaluationItem {
 			bioWaistCirc,
 			bioAA,
 			bioPregnancy,
-			bioO2sat
+			//bioO2sat
 		]
 	}
 	
@@ -76,6 +76,6 @@ class BioPersonal: EvaluationItem {
 		self.bioWaistCirc.storedValue?.value = model.bioWaistCirc.storedValue?.value
 		self.bioAA.storedValue?.value = model.bioAA.storedValue?.value
 		self.bioPregnancy.storedValue?.value = model.bioPregnancy.storedValue?.value
-		self.bioO2sat.storedValue?.value = model.bioO2sat.storedValue?.value
+		//self.bioO2sat.storedValue?.value = model.bioO2sat.storedValue?.value
 	}
 }
