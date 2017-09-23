@@ -65,7 +65,7 @@ class DataManager {
 				let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
 				completionHandler(nil, error)
 			}
-
+			
 		}, failure: { (error) in
 			
 			let returnError: String = "This email was used for sign up"
@@ -83,7 +83,7 @@ class DataManager {
 		saveContext()
 		completionHandler("success", nil)
 	}
-
+	
 	
 	func setup() {
 		self.formatter.dateFormat = "MM/dd/yyyy HH:mm"
@@ -115,46 +115,46 @@ class DataManager {
 			
 		} else {
 			RestClient.client.login(username: loginName, password: password,
-				success: { (responseJson) in
-				
-					let doctor = (self.fetchDoctor(loginName: loginName))?[0]
-					if ((doctor) == nil) {
-						
-						let entity =  NSEntityDescription.entity(forEntityName: "Doctor", in: self.managedObjectContext)
-						let doc = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Doctor
-						doc.setValue(loginName, forKey: "loginName")
-						doc.setValue(password, forKey: "password")
-						doc.setValue(loginName, forKey: "doctorName")
-						self.saveContext()
-						
-						self.currentDoctor = doc
-						completionHandler("success", nil)
-						
-					}
-					else {
-						doctor?.setValue(password, forKey: "password")
-						self.saveContext()
-
-						self.currentDoctor = doctor
-						self.fetchEvaluations()
-						completionHandler("success", nil)
-					}
-					
-				},
-				
-				failure: { (error) in
-					//TODO change this error with actual error coming from server
-					let returnError: String = "UserName or Password is incorrect"
-					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
-					completionHandler(nil, error)
-				}
+			                        success: { (responseJson) in
+												
+												let doctor = (self.fetchDoctor(loginName: loginName))?[0]
+												if ((doctor) == nil) {
+													
+													let entity =  NSEntityDescription.entity(forEntityName: "Doctor", in: self.managedObjectContext)
+													let doc = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Doctor
+													doc.setValue(loginName, forKey: "loginName")
+													doc.setValue(password, forKey: "password")
+													doc.setValue(loginName, forKey: "doctorName")
+													self.saveContext()
+													
+													self.currentDoctor = doc
+													completionHandler("success", nil)
+													
+												}
+												else {
+													doctor?.setValue(password, forKey: "password")
+													self.saveContext()
+													
+													self.currentDoctor = doctor
+													//self.fetchEvaluations()
+													completionHandler("success", nil)
+												}
+												
+			},
+			                        
+			                        failure: { (error) in
+												//TODO change this error with actual error coming from server
+												let returnError: String = "UserName or Password is incorrect"
+												let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+												completionHandler(nil, error)
+			}
 			)
 		}
 	}
 	
 	
 	func signIn(with loginName: String, completionHandler: @escaping (String?, NSError?) -> (Void)) {
-
+		
 		let doctors: [Doctor]? = fetchDoctor(loginName: loginName)
 		if doctors != nil {
 			
@@ -164,19 +164,19 @@ class DataManager {
 			}
 			
 			RestClient.client.login(username: loginName, password: password,
-				success: { (responseJson) in
-					
-					let doctor = (self.fetchDoctor(loginName: loginName))?[0]
-					doctor?.setValue(password, forKey: "password")
-					self.saveContext()
-					
-					self.currentDoctor = doctor
-					self.fetchEvaluations()
-					
-					completionHandler("success", nil)
+			                        success: { (responseJson) in
 												
-				},
-				failure: { _ in}
+												let doctor = (self.fetchDoctor(loginName: loginName))?[0]
+												doctor?.setValue(password, forKey: "password")
+												self.saveContext()
+												
+												self.currentDoctor = doctor
+												self.fetchEvaluations()
+												
+												completionHandler("success", nil)
+												
+			},
+			                        failure: { _ in}
 			)
 		}
 		else {
@@ -202,7 +202,7 @@ class DataManager {
 		currentDoctor = nil
 		RestClient.client.isLoggedIn = false
 	}
-
+	
 	
 	func saveCurrentEvaluation() {
 		guard evaluation != nil && evaluation!.isBioCompleted  else { return }
@@ -220,7 +220,7 @@ class DataManager {
 					do {
 						let data = try JSONSerialization.data(withJSONObject: evaluation!.itemDict, options: .prettyPrinted) as NSData?
 						patient.setValue(data, forKey: "evaluationData")
-
+						
 						saveContext()
 						
 					} catch let err as NSError {
@@ -263,7 +263,7 @@ class DataManager {
 			if patient.identifier == uuid {
 				do {
 					let dict = try JSONSerialization.jsonObject(with: patient.evaluationData! as Data,
-						options: .mutableContainers) as! Dictionary<String, Any>
+					                                            options: .mutableContainers) as! Dictionary<String, Any>
 					let evaluation = Evaluation(with: dict)
 					self.evaluation = evaluation
 					return evaluation
@@ -277,7 +277,7 @@ class DataManager {
 	}
 	
 	
-	func saveCurrentCompute() {
+	func saveCurrentCompute(saveMode: Bool) {
 		guard evaluation != nil && evaluation!.isBioCompleted  else { return }
 		
 		var isFound = false
@@ -287,8 +287,9 @@ class DataManager {
 			for patient in self.patients! {
 				if patient.identifier == uuid {
 					
+					patient.setValue(saveMode, forKey: "computeSaved")
 					patient.setValue(String(DataManager.manager.getPAHValue()), forKey: "computeEvaluationRequestPAH")
-					patient.setValue(evaluation!.bio.gender.female.isFilled ? 2:1, forKey: "computeEvaluationRequestGender")
+					patient.setValue(evaluation!.bio.gender.storedValue?.value == "female" ? 2:1, forKey: "computeEvaluationRequestGender")
 					patient.setValue(Int((evaluation!.bio.sbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestSBP")
 					patient.setValue(Int((evaluation!.bio.dbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestDBP")
 					patient.setValue(self.getEvaluationItemsAsRequestInputsString(), forKey: "computeEvaluationRequestInputs")
@@ -297,7 +298,7 @@ class DataManager {
 					patient.setValue(DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle, forKey: "computeEvaluationResultTherapeutics")
 					patient.setValue(DataManager.manager.evaluation!.outputInMain.icd10Result.subtitle, forKey: "computeEvaluationResultICD")
 					patient.setValue(DataManager.manager.evaluation!.outputInMain.references.subtitle, forKey: "computeEvaluationResultReferences")
-				
+					
 					saveContext()
 					
 					isFound = true
@@ -310,6 +311,7 @@ class DataManager {
 			let entity =  NSEntityDescription.entity(forEntityName: "Patient", in: self.managedObjectContext)
 			let patient = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Patient
 			
+			patient.setValue(saveMode, forKey: "computeSaved")
 			patient.setValue(evaluation!.bio.name.storedValue?.value, forKey: "patientName")
 			patient.setValue(evaluation!.bio.age.storedValue?.value, forKey: "patientAge")
 			patient.setValue(evaluation!.dateCreated, forKey: "dateCreated")
@@ -318,7 +320,7 @@ class DataManager {
 			patient.setValue(currentDoctor?.loginName ?? "unknown", forKey: "doctorLoginName")
 			
 			patient.setValue(String(DataManager.manager.getPAHValue()), forKey: "computeEvaluationRequestPAH")
-			patient.setValue(evaluation!.bio.gender.female.isFilled ? 2:1, forKey: "computeEvaluationRequestGender")
+			patient.setValue(evaluation!.bio.gender.storedValue?.value == "female" ? 2:1, forKey: "computeEvaluationRequestGender")
 			patient.setValue(Int((evaluation!.bio.sbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestSBP")
 			patient.setValue(Int((evaluation!.bio.dbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestDBP")
 			patient.setValue(self.getEvaluationItemsAsRequestInputsString(), forKey: "computeEvaluationRequestInputs")
@@ -327,7 +329,7 @@ class DataManager {
 			patient.setValue(DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle, forKey: "computeEvaluationResultTherapeutics")
 			patient.setValue(DataManager.manager.evaluation!.outputInMain.icd10Result.subtitle, forKey: "computeEvaluationResultICD")
 			patient.setValue(DataManager.manager.evaluation!.outputInMain.references.subtitle, forKey: "computeEvaluationResultReferences")
-
+			
 			do {
 				let data = try JSONSerialization.data(withJSONObject: evaluation!.itemDict, options: .prettyPrinted) as NSData?
 				patient.setValue(data, forKey: "evaluationData")
@@ -344,6 +346,18 @@ class DataManager {
 		guard  patients != nil && index >= 0 && index < patients!.count else { return }
 		managedObjectContext.delete(patients!.remove(at: index))
 		saveContext()
+	}
+	
+	
+	func deleteTempEvaluations() {
+		guard  patients != nil else { return }
+		for patient: Patient in patients! {
+			if (patient.value(forKey: "computeSaved") as! Bool) == false {
+				managedObjectContext.delete(patient)
+			}
+		}
+		saveContext()
+		fetchEvaluations()
 	}
 	
 	
@@ -433,7 +447,7 @@ class DataManager {
 				}
 				return nil
 			}
-	
+			
 			return array.count > 0 ? array : nil
 			
 		} catch let error as NSError {
@@ -512,13 +526,13 @@ class DataManager {
 			(evaluatListJson) in
 			
 			for (_, patientJson):(String,JSON) in evaluatListJson["evals"] {
-		
+				
 				var isExist: Bool = false
 				
 				if savedPatients != nil && savedPatients?.count != 0 {
 					for savedPatient: Patient in savedPatients! {
 						if patientJson["ID"].stringValue == savedPatient.identifier {
-					
+							
 							isExist = true
 							deleteIndex[savedPatient.identifier!] = false
 							
@@ -533,6 +547,7 @@ class DataManager {
 					let entity =  NSEntityDescription.entity(forEntityName: "Patient", in: self.managedObjectContext)
 					let patient = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Patient
 					
+					patient.setValue(true, forKey: "computeSaved")
 					patient.setValue(patientJson["Name"].stringValue, forKey: "patientName")
 					patient.setValue(patientJson["createdate"].stringValue, forKey: "dateCreated")
 					patient.setValue(patientJson["createdate"].stringValue, forKey: "dateModified")
@@ -558,7 +573,7 @@ class DataManager {
 		
 	}
 	
-
+	
 	func fetchEvaluationByIDFromRestAPI(id: Int, completionHandler: @escaping (String?, NSError?) -> (Void)) {
 		
 		RestClient.client.retrieveEvaluationByID(id: id, success: { (responseJson) in
@@ -676,9 +691,9 @@ class DataManager {
 			}
 			
 			switch group["groupname"] {
-			//case "Outputs":
+				//case "Outputs":
 				//DataManager.manager.evaluation!.outputInMain.resultOutput.subtitle = row
-				//break;
+			//break;
 			case "Diagnostics":
 				DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle = row
 				break;
@@ -697,7 +712,7 @@ class DataManager {
 			}
 		}
 		self.outputs = results
-			//print(results)
+		//print(results)
 	}
 	
 	
@@ -733,13 +748,17 @@ class DataManager {
 							return true
 					}
 					
+					let name = evaluation!.bio.name.storedValue?.value
+					let age = evaluation!.bio.age.storedValue?.value
 					let isPAH = String(DataManager.manager.getPAHValue())
-					let gender = evaluation!.bio.gender.female.isFilled ? 2:1
+					let gender = evaluation!.bio.gender.storedValue?.value == "female" ? 2:1
 					let SBP = Int((evaluation!.bio.sbp.storedValue?.value)!)!
 					let DBP = Int((evaluation!.bio.dbp.storedValue?.value)!)!
 					let inputs = self.getEvaluationItemsAsRequestInputsString()
 					
-					if isPAH == cerPAH &&
+					if name == patient.value(forKey: "patientName") as? String &&
+						age == patient.value(forKey: "patientAge") as? String &&
+						isPAH == cerPAH &&
 						gender == patient.value(forKey: "computeEvaluationRequestGender") as! Int &&
 						SBP == patient.value(forKey: "computeEvaluationRequestSBP") as! Int &&
 						DBP == patient.value(forKey: "computeEvaluationRequestDBP") as! Int &&
@@ -761,7 +780,7 @@ class DataManager {
 	
 	
 	func cleanUpOutputForm() -> Void{
-		DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle = "No Result" 
+		DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle = "No Result"
 		DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle = "No Result"
 		DataManager.manager.evaluation!.outputInMain.icd10Result.subtitle = "No Result"
 		DataManager.manager.evaluation!.outputInMain.references.subtitle = "No Result"
@@ -831,18 +850,18 @@ class DataManager {
 		}
 		
 		if (prefix == "chk" && item.storedValue?.radioGroup?.selectedRadioItem == item.identifier){
-//			print("chkpharm is added")
+			//			print("chkpharm is added")
 			inputs.append(item.identifier)
-//			print(item.storedValue?.isChecked)
-//			print(item.storedValue?.placeholder)
-//			print(item.storedValue?.radioGroup?.selectedRadioItem)
+			//			print(item.storedValue?.isChecked)
+			//			print(item.storedValue?.placeholder)
+			//			print(item.storedValue?.radioGroup?.selectedRadioItem)
 		}
 		else if (prefix == "chk" && item.storedValue?.radioGroup?.selectedRadioItem == item.identifier){
-//			print("chkCV is added")
+			//			print("chkCV is added")
 			inputs.append(item.identifier)
-//			print(item.storedValue?.isChecked)
-//			print(item.storedValue?.placeholder)
-//			print(item.storedValue?.radioGroup?.selectedRadioItem)
+			//			print(item.storedValue?.isChecked)
+			//			print(item.storedValue?.placeholder)
+			//			print(item.storedValue?.radioGroup?.selectedRadioItem)
 		}
 		
 		if (item.storedValue?.isChecked)! {
@@ -889,15 +908,15 @@ class DataManager {
 		print(finalInputsString)
 		return finalInputsString
 	}
-
+	
 	func equalizeAllItems() ->Void{
 		
 		let regularItem = DataManager.manager.evaluation!
 		let pahItems = DataManager.manager.evaluation!.heartSpecialistManagement
-
+		
 		for pahItem in pahItems.items {
 			for item in regularItem.items {
-//				print(item.identifier + " -- " + pahItem.identifier)
+				//				print(item.identifier + " -- " + pahItem.identifier)
 				
 				if (item.items.count > 0 && pahItem.items.count == 0) {
 					checkInsideofRegularItem(item: item.items, pahItem: pahItem)
@@ -906,10 +925,10 @@ class DataManager {
 				}else if (item.items.count > 0 && pahItem.items.count > 0) {
 					checkInsideofAllItem(item: item.items, pahItem: pahItem.items)
 				}else if (item.identifier == pahItem.identifier && item.identifier.characters.count >= 3) {
-//					print(pahItem.identifier + ": \(String(describing: pahItem.storedValue?.value))" + " equals! " + item.identifier + ": \(String(describing: item.storedValue?.value))")
+					//					print(pahItem.identifier + ": \(String(describing: pahItem.storedValue?.value))" + " equals! " + item.identifier + ": \(String(describing: item.storedValue?.value))")
 					let index = item.identifier.index(item.identifier.startIndex, offsetBy: 3)
 					let prefix = item.identifier.substring(to: index)
-
+					
 					if (prefix == "chk" && item.storedValue?.isChecked != false){
 						pahItem.storedValue?.isChecked = true
 					}else{
@@ -927,12 +946,12 @@ class DataManager {
 		
 		for regItem in item {
 			
-//			print(regItem.identifier + " ---- " + pahItem.identifier)
+			//			print(regItem.identifier + " ---- " + pahItem.identifier)
 			
 			if (regItem.items.count > 0) {
 				checkInsideofRegularItem(item: regItem.items, pahItem: pahItem)
 			} else if (regItem.identifier == pahItem.identifier && regItem.identifier.characters.count >= 3) {
-//				print(pahItem.identifier + " equals " + regItem.identifier)
+				//				print(pahItem.identifier + " equals " + regItem.identifier)
 				let index = regItem.identifier.index(regItem.identifier.startIndex, offsetBy: 3)
 				let prefix = regItem.identifier.substring(to: index)
 				
@@ -953,12 +972,12 @@ class DataManager {
 		
 		for pItem in pahItem {
 			
-//			print(item.identifier + " ---- -- " + pItem.identifier)
+			//			print(item.identifier + " ---- -- " + pItem.identifier)
 			
 			if (pItem.items.count > 0) {
 				checkInsideofPahItem(item:item, pahItem: pItem.items)
 			} else if (item.identifier == pItem.identifier && item.identifier.characters.count >= 3) {
-//				print(pItem.identifier + " -- equals " + item.identifier)
+				//				print(pItem.identifier + " -- equals " + item.identifier)
 				let index = item.identifier.index(item.identifier.startIndex, offsetBy: 3)
 				let prefix = item.identifier.substring(to: index)
 				
@@ -980,7 +999,7 @@ class DataManager {
 			
 			for pItem in pahItem {
 				
-//				print(regItem.identifier + " ---- -- -- " + pItem.identifier)
+				//				print(regItem.identifier + " ---- -- -- " + pItem.identifier)
 				
 				if (regItem.items.count > 0 && pItem.items.count == 0) {
 					checkInsideofRegularItem(item: regItem.items, pahItem: pItem)
@@ -989,7 +1008,7 @@ class DataManager {
 				} else if (regItem.items.count > 0 && pItem.items.count > 0) {
 					checkInsideofAllItem(item: regItem.items, pahItem: pItem.items)
 				} else if (regItem.identifier == pItem.identifier && regItem.identifier.characters.count >= 3) {
-//					print(pItem.identifier + " -- -- equals " + regItem.identifier)
+					//					print(pItem.identifier + " -- -- equals " + regItem.identifier)
 					
 					let index = regItem.identifier.index(regItem.identifier.startIndex, offsetBy: 3)
 					let prefix = regItem.identifier.substring(to: index)
@@ -1051,3 +1070,4 @@ class DataManager {
 		}
 	}
 }
+

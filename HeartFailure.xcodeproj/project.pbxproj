@@ -19,15 +19,6 @@
 		BA2EF1FE1F6CA98500098BC0 /* ThromboembolicVKA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1FD1F6CA98500098BC0 /* ThromboembolicVKA.swift */; };
 		BA2EF2001F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1FF1F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift */; };
 		BA2EF2021F6CA9D400098BC0 /* VentricularTachyarrthymias.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF2011F6CA9D400098BC0 /* VentricularTachyarrthymias.swift */; };
-		BA49CC491F3339360040060A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC411F3339360040060A /* Crashlytics.framework */; };
-		BA49CC4A1F3339360040060A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC421F3339360040060A /* Fabric.framework */; };
-		BA49CC531F333E2C0040060A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC451F3339360040060A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BA49CC541F3340830040060A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC401F3339360040060A /* Alamofire.framework */; };
-		BA49CC551F3340830040060A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC401F3339360040060A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BA49CC581F3340830040060A /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC461F3339360040060A /* ToastSwiftFramework.framework */; };
-		BA49CC591F3340830040060A /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC461F3339360040060A /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BA49CC5A1F3340A30040060A /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC431F3339360040060A /* NVActivityIndicatorView.framework */; };
-		BA49CC5B1F3340A30040060A /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA49CC431F3339360040060A /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA49CC6D1F339AC80040060A /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CC6C1F339AC80040060A /* SplashController.swift */; };
 		BA49CC771F339FDD0040060A /* CodeAutorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CC731F339FDD0040060A /* CodeAutorizationController.swift */; };
 		BA49CC791F339FDD0040060A /* RegistraionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49CC751F339FDD0040060A /* RegistraionController.swift */; };
@@ -119,23 +110,6 @@
 			remoteInfo = CVDEvaluator;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D51A51581E9442850084352C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BA49CC591F3340830040060A /* ToastSwiftFramework.framework in Embed Frameworks */,
-				BA49CC551F3340830040060A /* Alamofire.framework in Embed Frameworks */,
-				BA49CC5B1F3340A30040060A /* NVActivityIndicatorView.framework in Embed Frameworks */,
-				BA49CC531F333E2C0040060A /* SwiftyJSON.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		789268A41E6478C80018FEF5 /* Evaluation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Evaluation.xcdatamodel; sourceTree = "<group>"; };
@@ -234,6 +208,9 @@
 		BA6518901F61EB0500743EC9 /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		BA6518941F61F14F00743EC9 /* MenuAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuAction.swift; sourceTree = "<group>"; };
 		BAC5E5C31F390E400093E5A3 /* TaskCompletedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletedController.swift; sourceTree = "<group>"; };
+		BADA704F1F764DEB00B83DC4 /* KBNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBNumberPad.swift; sourceTree = "<group>"; };
+		BADA70501F764DEB00B83DC4 /* KBNumberPad.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KBNumberPad.xcassets; sourceTree = "<group>"; };
+		BADA70511F764DEB00B83DC4 /* KBNumberPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBNumberPad.xib; sourceTree = "<group>"; };
 		BAFC12961F6B79E600EF37FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartFailure/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAFC12981F6B79E600EF37FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartFailure/Base.lproj/Medical.storyboard; sourceTree = "<group>"; };
 		BAFC129A1F6B79E600EF37FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartFailure/Base.lproj/Output.storyboard; sourceTree = "<group>"; };
@@ -247,11 +224,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA49CC581F3340830040060A /* ToastSwiftFramework.framework in Frameworks */,
-				BA49CC491F3339360040060A /* Crashlytics.framework in Frameworks */,
-				BA49CC541F3340830040060A /* Alamofire.framework in Frameworks */,
-				BA49CC4A1F3339360040060A /* Fabric.framework in Frameworks */,
-				BA49CC5A1F3340A30040060A /* NVActivityIndicatorView.framework in Frameworks */,
 				78AD64FE48E351E06A7C3DE3 /* Pods_HeartFailure.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +454,7 @@
 		BA49CD021F33A54E0040060A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BADA704E1F764DEB00B83DC4 /* KBNumberPad */,
 				BA49CD1A1F33A6650040060A /* AuxiliaryFunctions.swift */,
 				BA49CD0D1F33A5F80040060A /* ExpyTableView.swift */,
 				BA49CD031F33A54E0040060A /* HexExtention.swift */,
@@ -569,6 +542,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BADA704E1F764DEB00B83DC4 /* KBNumberPad */ = {
+			isa = PBXGroup;
+			children = (
+				BADA704F1F764DEB00B83DC4 /* KBNumberPad.swift */,
+				BADA70501F764DEB00B83DC4 /* KBNumberPad.xcassets */,
+				BADA70511F764DEB00B83DC4 /* KBNumberPad.xib */,
+			);
+			path = KBNumberPad;
+			sourceTree = "<group>";
+		};
 		E0549893442D757044AEE800 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,7 +573,6 @@
 				78BF73E11E3F640F0040EC81 /* Frameworks */,
 				78BF73E21E3F640F0040EC81 /* Resources */,
 				670AF3931E4F537E00576848 /* Fabric */,
-				D51A51581E9442850084352C /* Embed Frameworks */,
 				BA71B65A1F34DAD1004959EE /* ShellScript */,
 				F12F2F5A4A717027221B3E4B /* [CP] Embed Pods Frameworks */,
 				ABC4E3A9277C3722306E17E1 /* [CP] Copy Pods Resources */,
@@ -647,7 +629,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = IgorKhomiak;
 				TargetAttributes = {
 					78BF73E31E3F640F0040EC81 = {
@@ -758,7 +740,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.p\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+			shellScript = "#   APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n#\n#   # This script loops through the frameworks embedded in the application and\n#   # removes unused architectures.p\n#   find \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\n#   do\n#   FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n#   FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n#   echo \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n#\n#   EXTRACTED_ARCHS=()\n#\n#   for ARCH in $ARCHS\n#   do\n#   echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n#   lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n#   EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n#   done\n#\n#   echo \"Merging extracted architectures: ${ARCHS}\"\n#   lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n#   rm \"${EXTRACTED_ARCHS[@]}\"\n#\n#   echo \"Replacing original executable with thinned version\"\n#   rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n#   mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n#\n#   done";
 		};
 		DCF5ABFC806142C9B0FA1547 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -951,7 +933,9 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -959,7 +943,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1000,7 +988,9 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1008,7 +998,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
