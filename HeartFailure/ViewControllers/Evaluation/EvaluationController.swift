@@ -168,7 +168,10 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 		
 		var actions = [CVDAction] ()
 		actions.append(CVDAction(title: "Yes, I'm sure".localized, type: CVDActionType.done, handler: {
+			DataManager.manager.deleteTempEvaluations()
+			
 			self.navigationController?.popViewController(animated: true)
+			
 		}, short: false, border: false))
 		actions.append(CVDAction(title: "Cancel".localized, type: CVDActionType.cancel, handler: nil, short: false, border: false))
 		
@@ -213,16 +216,14 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			self.showCVDAlert(title: alertTitle, message: alertDescription, actions: [navigateAction, cancelAction])
 			
 		}
-			
-		else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted  {
+        else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted  {
 		}
-			
 		else if DataManager.manager.evaluation!.evaluationStatus == .riskCompleted {
 			let alertDescription = "Please fill out the form \(model.diagnostics.title)"
 			showAlert(title: alertTitle, description: alertDescription, models: [model.diagnostics])
-		}
 			
-		else if DataManager.manager.evaluation!.evaluationStatus == .diagnosticCompleted {
+		}            
+        else if DataManager.manager.evaluation!.evaluationStatus == .diagnosticCompleted {
 		}
 	}
 	
@@ -281,12 +282,13 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 				let inputs = DataManager.manager.getEvaluationItemsAsRequestInputsString()
 				let saveMode: Bool = isSaveMode
 				let patientname: String = isSaveMode ? (model.bio.name.storedValue?.value)! : "None"
+				let gender: Int = model.bio.gender.storedValue?.value == "male" ? 1 : 2
 				
 				let evaluation = EvaluationRequest(isSave: saveMode,
 				                                   age: Int((model.bio.age.storedValue?.value)!)!,
 				                                   isPAH: String(DataManager.manager.getPAHValue()),
 				                                   name: patientname,
-				                                   gender: model.bio.gender.female.isFilled ? 2:1,
+				                                   gender: gender,
 				                                   SBP: Int((model.bio.sbp.storedValue?.value)!)!,
 				                                   DBP: Int((model.bio.dbp.storedValue?.value)!)!,
 				                                   inputs: inputs)
@@ -302,7 +304,7 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 					
 					// save current evaluation and compute
 					DataManager.manager.saveCurrentEvaluation()
-					DataManager.manager.saveCurrentCompute()
+					DataManager.manager.saveCurrentCompute(saveMode: isSaveMode)
 					
 					self.stopAnimating()
 					

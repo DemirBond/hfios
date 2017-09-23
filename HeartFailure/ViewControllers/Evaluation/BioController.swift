@@ -101,12 +101,12 @@ class BioController: BaseTableController, NVActivityIndicatorViewable { //, UITa
 	override func viewWillDisappear(_ animated : Bool) {
 		super.viewWillDisappear(animated)
 		
-		if self.isMovingFromParentViewController && (DataManager.manager.evaluation?.isBioCompleted ?? false) {
-			let isValid = validatePage()
-			if isValid {
-				DataManager.manager.saveCurrentEvaluation()
-			}
-		}
+//		if self.isMovingFromParentViewController && (DataManager.manager.evaluation?.isBioCompleted ?? false) {
+//			let isValid = validatePage()
+//			if isValid {
+//				DataManager.manager.saveCurrentEvaluation()
+//			}
+//		}
 	}
 	
 	
@@ -245,19 +245,44 @@ class BioController: BaseTableController, NVActivityIndicatorViewable { //, UITa
 	
 	//MARK: - EvaluationEditing protocol
 	
-	override func evaluationValueDidNotValidate(model: EvaluationItem, message: String, description: String?) {
+	override func keyboardReturnDidPress(model: EvaluationItem) {
+		guard nil != activeModel else { return }
 		
-		guard !isCancelled else { return }
-		let storyboard = UIStoryboard(name: "Medical", bundle: nil)
+		checkDependancies()
 		
-		let controller = storyboard.instantiateViewController(withIdentifier: "MessageControllerID") as! MessageController
-		controller.message = message
-		controller.descriptionMessage = description
-		controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-		self.present(controller, animated: false) { controller.showMessage() }
-
+		repeat {
+			if self.presentedViewController != nil {
+				self.dismiss(animated: false, completion: nil)
+			}
+			
+			let index = (modelChain as NSArray).index(of: activeModel!)
+			if index < modelChain.count - 1 {
+				activeModel = modelChain[index + 1]
+			}
+			else {
+				self.hideKeyboard()
+				return
+			}
+			
+		} while nil != activeModel && activeModel!.form.isEnabled == false
+		
+		if let path = activeModel?.modelIndexPath {
+			if let cell = tableView.cellForRow(at: path) as? GeneratedCell {
+				activeField = cell.textField
+				activeField?.isEnabled = true
+				activeField?.becomeFirstResponder()
+				
+			} else {
+				self.tableView.scrollToRow(at: path, at: UITableViewScrollPosition.middle, animated: false)
+				if let cell = tableView.cellForRow(at: path) as? GeneratedCell {
+					activeField = cell.textField
+					activeField?.isEnabled = true
+					activeField?.becomeFirstResponder()
+				}
+			}
+		}
 	}
-	
+
 	
 	
 	// MARK: - UITableView DataSource
@@ -316,7 +341,8 @@ extension BioController {
 		
 		if cellType ==  .disclosureSimpleExpandable{
 			//cell.titleLabel?.text = cell.cellModel?.title
-			cell.subtitleLabel?.text = "pick one" // cell.cellModel?.subtitle
+			//cell.subtitleLabel?.text = "pick one" // cell.cellModel?.subtitle
+			cell.subtitleLabel?.text = itemModel.storedValue?.value != nil ? itemModel.storedValue?.value : "pick one"
 			
 			cell.subLabelOne?.text = genderList[0]
 			cell.subLabelTwo?.text = genderList[1]

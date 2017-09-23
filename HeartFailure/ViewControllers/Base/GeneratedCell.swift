@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 protocol EvaluationEditing {
 	
 	func evaluationFieldDidBeginEditing(_ textField: UITextField, model: EvaluationItem)
@@ -19,7 +20,7 @@ protocol EvaluationEditing {
 }
 
 
-class GeneratedCell: UITableViewCell, UITextFieldDelegate {
+class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 	
 	var cellModel: EvaluationItem! {
 		didSet{
@@ -40,6 +41,8 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate {
 	@IBOutlet weak var accessoryBar: UINavigationBar?
 	@IBOutlet weak var secondaryTextField: UITextField?
 	@IBOutlet var textFieldCollection: [UITextField]!
+	
+	var numberPad: KBNumberPad?
 	
 	// expandableCell outlets
 	
@@ -164,12 +167,23 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate {
 		
 		self.icon?.image = nil
 		if let field = self.textField {
-			field.inputAccessoryView = self.accessoryBar
+			//field.inputAccessoryView = self.accessoryBar
 			field.font = CVDStyle.style.currentFont
-			
+			field.returnKeyType = .next
 			field.placeholder = cellModel.storedValue?.placeholder
 			field.text = self.cellModel.storedValue?.value
 			drawFieldWithDefaultColor()
+			
+			if cellModel.form.itemType == .integerRight || cellModel.form.itemType == .integerLeft {
+				numberPad = KBNumberPad(padType: .Integer, returnType: .Next)
+				numberPad?.delegate = self
+				field.inputView = numberPad
+			}
+			else if cellModel.form.itemType == .decimalRight || cellModel.form.itemType == .decimalLeft {
+				numberPad = KBNumberPad(padType: .Decimal, returnType: .Next)
+				numberPad?.delegate = self
+				field.inputView = numberPad
+			}
 		}
 		
 		
@@ -178,8 +192,10 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate {
 		let theitems = cellModel.items
 		
 		if cellModel.form.itemType == .disclosureSimpleExpandable {
-			subCellModelOne = EvaluationItem(literal: Presentation.male)
-			subCellModelTwo = EvaluationItem(literal: Presentation.female)
+//			subCellModelOne = EvaluationItem(literal: Presentation.male)
+//			subCellModelTwo = EvaluationItem(literal: Presentation.female)
+			subCellModelOne = cellModel.items[0]
+			subCellModelTwo = cellModel.items[1]
 		}
 		
 		/*
@@ -268,6 +284,19 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate {
 				self.textField?.textColor = CVDStyle.style.rightFieldColor
 			}
 		}
+	}
+	
+	
+	
+	// MARK: - KBNumberPad Delegate
+	
+	func onDoneClicked(numberPad: KBNumberPad) {
+		self.delegate?.keyboardReturnDidPress(model: self.cellModel)
+	}
+	
+	
+	func onNextClicked(numberPad: KBNumberPad) {
+		self.delegate?.keyboardReturnDidPress(model: self.cellModel)
 	}
 	
 	
@@ -782,10 +811,12 @@ class DisclosureSimpleCellExpandable: GeneratedCell { // GeneratedCell {
 	var isCheckedButtonOne: Bool {
 		get {
 			return subCellModelOne!.storedValue?.radioGroup!.selectedRadioItem == subCellModelOne!.identifier
+//			return cellModel.storedValue?.value == subCellModelOne?.identifier
 		}
 		set {
 			subCellModelOne?.storedValue?.radioGroup!.selectItem(id: (subCellModelOne?.identifier)!)
-			updateCellOne()
+			cellModel.storedValue?.value = subCellModelOne?.identifier
+//			updateCellOne()
 			self.delegate?.evaluationValueDidChange(model: subCellModelOne!)
 		}
 	}
@@ -793,10 +824,12 @@ class DisclosureSimpleCellExpandable: GeneratedCell { // GeneratedCell {
 	var isCheckedButtonTwo: Bool {
 		get {
 			return subCellModelTwo!.storedValue?.radioGroup!.selectedRadioItem == subCellModelTwo!.identifier
+//			return cellModel.storedValue?.value == subCellModelTwo?.identifier
 		}
 		set {
 			subCellModelTwo?.storedValue?.radioGroup!.selectItem(id: (subCellModelTwo?.identifier)!)
-			updateCellTwo()
+			cellModel.storedValue?.value = subCellModelTwo?.identifier
+//			updateCellTwo()
 			self.delegate?.evaluationValueDidChange(model: subCellModelTwo!)
 		}
 	}
@@ -819,7 +852,7 @@ class DisclosureSimpleCellExpandable: GeneratedCell { // GeneratedCell {
 		}
 	}
 	
-	func updateCells() {
+	override func updateCell() {
 		//super.updateCell()
 		
 		self.iconOne?.image = isCheckedButtonOne ? UIImage(named: "radioDown") : UIImage(named: "radioUp")

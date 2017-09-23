@@ -146,12 +146,12 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 	override func viewWillDisappear(_ animated : Bool) {
 		super.viewWillDisappear(animated)
 		
-		if self.isMovingFromParentViewController && (DataManager.manager.evaluation?.isBioCompleted ?? false) {
-			let isValid = validatePage()
-			if isValid && generatedID != "outputInMain" {
-				DataManager.manager.saveCurrentEvaluation()
-			}
-		}
+//		if self.isMovingFromParentViewController && (DataManager.manager.evaluation?.isBioCompleted ?? false) {
+//			let isValid = validatePage()
+//			if isValid && generatedID != "outputInMain" {
+//				DataManager.manager.saveCurrentEvaluation()
+//			}
+//		}
 	}
 	
 	
@@ -344,12 +344,13 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 			let inputs = DataManager.manager.getEvaluationItemsAsRequestInputsString()
 			let saveMode: Bool = isSaveMode
 			let patientname: String = isSaveMode ? (model.bio.name.storedValue?.value)! : "None"
+			let gender: Int = model.bio.gender.storedValue?.value == "male" ? 1 : 2
 			
 			let evaluation = EvaluationRequest(isSave: saveMode,
 			                                   age: Int((model.bio.age.storedValue?.value)!)!,
 			                                   isPAH:String(DataManager.manager.getPAHValue()),
 			                                   name: patientname,
-			                                   gender: model.bio.gender.female.isFilled ? 2:1,
+			                                   gender: gender,
 			                                   SBP: Int((model.bio.sbp.storedValue?.value)!)!,
 			                                   DBP: Int((model.bio.dbp.storedValue?.value)!)!,
 			                                   inputs: inputs)
@@ -366,7 +367,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 				
 				// save current evaluation and compute
 				DataManager.manager.saveCurrentEvaluation()
-				DataManager.manager.saveCurrentCompute()
+				DataManager.manager.saveCurrentCompute(saveMode: isSaveMode)
 				
 				self.stopAnimating()
 				
@@ -415,7 +416,49 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 	}
 	
 	
+	
+	//MARK: - EvaluationEditing protocol
+	
+	override func keyboardReturnDidPress(model: EvaluationItem) {
+		guard nil != activeModel else { return }
+		
+		checkDependancies()
+		
+		repeat {
+			if self.presentedViewController != nil {
+				self.dismiss(animated: false, completion: nil)
+			}
+			
+			let index = (modelChain as NSArray).index(of: activeModel!)
+			if index < modelChain.count - 1 {
+				activeModel = modelChain[index + 1]
+			}
+			else {
+				self.hideKeyboard()
+				return
+			}
+			
+		} while nil != activeModel && activeModel!.form.isEnabled == false
+		
+		if let path = activeModel?.modelIndexPath {
+			if let cell = tableView.cellForRow(at: path) as? GeneratedCell {
+				activeField = cell.textField
+				activeField?.isEnabled = true
+				activeField?.becomeFirstResponder()
+				
+			} else {
+				self.tableView.scrollToRow(at: path, at: UITableViewScrollPosition.middle, animated: false)
+				if let cell = tableView.cellForRow(at: path) as? GeneratedCell {
+					activeField = cell.textField
+					activeField?.isEnabled = true
+					activeField?.becomeFirstResponder()
+				}
+			}
+		}
+	}
+	
 
+	
 	// MARK: - Table view data source
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {

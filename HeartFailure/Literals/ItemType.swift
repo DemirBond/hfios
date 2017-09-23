@@ -130,9 +130,12 @@ enum ItemType: String {
 		case .partnerCard, .statusCard, .resultOutput:
 			return nil
 			
-		case .disclosureVieved, .disclosureSimple, .disclosureSimpleExpandable, .disclosureWeather:
+		case .disclosureVieved, .disclosureSimple, .disclosureWeather:
 			return nil
 			
+		case .disclosureSimpleExpandable:
+			return .string
+
 		case .disclousreNoArrow:
 			return nil
 			
@@ -176,7 +179,7 @@ enum ItemType: String {
 			
 		case .disclosureSimple:
 			return "DisclosureSimpleCell"
-		
+
 		case .disclosureSimpleExpandable:
 			return "DisclosureSimpleCellExpandable"
 			
@@ -185,7 +188,7 @@ enum ItemType: String {
 			
 		case .disclosureControl:
 			return "DisclosureControlCell"
-		
+
 		case .disclosureControlExpandable:
 			return "DisclosureControlCellExpandable"
 			
@@ -200,7 +203,7 @@ enum ItemType: String {
 			
 		case .disclousreNoArrow:
 			return "DisclosureSimpleCellNoArrow"
-		
+
 		case .separator:
 			return "SeparatorCell"
 			
@@ -223,7 +226,7 @@ enum ItemType: String {
 			
 		case .integerRight:
 			return "RightIntegerCell"
-		
+
 		case .integerRightExpandable:
 			return "RightIntegerCellExpandable"
 			
@@ -248,7 +251,7 @@ enum ItemType: String {
 			
 		case .partnerCard:
 			return "PartnerCardCell"
-		
+
 		case .referencesCard:
 			return "ReferencesCardCell"
 			
