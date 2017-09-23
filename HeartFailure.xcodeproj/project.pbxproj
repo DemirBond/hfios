@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		789268A51E6478C80018FEF5 /* Evaluation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 789268A31E6478C80018FEF5 /* Evaluation.xcdatamodeld */; };
+		78AD64FE48E351E06A7C3DE3 /* Pods_HeartFailure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */; };
 		78BF73E81E3F640F0040EC81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF73E71E3F640F0040EC81 /* AppDelegate.swift */; };
 		78BF73EF1E3F640F0040EC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78BF73EE1E3F640F0040EC81 /* Assets.xcassets */; };
 		78BF73FD1E3F640F0040EC81 /* HeartFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF73FC1E3F640F0040EC81 /* HeartFailureTests.swift */; };
@@ -149,6 +150,7 @@
 		78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartFailureUITests.swift; sourceTree = "<group>"; };
 		78BF74091E3F640F0040EC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78BF74171E3F690F0040EC81 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
+		B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartFailure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2EF1F71F6CA35E00098BC0 /* HeartFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartFailure.swift; sourceTree = "<group>"; };
 		BA2EF1F91F6CA91C00098BC0 /* CoronaryHeartDisease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaryHeartDisease.swift; sourceTree = "<group>"; };
 		BA2EF1FB1F6CA96700098BC0 /* AtrialFibrilation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtrialFibrilation.swift; sourceTree = "<group>"; };
@@ -236,6 +238,8 @@
 		BAFC12981F6B79E600EF37FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartFailure/Base.lproj/Medical.storyboard; sourceTree = "<group>"; };
 		BAFC129A1F6B79E600EF37FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartFailure/Base.lproj/Output.storyboard; sourceTree = "<group>"; };
 		BAFC129F1F6B7A2500EF37FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartFailure/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C6B546F6EE1F1ED533327AD6 /* Pods-HeartFailure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartFailure.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartFailure/Pods-HeartFailure.debug.xcconfig"; sourceTree = "<group>"; };
+		F35BD83FF78E2E3E0E81A50E /* Pods-HeartFailure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartFailure.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartFailure/Pods-HeartFailure.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +252,7 @@
 				BA49CC541F3340830040060A /* Alamofire.framework in Frameworks */,
 				BA49CC4A1F3339360040060A /* Fabric.framework in Frameworks */,
 				BA49CC5A1F3340A30040060A /* NVActivityIndicatorView.framework in Frameworks */,
+				78AD64FE48E351E06A7C3DE3 /* Pods_HeartFailure.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +281,7 @@
 				78BF73FB1E3F640F0040EC81 /* HeartFailureTests */,
 				78BF74061E3F640F0040EC81 /* HeartFailureUITests */,
 				78BF73E51E3F640F0040EC81 /* Products */,
+				E0549893442D757044AEE800 /* Pods */,
 			);
 			indentWidth = 3;
 			sourceTree = "<group>";
@@ -558,8 +564,18 @@
 				BA49CC451F3339360040060A /* SwiftyJSON.framework */,
 				BA49CC461F3339360040060A /* ToastSwiftFramework.framework */,
 				BA49CC471F3339360040060A /* YNExpandableCell.framework */,
+				B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E0549893442D757044AEE800 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6B546F6EE1F1ED533327AD6 /* Pods-HeartFailure.debug.xcconfig */,
+				F35BD83FF78E2E3E0E81A50E /* Pods-HeartFailure.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -569,12 +585,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78BF740C1E3F640F0040EC81 /* Build configuration list for PBXNativeTarget "HeartFailure" */;
 			buildPhases = (
+				DCF5ABFC806142C9B0FA1547 /* [CP] Check Pods Manifest.lock */,
 				78BF73E01E3F640F0040EC81 /* Sources */,
 				78BF73E11E3F640F0040EC81 /* Frameworks */,
 				78BF73E21E3F640F0040EC81 /* Resources */,
 				670AF3931E4F537E00576848 /* Fabric */,
 				D51A51581E9442850084352C /* Embed Frameworks */,
 				BA71B65A1F34DAD1004959EE /* ShellScript */,
+				F12F2F5A4A717027221B3E4B /* [CP] Embed Pods Frameworks */,
+				ABC4E3A9277C3722306E17E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -713,6 +732,21 @@
 			shellPath = /bin/sh;
 			shellScript = "./Frameworks/Fabric.framework/run b024c492635d69ccfafb7e31f949953e20d40ee3 bede7a2a39f36be4ef577d3e3c788b1010418959d1bd503c8d955c6cad2e396c";
 		};
+		ABC4E3A9277C3722306E17E1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartFailure/Pods-HeartFailure-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA71B65A1F34DAD1004959EE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -725,6 +759,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.p\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
+		DCF5ABFC806142C9B0FA1547 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F12F2F5A4A717027221B3E4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartFailure/Pods-HeartFailure-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -971,6 +1035,7 @@
 		};
 		78BF740D1E3F640F0040EC81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6B546F6EE1F1ED533327AD6 /* Pods-HeartFailure.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Demir Baykal (29F8XS98B7)";
@@ -996,6 +1061,7 @@
 		};
 		78BF740E1E3F640F0040EC81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F35BD83FF78E2E3E0E81A50E /* Pods-HeartFailure.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Demir Baykal (29F8XS98B7)";
