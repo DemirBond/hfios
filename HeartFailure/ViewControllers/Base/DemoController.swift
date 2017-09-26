@@ -23,7 +23,7 @@ class DemoController: BaseController, UIScrollViewDelegate, CAAnimationDelegate 
 	
 	var currentPageNum = 0
 	let imageNames = ["demo1", "demo2", "demo3", "demo4"]
-	let descriptions = ["Heart Check is an app that puts the power of a cardiologist in your pocket.",
+	let descriptions = ["Heart Failure is an app that puts the power of a cardiologist in your pocket.",
 	                    "Just look thourgh the different categories and pick out the symptoms you see",
 	                    "The app has every sympton you would likely think of. No cardiologist needed when using this!",
 	                    "At the end you are given a detailed diagnosis based on the power of the cloud."]
@@ -51,7 +51,11 @@ class DemoController: BaseController, UIScrollViewDelegate, CAAnimationDelegate 
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
+
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
+		self.navigationController?.navigationBar.tintColor = UIColor.black
+		self.navigationController?.navigationBar.isTranslucent = true
 		//self.navigationController?.setToolbarHidden(true, animated: false)
 	}
 	

@@ -29,10 +29,10 @@ enum ControllerStyle: String {
 	func styleInfo() -> Dictionary<String, String>? {
 		switch self {
 		case .login:
-			return ["title": "Sign In", "leftButton" : "Cancel"]
+			return ["title": "Sign In"]
 			
 		case .registration:
-			return ["title": "Sign Up", "leftButton" : "Cancel"]
+			return ["title": "Sign Up"]
 			
 		case .resetAccount:
 			return ["title": "Reset Password", "leftButton" : "Cancel"]
@@ -41,7 +41,7 @@ enum ControllerStyle: String {
 			return ["title": "Verification", "leftButton" : "Cancel"]
 			
 		case .home:
-			return ["title": "Heart Check", "rightMenuButton" : "Settings"]
+			return ["title": "Heart Failure", "rightMenuButton" : "Settings"]
 			
 		case .profile:
 			return ["title": "Profile"/*, "rightTextButton": "Aa"*/]

@@ -27,12 +27,9 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	
 	var activeRect: CGRect = CGRect()
 	
-	static let loginSegueID = "loginSegueID"
 	static let verificationCodeSegueID = "verificationCodeSegueID"
 	
 	override var createdID: String! { return "registration" }
-	
-	static var isFromLoginPage: Bool = false
 	
 	
 	override func viewDidLoad() {
@@ -41,14 +38,11 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 		// Do any additional setup after loading the view.
 		self.automaticallyAdjustsScrollViewInsets = false;
 		
+		self.navigationItem.hidesBackButton = true
+		
 		registerButton.layer.cornerRadius = 4.0
 		registerButton.layer.borderColor = registerButton.backgroundColor?.cgColor
 		registerButton.layer.borderWidth = 2.0
-		
-		if RegistraionController.isFromLoginPage {
-			goToLoginButton.isHidden = true
-			RegistraionController.isFromLoginPage = false
-		}
 		
 		self.view.backgroundColor = UIColor.white
 		
@@ -68,6 +62,10 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
+		self.navigationController?.navigationBar.isTranslucent = true
 		
 		self.registerForKeyboardNotifications()
 	}
@@ -91,7 +89,7 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	
 	override func leftButtonAction(_ sender: UIBarButtonItem) {
 		hideKeyboard()
-		self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popViewController(animated: true)
 	}
 	
 	
@@ -140,7 +138,7 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 				UserDefaults.standard.set(mail, forKey: "loginName")
 				
 //				self.performSegue(withIdentifier: RegistraionController.verificationCodeSegueID, sender: nil)
-				
+
 				UIAlertController.infoAlert(message: nil, title: "Registered".localized, viewcontroller: self, handler: {
 					let medicalStoriboard = UIStoryboard(name: "Medical", bundle: nil)
 					let destanation = medicalStoriboard.instantiateInitialViewController()
@@ -156,20 +154,20 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	
 	@IBAction func loginAction(_ sender: AnyObject) {
 		hideKeyboard()
-		LoginController.isFromSignupPage = true
-		self.performSegue(withIdentifier: RegistraionController.loginSegueID, sender: nil)
+		self.navigationController?.popViewController(animated: true)
+//		self.dismiss(animated: true, completion: nil)
 	}
 	
 	
-
+	
 	// MARK: - EvaluationEditing protocol
 	
 	override func keyboardReturnDidPress(model: EvaluationItem) {
 		hideKeyboard()
 		self.submitAction(self)
 	}
-
-
+	
+	
 	
 	// MARK: - Keyboard Handle Methods
 	
@@ -257,5 +255,6 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	// Pass the selected object to the new view controller.
 	}
 	*/
-
+	
 }
+

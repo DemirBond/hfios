@@ -27,6 +27,7 @@ class BradyarrthymiaSyncope: EvaluationItem {
 	
 	override var items: [EvaluationItem] {
 		return [
+			clinicalSynscope,
 			symptomaticSinusNodeDysfunction,
 			highGradeAVNodeDisease,
 			isolatedNeurocardionegicUnexplainedSyncope,

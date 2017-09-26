@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "78BF73E31E3F640F0040EC81"
-               BuildableName = "Heart Check.app"
+               BuildableName = "Heart Failure.app"
                BlueprintName = "HeartFailure"
                ReferencedContainer = "container:HeartFailure.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "78BF73E31E3F640F0040EC81"
-            BuildableName = "Heart Check.app"
+            BuildableName = "Heart Failure.app"
             BlueprintName = "HeartFailure"
             ReferencedContainer = "container:HeartFailure.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "78BF73E31E3F640F0040EC81"
-            BuildableName = "Heart Check.app"
+            BuildableName = "Heart Failure.app"
             BlueprintName = "HeartFailure"
             ReferencedContainer = "container:HeartFailure.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "78BF73E31E3F640F0040EC81"
-            BuildableName = "Heart Check.app"
+            BuildableName = "Heart Failure.app"
             BlueprintName = "HeartFailure"
             ReferencedContainer = "container:HeartFailure.xcodeproj">
          </BuildableReference>

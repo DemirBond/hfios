@@ -115,39 +115,40 @@ class DataManager {
 			
 		} else {
 			RestClient.client.login(username: loginName, password: password,
-			                        success: { (responseJson) in
-												
-												let doctor = (self.fetchDoctor(loginName: loginName))?[0]
-												if ((doctor) == nil) {
-													
-													let entity =  NSEntityDescription.entity(forEntityName: "Doctor", in: self.managedObjectContext)
-													let doc = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Doctor
-													doc.setValue(loginName, forKey: "loginName")
-													doc.setValue(password, forKey: "password")
-													doc.setValue(loginName, forKey: "doctorName")
-													self.saveContext()
-													
-													self.currentDoctor = doc
-													completionHandler("success", nil)
-													
-												}
-												else {
-													doctor?.setValue(password, forKey: "password")
-													self.saveContext()
-													
-													self.currentDoctor = doctor
-													//self.fetchEvaluations()
-													completionHandler("success", nil)
-												}
-												
-			},
-			                        
-			                        failure: { (error) in
-												//TODO change this error with actual error coming from server
-												let returnError: String = "UserName or Password is incorrect"
-												let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
-												completionHandler(nil, error)
-			}
+				success: { (responseJson) in
+					let doctor = (self.fetchDoctor(loginName: loginName))?[0]
+					if ((doctor) == nil) {
+						
+						let entity =  NSEntityDescription.entity(forEntityName: "Doctor", in: self.managedObjectContext)
+						let doc = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Doctor
+						doc.setValue(loginName, forKey: "loginName")
+						doc.setValue(password, forKey: "password")
+						doc.setValue(loginName, forKey: "doctorName")
+						self.saveContext()
+						
+						self.currentDoctor = doc
+						completionHandler("success", nil)
+						
+					}
+					else {
+						doctor?.setValue(password, forKey: "password")
+						self.saveContext()
+						
+						self.currentDoctor = doctor
+						//self.fetchEvaluations()
+						completionHandler("success", nil)
+						
+					}
+					
+				},
+				
+				failure: { (error) in
+					//TODO change this error with actual error coming from server
+					let returnError: String = "UserName or Password is incorrect"
+					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+					completionHandler(nil, error)
+					
+				}
 			)
 		}
 	}
@@ -164,19 +165,19 @@ class DataManager {
 			}
 			
 			RestClient.client.login(username: loginName, password: password,
-			                        success: { (responseJson) in
-												
-												let doctor = (self.fetchDoctor(loginName: loginName))?[0]
-												doctor?.setValue(password, forKey: "password")
-												self.saveContext()
-												
-												self.currentDoctor = doctor
-												self.fetchEvaluations()
-												
-												completionHandler("success", nil)
-												
-			},
-			                        failure: { _ in}
+				success: { (responseJson) in
+					
+					let doctor = (self.fetchDoctor(loginName: loginName))?[0]
+					doctor?.setValue(password, forKey: "password")
+					self.saveContext()
+					
+					self.currentDoctor = doctor
+					self.fetchEvaluations()
+					
+					completionHandler("success", nil)
+					
+				},
+				failure: { _ in}
 			)
 		}
 		else {
@@ -691,9 +692,9 @@ class DataManager {
 			}
 			
 			switch group["groupname"] {
-				//case "Outputs":
+			//case "Outputs":
 				//DataManager.manager.evaluation!.outputInMain.resultOutput.subtitle = row
-			//break;
+				//break;
 			case "Diagnostics":
 				DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle = row
 				break;
@@ -850,18 +851,18 @@ class DataManager {
 		}
 		
 		if (prefix == "chk" && item.storedValue?.radioGroup?.selectedRadioItem == item.identifier){
-			//			print("chkpharm is added")
+//			print("chkpharm is added")
 			inputs.append(item.identifier)
-			//			print(item.storedValue?.isChecked)
-			//			print(item.storedValue?.placeholder)
-			//			print(item.storedValue?.radioGroup?.selectedRadioItem)
+//			print(item.storedValue?.isChecked)
+//			print(item.storedValue?.placeholder)
+//			print(item.storedValue?.radioGroup?.selectedRadioItem)
 		}
 		else if (prefix == "chk" && item.storedValue?.radioGroup?.selectedRadioItem == item.identifier){
-			//			print("chkCV is added")
+//			print("chkCV is added")
 			inputs.append(item.identifier)
-			//			print(item.storedValue?.isChecked)
-			//			print(item.storedValue?.placeholder)
-			//			print(item.storedValue?.radioGroup?.selectedRadioItem)
+//			print(item.storedValue?.isChecked)
+//			print(item.storedValue?.placeholder)
+//			print(item.storedValue?.radioGroup?.selectedRadioItem)
 		}
 		
 		if (item.storedValue?.isChecked)! {
@@ -916,8 +917,8 @@ class DataManager {
 		
 		for pahItem in pahItems.items {
 			for item in regularItem.items {
-				//				print(item.identifier + " -- " + pahItem.identifier)
-				
+//				print(item.identifier + " -- " + pahItem.identifier)
+
 				if (item.items.count > 0 && pahItem.items.count == 0) {
 					checkInsideofRegularItem(item: item.items, pahItem: pahItem)
 				}else if (item.items.count == 0 && pahItem.items.count > 0) {
@@ -925,7 +926,7 @@ class DataManager {
 				}else if (item.items.count > 0 && pahItem.items.count > 0) {
 					checkInsideofAllItem(item: item.items, pahItem: pahItem.items)
 				}else if (item.identifier == pahItem.identifier && item.identifier.characters.count >= 3) {
-					//					print(pahItem.identifier + ": \(String(describing: pahItem.storedValue?.value))" + " equals! " + item.identifier + ": \(String(describing: item.storedValue?.value))")
+//					print(pahItem.identifier + ": \(String(describing: pahItem.storedValue?.value))" + " equals! " + item.identifier + ": \(String(describing: item.storedValue?.value))")
 					let index = item.identifier.index(item.identifier.startIndex, offsetBy: 3)
 					let prefix = item.identifier.substring(to: index)
 					
@@ -946,12 +947,12 @@ class DataManager {
 		
 		for regItem in item {
 			
-			//			print(regItem.identifier + " ---- " + pahItem.identifier)
-			
+//			print(regItem.identifier + " ---- " + pahItem.identifier)
+
 			if (regItem.items.count > 0) {
 				checkInsideofRegularItem(item: regItem.items, pahItem: pahItem)
 			} else if (regItem.identifier == pahItem.identifier && regItem.identifier.characters.count >= 3) {
-				//				print(pahItem.identifier + " equals " + regItem.identifier)
+//				print(pahItem.identifier + " equals " + regItem.identifier)
 				let index = regItem.identifier.index(regItem.identifier.startIndex, offsetBy: 3)
 				let prefix = regItem.identifier.substring(to: index)
 				
@@ -972,12 +973,12 @@ class DataManager {
 		
 		for pItem in pahItem {
 			
-			//			print(item.identifier + " ---- -- " + pItem.identifier)
-			
+//			print(item.identifier + " ---- -- " + pItem.identifier)
+
 			if (pItem.items.count > 0) {
 				checkInsideofPahItem(item:item, pahItem: pItem.items)
 			} else if (item.identifier == pItem.identifier && item.identifier.characters.count >= 3) {
-				//				print(pItem.identifier + " -- equals " + item.identifier)
+//				print(pItem.identifier + " -- equals " + item.identifier)
 				let index = item.identifier.index(item.identifier.startIndex, offsetBy: 3)
 				let prefix = item.identifier.substring(to: index)
 				
@@ -999,8 +1000,8 @@ class DataManager {
 			
 			for pItem in pahItem {
 				
-				//				print(regItem.identifier + " ---- -- -- " + pItem.identifier)
-				
+//				print(regItem.identifier + " ---- -- -- " + pItem.identifier)
+
 				if (regItem.items.count > 0 && pItem.items.count == 0) {
 					checkInsideofRegularItem(item: regItem.items, pahItem: pItem)
 				} else if (regItem.items.count == 0 && pItem.items.count > 0) {
@@ -1008,8 +1009,8 @@ class DataManager {
 				} else if (regItem.items.count > 0 && pItem.items.count > 0) {
 					checkInsideofAllItem(item: regItem.items, pahItem: pItem.items)
 				} else if (regItem.identifier == pItem.identifier && regItem.identifier.characters.count >= 3) {
-					//					print(pItem.identifier + " -- -- equals " + regItem.identifier)
-					
+//					print(pItem.identifier + " -- -- equals " + regItem.identifier)
+
 					let index = regItem.identifier.index(regItem.identifier.startIndex, offsetBy: 3)
 					let prefix = regItem.identifier.substring(to: index)
 					

@@ -12,25 +12,13 @@ import NVActivityIndicatorView
 
 class SplashController: UIViewController, NVActivityIndicatorViewable {
 	
-	@IBOutlet weak var gotoLogin: UIButton!
-	@IBOutlet weak var gotoSignin: UIButton!
-	
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
-		
-		gotoLogin.layer.cornerRadius = gotoLogin.frame.size.height / 2
-		gotoLogin.layer.borderColor = UIColor.white.cgColor
-		gotoLogin.layer.borderWidth = 2.0
-		
-		gotoSignin.layer.cornerRadius = gotoSignin.frame.size.height / 2
-		gotoSignin.layer.borderColor = UIColor.white.cgColor
-		gotoSignin.layer.borderWidth = 2.0
 	}
 	
-
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
@@ -55,9 +43,12 @@ class SplashController: UIViewController, NVActivityIndicatorViewable {
 			
 			DataManager.manager.signIn(with: userName, completionHandler: completionHandler)
 		}
+		else {
+			self.performSegue(withIdentifier: "loginSegueID", sender: nil)
+		}
 	}
-
-
+	
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -73,5 +64,6 @@ class SplashController: UIViewController, NVActivityIndicatorViewable {
 	// Pass the selected object to the new view controller.
 	}
 	*/
-
+	
 }
+

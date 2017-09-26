@@ -88,6 +88,9 @@
 		BA6518911F61EB0500743EC9 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6518901F61EB0500743EC9 /* SideMenuController.swift */; };
 		BA6518951F61F14F00743EC9 /* MenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6518941F61F14F00743EC9 /* MenuAction.swift */; };
 		BAC5E5C41F390E400093E5A3 /* TaskCompletedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC5E5C31F390E400093E5A3 /* TaskCompletedController.swift */; };
+		BADA70521F7662E600B83DC4 /* KBNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA704F1F764DEB00B83DC4 /* KBNumberPad.swift */; };
+		BADA70531F7662E900B83DC4 /* KBNumberPad.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BADA70501F764DEB00B83DC4 /* KBNumberPad.xcassets */; };
+		BADA70541F7662EE00B83DC4 /* KBNumberPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADA70511F764DEB00B83DC4 /* KBNumberPad.xib */; };
 		BAFC129B1F6B79E600EF37FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAFC12951F6B79E600EF37FB /* Main.storyboard */; };
 		BAFC129C1F6B79E600EF37FB /* Medical.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAFC12971F6B79E600EF37FB /* Medical.storyboard */; };
 		BAFC129D1F6B79E600EF37FB /* Output.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAFC12991F6B79E600EF37FB /* Output.storyboard */; };
@@ -113,7 +116,7 @@
 
 /* Begin PBXFileReference section */
 		789268A41E6478C80018FEF5 /* Evaluation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Evaluation.xcdatamodel; sourceTree = "<group>"; };
-		78BF73E41E3F640F0040EC81 /* Heart Check.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Check.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78BF73E41E3F640F0040EC81 /* Heart Failure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Failure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78BF73E71E3F640F0040EC81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HeartFailure/AppDelegate.swift; sourceTree = "<group>"; };
 		78BF73EE1E3F640F0040EC81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HeartFailure/Assets.xcassets; sourceTree = "<group>"; };
 		78BF73F31E3F640F0040EC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -263,7 +266,7 @@
 		78BF73E51E3F640F0040EC81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				78BF73E41E3F640F0040EC81 /* Heart Check.app */,
+				78BF73E41E3F640F0040EC81 /* Heart Failure.app */,
 				78BF73F81E3F640F0040EC81 /* HeartFailureTests.xctest */,
 				78BF74031E3F640F0040EC81 /* HeartFailureUITests.xctest */,
 			);
@@ -583,7 +586,7 @@
 			);
 			name = HeartFailure;
 			productName = CVDEvaluator;
-			productReference = 78BF73E41E3F640F0040EC81 /* Heart Check.app */;
+			productReference = 78BF73E41E3F640F0040EC81 /* Heart Failure.app */;
 			productType = "com.apple.product-type.application";
 		};
 		78BF73F71E3F640F0040EC81 /* HeartFailureTests */ = {
@@ -634,6 +637,7 @@
 				TargetAttributes = {
 					78BF73E31E3F640F0040EC81 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 34A2LRNN4X;
 						ProvisioningStyle = Manual;
 					};
 					78BF73F71E3F640F0040EC81 = {
@@ -673,9 +677,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BADA70541F7662EE00B83DC4 /* KBNumberPad.xib in Resources */,
 				BAFC129D1F6B79E600EF37FB /* Output.storyboard in Resources */,
 				BAFC129B1F6B79E600EF37FB /* Main.storyboard in Resources */,
 				BAFC129C1F6B79E600EF37FB /* Medical.storyboard in Resources */,
+				BADA70531F7662E900B83DC4 /* KBNumberPad.xcassets in Resources */,
 				BA49CD171F33A62D0040060A /* TextSizeView.xib in Resources */,
 				BAFC12A01F6B7A2500EF37FB /* LaunchScreen.storyboard in Resources */,
 				BA49CD151F33A62D0040060A /* DemoView.xib in Resources */,
@@ -712,7 +718,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Frameworks/Fabric.framework/run b024c492635d69ccfafb7e31f949953e20d40ee3 bede7a2a39f36be4ef577d3e3c788b1010418959d1bd503c8d955c6cad2e396c";
+			shellScript = "";
 		};
 		ABC4E3A9277C3722306E17E1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -826,6 +832,7 @@
 				BA49CD091F33A54E0040060A /* UIAlertControllerExtention.swift in Sources */,
 				BA2EF2021F6CA9D400098BC0 /* VentricularTachyarrthymias.swift in Sources */,
 				BA49CD311F33A6FE0040060A /* RegisterRequest.swift in Sources */,
+				BADA70521F7662E600B83DC4 /* KBNumberPad.swift in Sources */,
 				BA49CCD41F33A35E0040060A /* DataManager.swift in Sources */,
 				BA49CCF91F33A4220040060A /* RootViewController.swift in Sources */,
 				BA49CC9C1F33A0C90040060A /* RateController.swift in Sources */,
@@ -1032,9 +1039,9 @@
 			baseConfigurationReference = C6B546F6EE1F1ED533327AD6 /* Pods-HeartFailure.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Demir Baykal (29F8XS98B7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Demir Baykal (29F8XS98B7)";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Demir Bay (AN7EFYAXNW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Demir Bay (AN7EFYAXNW)";
+				DEVELOPMENT_TEAM = 34A2LRNN4X;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1045,10 +1052,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/HeartFailure/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihorkhomyak.cvdevaluator;
-				PRODUCT_NAME = "Heart Check";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = CVDEvaluatorTest_Dev_Profile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.superlight.HeartFailure;
+				PRODUCT_NAME = "Heart Failure";
+				PROVISIONING_PROFILE = "965a3693-bc40-44c0-b775-1f85893b322c";
+				PROVISIONING_PROFILE_SPECIFIER = HF_Dev_Profile;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1058,9 +1065,9 @@
 			baseConfigurationReference = F35BD83FF78E2E3E0E81A50E /* Pods-HeartFailure.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Demir Baykal (29F8XS98B7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Demir Baykal (29F8XS98B7)";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Demir Bay (AN7EFYAXNW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Demir Bay (AN7EFYAXNW)";
+				DEVELOPMENT_TEAM = 34A2LRNN4X;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1071,10 +1078,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/HeartFailure/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihorkhomyak.cvdevaluator;
-				PRODUCT_NAME = "Heart Check";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = CVDEvaluatorTest_Dev_Profile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.superlight.HeartFailure;
+				PRODUCT_NAME = "Heart Failure";
+				PROVISIONING_PROFILE = "965a3693-bc40-44c0-b775-1f85893b322c";
+				PROVISIONING_PROFILE_SPECIFIER = HF_Dev_Profile;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

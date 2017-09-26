@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 
 class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerDelegate, NVActivityIndicatorViewable {
-
+	
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var contentView: UIView!
 	@IBOutlet weak var infoView: UIView!
@@ -31,23 +31,19 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	
 	override var createdID: String! { return "login" }
 	
-	static var isFromSignupPage: Bool = false
 	
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
 		self.automaticallyAdjustsScrollViewInsets = false;
 		
+		self.navigationController?.isNavigationBarHidden = false
+		self.navigationItem.hidesBackButton = true
+		
 		loginButton.layer.cornerRadius = 4.0
 		loginButton.layer.borderColor = loginButton.backgroundColor?.cgColor
 		loginButton.layer.borderWidth = 2.0
-		
-		if LoginController.isFromSignupPage {
-			registerButton.isHidden = true
-			LoginController.isFromSignupPage = false
-		}
 		
 		forgotPwdButton.isHidden = true
 		
@@ -76,9 +72,13 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 			passwordField.text = ""
 		}
 		
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
+		self.navigationController?.navigationBar.isTranslucent = true
+		
 		self.registerForKeyboardNotifications()
 	}
-
+	
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
@@ -145,8 +145,7 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	
 	@IBAction func registerAction(_ sender: AnyObject) {
 		hideKeyboard()
-		RegistraionController.isFromLoginPage = true
-		self.performSegue(withIdentifier: LoginController.registerSegueID, sender: nil)
+		self.performSegue(withIdentifier: "gotoRegister", sender: nil)
 	}
 	
 	
@@ -246,5 +245,6 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	// Pass the selected object to the new view controller.
 	}
 	*/
-
+	
 }
+
