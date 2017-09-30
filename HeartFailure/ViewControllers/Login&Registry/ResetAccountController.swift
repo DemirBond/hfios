@@ -14,6 +14,7 @@ import NVActivityIndicatorView
 class ResetAccountController: BaseController, UITextFieldDelegate, MFMailComposeViewControllerDelegate, NVActivityIndicatorViewable {
 	
 	@IBOutlet weak var nameField: UITextField!
+	@IBOutlet weak var submitButton: UIButton!
 	
 	override var createdID: String! { return "resetAccount" }
 	
@@ -79,7 +80,7 @@ class ResetAccountController: BaseController, UITextFieldDelegate, MFMailCompose
 	@IBAction func cannotPerformAction(_ sender: AnyObject) {
 		nameField?.resignFirstResponder()
 		
-		sendEmail(recipient: "davischan83@gmail.com", subject: "Cannot reset form")		
+		sendEmail(recipient: "cvmedicalsoftware@gmail.com", subject: "Cannot reset form")
 	}
 	
 	

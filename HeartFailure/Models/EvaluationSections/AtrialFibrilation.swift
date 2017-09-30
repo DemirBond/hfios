@@ -19,15 +19,17 @@ class AtrialFibrilation: EvaluationItem {
 	let durationDays = EvaluationItem(literal: Presentation.durationDays)
 	let symptomatic = Symptomatic(literal: Presentation.symptomatic)
 	let previousTIACVA = EvaluationItem(literal: Presentation.previousTIACVA)
+	let lastthromboembolicevent = EvaluationItem(literal: Presentation.lastthromboembolicevent)
 	
 	override var items: [EvaluationItem] {
 		return [
 			atrialFibrillationLabel,
-			ventricularRateControl,
 			rhythmControl,
-			durationDays,
+			ventricularRateControl,
 			symptomatic,
+			durationDays,
 			previousTIACVA,
+			lastthromboembolicevent
 		]
 	}
 }

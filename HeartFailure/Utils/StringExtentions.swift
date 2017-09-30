@@ -28,7 +28,7 @@ extension String {
 		do {
 			return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
 		} catch {
-			print(error)
+			//print(error)
 			return nil
 		}
 	}
@@ -40,7 +40,7 @@ extension Data {
 		do {
 			return try NSAttributedString(data: self, options:[NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
 		} catch {
-			print(error)
+			//print(error)
 		}
 		return nil
 	}

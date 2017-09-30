@@ -17,6 +17,7 @@ class MajorCVRisks: EvaluationItem {
 	let systemicArterialHypertension = SystemicArterialHypertension(literal: Presentation.systemicArterialHypertension)
 	let tobaccoUse = EvaluationItem(literal: Presentation.tobaccoUse)
 	let familyHistory = EvaluationItem(literal: Presentation.familyHistory)
+	let ckd = EvaluationItem(literal: Presentation.ckd)
 	
 	override var items: [EvaluationItem] {
 		return [
@@ -24,6 +25,7 @@ class MajorCVRisks: EvaluationItem {
 			systemicArterialHypertension,
 			tobaccoUse,
 			familyHistory,
+			ckd
 		]
 	}
 }
@@ -40,10 +42,10 @@ class Diabetes: EvaluationItem {
 	
 	override var items: [EvaluationItem] {
 		return [
-			typeIIDM,
-			typeIDM,
-			gestationalDM,
-			retinopathy
+			//typeIIDM,
+			//typeIDM,
+			//gestationalDM,
+			//retinopathy
 		]
 	}
 }

@@ -75,6 +75,34 @@ class DataManager {
 	}
 	
 	
+	func codeAuthWith(email: String, code: String, completionHandler: @escaping (String?, NSError?) -> (Void)) {
+		
+		if let array = fetchDoctor(loginName: email), array.count > 0 {
+			
+			let returnError: String = "This email was used for sign up"
+			let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+			completionHandler(nil, error)
+			return
+		}
+		
+		let codeAuthRequest = CodeAuthRequest(email: email, registrationCode: code)
+		RestClient.client.codeAuth(codeAuthRequest: codeAuthRequest, success: { (registerResponse) in
+			if (registerResponse.isSuccess) {
+				completionHandler("success", nil)
+				
+			} else {
+				let returnError: String = registerResponse.message
+				let error = NSError(domain: "RegisterManagerDomain", code: 501, userInfo: ["message" : returnError])
+				completionHandler(nil, error)
+			}
+			
+		}, failure: { (error) in
+			completionHandler(nil, NSError(domain: "RegisterManagerDomain", code: 501, userInfo: ["message" : error.localizedDescription]))
+			
+		})
+	}
+	
+	
 	func updateProfile(doctorName: String?, loginName: String?, password: String?, completionHandler: (String?, NSError?) -> (Void)) {
 		
 		if nil != loginName { currentDoctor?.setValue(loginName, forKey: "loginName") }
@@ -144,6 +172,10 @@ class DataManager {
 				
 				failure: { (error) in
 					//TODO change this error with actual error coming from server
+					self.removeDoctor(loginName: loginName, password: password)
+					UserDefaults.standard.set(nil, forKey: "loginName")
+					UserDefaults.standard.synchronize()
+					
 					let returnError: String = "UserName or Password is incorrect"
 					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
 					completionHandler(nil, error)
@@ -177,7 +209,16 @@ class DataManager {
 					completionHandler("success", nil)
 					
 				},
-				failure: { _ in}
+				failure: { (error) in
+					//TODO change this error with actual error coming from server
+					self.removeDoctor(loginName: loginName)
+					UserDefaults.standard.set(nil, forKey: "loginName")
+					UserDefaults.standard.synchronize()
+					
+					let returnError: String = "UserName or Password is incorrect"
+					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+					completionHandler(nil, error)
+				}
 			)
 		}
 		else {
@@ -225,8 +266,7 @@ class DataManager {
 						saveContext()
 						
 					} catch let err as NSError {
-						//print err
-						NSLog(err.localizedDescription)
+						//NSLog(err.localizedDescription)
 					}
 					
 					isFound = true
@@ -251,7 +291,7 @@ class DataManager {
 				patients?.append(patient)
 				saveContext()
 			} catch let err as NSError {
-				NSLog(err.localizedDescription)
+				//NSLog(err.localizedDescription)
 			}
 		}
 	}
@@ -270,7 +310,7 @@ class DataManager {
 					return evaluation
 					
 				} catch let err as NSError {
-					print("Error : \(err.localizedDescription)")
+					//print("Error : \(err.localizedDescription)")
 				}
 			}
 		}
@@ -452,7 +492,7 @@ class DataManager {
 			return array.count > 0 ? array : nil
 			
 		} catch let error as NSError {
-			print("Could not fetch \(error), \(error.userInfo)")
+			//print("Could not fetch \(error), \(error.userInfo)")
 			return nil
 		}
 	}
@@ -478,8 +518,44 @@ class DataManager {
 			return array.count > 0 ? array[0] : nil
 			
 		} catch let error as NSError {
-			print("Could not fetch \(error), \(error.userInfo)")
+			//print("Could not fetch \(error), \(error.userInfo)")
 			return nil
+		}
+	}
+	
+	
+	private func removeDoctor(loginName: String) -> Void {
+		let managedContext = managedObjectContext
+		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Doctor")
+		fetchRequest.predicate = NSPredicate(format: "loginName == %@", loginName)
+		do {
+			let results = try managedContext.fetch(fetchRequest)
+			for obj in results as! [NSManagedObject] {
+				managedContext.delete(obj)
+			}
+			
+			self.saveContext()
+			
+		} catch let error as NSError {
+			//print("Could not fetch \(error), \(error.userInfo)")
+		}
+	}
+	
+	
+	private func removeDoctor(loginName: String, password: String) -> Void {
+		let managedContext = managedObjectContext
+		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Doctor")
+		fetchRequest.predicate = NSPredicate(format: "loginName == %@ AND password == %@", loginName, password)
+		do {
+			let results = try managedContext.fetch(fetchRequest)
+			for obj in results as! [NSManagedObject] {
+				managedContext.delete(obj)
+			}
+			
+			self.saveContext()
+			
+		} catch let error as NSError {
+			//print("Could not fetch \(error), \(error.userInfo)")
 		}
 	}
 	
@@ -497,7 +573,7 @@ class DataManager {
 			patients = try managedContext.fetch(fetchRequest) as? [Patient]
 			
 		} catch let error as NSError {
-			print("Could not fetch \(error), \(error.userInfo)")
+			//print("Could not fetch \(error), \(error.userInfo)")
 		}
 	}
 	
@@ -515,7 +591,7 @@ class DataManager {
 			savedPatients = try managedContext.fetch(fetchRequest) as? [Patient]
 			
 		} catch let error as NSError {
-			print("Could not fetch \(error), \(error.userInfo)")
+			//print("Could not fetch \(error), \(error.userInfo)")
 		}
 		
 		var deleteIndex: [String:Bool] = [String:Bool]()
@@ -568,7 +644,7 @@ class DataManager {
 			completionHandler("success", nil)
 			
 		}, failure:  { (error) in
-			print("Could not fetch \(error)")
+			//print("Could not fetch \(error)")
 			completionHandler(nil, error as NSError)
 		})
 		
@@ -582,7 +658,7 @@ class DataManager {
 			let evaluation = Evaluation()
 			
 			var parameters = [String:Any]()
-			print(responseJson)
+			//print(responseJson)
 			parameters["isPAH"] = (responseJson["isPAH"].intValue == 0) ? true:false
 			parameters["name"] = responseJson["Name"].stringValue
 			parameters["age"] = responseJson["age"].intValue
@@ -632,8 +708,7 @@ class DataManager {
 							self.saveContext()
 							
 						} catch let err as NSError {
-							//print err
-							NSLog(err.localizedDescription)
+							//NSLog(err.localizedDescription)
 						}
 						
 						break
@@ -646,7 +721,7 @@ class DataManager {
 			completionHandler("success", nil)
 			
 		}, failure: { (error) in
-			print("Could not fetch \(error)")
+			//print("Could not fetch \(error)")
 			completionHandler(nil, error as NSError)
 		})
 	}
@@ -709,7 +784,8 @@ class DataManager {
 				break;
 				
 			default:
-				print("There is no result for the inquiry")
+				()
+				//print("There is no result for the inquiry")
 			}
 		}
 		self.outputs = results
@@ -735,7 +811,7 @@ class DataManager {
 			savedPatients = try managedContext.fetch(fetchRequest) as! [Patient]
 			
 		} catch let error as NSError {
-			print("Could not fetch \(error), \(error.userInfo)")
+			//print("Could not fetch \(error), \(error.userInfo)")
 		}
 		
 		let uuid = evaluation!.evaluationUUID
@@ -808,7 +884,7 @@ class DataManager {
 				result = result + "|" + s
 			}
 		}
-		print(result)
+		//print(result)
 		return result
 	}
 	
@@ -851,24 +927,24 @@ class DataManager {
 		}
 		
 		if (prefix == "chk" && item.storedValue?.radioGroup?.selectedRadioItem == item.identifier){
-//			print("chkpharm is added")
+			//print("chkpharm is added")
 			inputs.append(item.identifier)
-//			print(item.storedValue?.isChecked)
-//			print(item.storedValue?.placeholder)
-//			print(item.storedValue?.radioGroup?.selectedRadioItem)
+			//print(item.storedValue?.isChecked)
+			//print(item.storedValue?.placeholder)
+			//print(item.storedValue?.radioGroup?.selectedRadioItem)
 		}
 		else if (prefix == "chk" && item.storedValue?.radioGroup?.selectedRadioItem == item.identifier){
-//			print("chkCV is added")
+			//print("chkCV is added")
 			inputs.append(item.identifier)
-//			print(item.storedValue?.isChecked)
-//			print(item.storedValue?.placeholder)
-//			print(item.storedValue?.radioGroup?.selectedRadioItem)
+			//print(item.storedValue?.isChecked)
+			//print(item.storedValue?.placeholder)
+			//print(item.storedValue?.radioGroup?.selectedRadioItem)
 		}
 		
 		if (item.storedValue?.isChecked)! {
 			
 			if(prefix == "chk") {
-				print("Identifier: " + item.identifier)
+				//print("Identifier: " + item.identifier)
 				inputs.append(item.identifier)
 			}
 			else if (item.identifier == "rbAnginaIndex") {
@@ -906,7 +982,7 @@ class DataManager {
 				}
 			}
 		}
-		print(finalInputsString)
+		//print(finalInputsString)
 		return finalInputsString
 	}
 	
@@ -917,7 +993,7 @@ class DataManager {
 		
 		for pahItem in pahItems.items {
 			for item in regularItem.items {
-//				print(item.identifier + " -- " + pahItem.identifier)
+				//print(item.identifier + " -- " + pahItem.identifier)
 
 				if (item.items.count > 0 && pahItem.items.count == 0) {
 					checkInsideofRegularItem(item: item.items, pahItem: pahItem)
@@ -926,7 +1002,7 @@ class DataManager {
 				}else if (item.items.count > 0 && pahItem.items.count > 0) {
 					checkInsideofAllItem(item: item.items, pahItem: pahItem.items)
 				}else if (item.identifier == pahItem.identifier && item.identifier.characters.count >= 3) {
-//					print(pahItem.identifier + ": \(String(describing: pahItem.storedValue?.value))" + " equals! " + item.identifier + ": \(String(describing: item.storedValue?.value))")
+					//print(pahItem.identifier + ": \(String(describing: pahItem.storedValue?.value))" + " equals! " + item.identifier + ": \(String(describing: item.storedValue?.value))")
 					let index = item.identifier.index(item.identifier.startIndex, offsetBy: 3)
 					let prefix = item.identifier.substring(to: index)
 					
@@ -947,12 +1023,12 @@ class DataManager {
 		
 		for regItem in item {
 			
-//			print(regItem.identifier + " ---- " + pahItem.identifier)
+			//print(regItem.identifier + " ---- " + pahItem.identifier)
 
 			if (regItem.items.count > 0) {
 				checkInsideofRegularItem(item: regItem.items, pahItem: pahItem)
 			} else if (regItem.identifier == pahItem.identifier && regItem.identifier.characters.count >= 3) {
-//				print(pahItem.identifier + " equals " + regItem.identifier)
+				//print(pahItem.identifier + " equals " + regItem.identifier)
 				let index = regItem.identifier.index(regItem.identifier.startIndex, offsetBy: 3)
 				let prefix = regItem.identifier.substring(to: index)
 				
@@ -973,12 +1049,12 @@ class DataManager {
 		
 		for pItem in pahItem {
 			
-//			print(item.identifier + " ---- -- " + pItem.identifier)
+			//print(item.identifier + " ---- -- " + pItem.identifier)
 
 			if (pItem.items.count > 0) {
 				checkInsideofPahItem(item:item, pahItem: pItem.items)
 			} else if (item.identifier == pItem.identifier && item.identifier.characters.count >= 3) {
-//				print(pItem.identifier + " -- equals " + item.identifier)
+				//print(pItem.identifier + " -- equals " + item.identifier)
 				let index = item.identifier.index(item.identifier.startIndex, offsetBy: 3)
 				let prefix = item.identifier.substring(to: index)
 				
@@ -1000,7 +1076,7 @@ class DataManager {
 			
 			for pItem in pahItem {
 				
-//				print(regItem.identifier + " ---- -- -- " + pItem.identifier)
+				//print(regItem.identifier + " ---- -- -- " + pItem.identifier)
 
 				if (regItem.items.count > 0 && pItem.items.count == 0) {
 					checkInsideofRegularItem(item: regItem.items, pahItem: pItem)
@@ -1009,7 +1085,7 @@ class DataManager {
 				} else if (regItem.items.count > 0 && pItem.items.count > 0) {
 					checkInsideofAllItem(item: regItem.items, pahItem: pItem.items)
 				} else if (regItem.identifier == pItem.identifier && regItem.identifier.characters.count >= 3) {
-//					print(pItem.identifier + " -- -- equals " + regItem.identifier)
+					//print(pItem.identifier + " -- -- equals " + regItem.identifier)
 
 					let index = regItem.identifier.index(regItem.identifier.startIndex, offsetBy: 3)
 					let prefix = regItem.identifier.substring(to: index)

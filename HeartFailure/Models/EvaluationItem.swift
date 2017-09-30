@@ -59,7 +59,7 @@ func setupEvaluation(evaluationItem: EvaluationItem) {
 			} else {
 				evaluationItem.radioGroups.append(group)
 				evaluationItem.storedValue?.value = group.selectedRadioItem
-				print("To \(evaluationItem.title) appended group \(group)")
+				//print("To \(evaluationItem.title) appended group \(group)")
 			}
 		}
 		setupEvaluation(evaluationItem: item)
@@ -74,7 +74,7 @@ func setupEvaluation(evaluationItem: EvaluationItem) {
 			} else {
 				evaluationItem.radioGroups.append(group)
 				evaluationItem.storedValue?.value = group.selectedRadioItem
-				print("To \(evaluationItem.title) appended group \(group)")
+				//print("To \(evaluationItem.title) appended group \(group)")
 			}
 		}
 		setupEvaluation(evaluationItem: item)
@@ -141,7 +141,7 @@ class EvaluationItem  {
 		dict["storedValue"] = (nil != storedValue) ? self.storedValue!.valueDict : NSNull()
 		
 		if form.status == .viewed {
-			print(self.title)
+			//print(self.title)
 		}
 		if items.count == 0 {
 			dict["items"] = NSNull()
@@ -245,7 +245,7 @@ class EvaluationItem  {
 	func applyToSuccessor(id: String, value: Any) {
 		
 		if self.identifier == id {
-			print("in applyToSuccessor " + id)
+			//print("in applyToSuccessor " + id)
 			let index = self.identifier.index(self.identifier.startIndex, offsetBy: 3)
 			let prefix = self.identifier.substring(to: index)
 			
@@ -254,7 +254,7 @@ class EvaluationItem  {
 			} else {
 				self.storedValue?.value = String(describing: value)
 			}
-			print(self.storedValue?.value)
+			//print(self.storedValue?.value)
 			
 			if self.identifier == "gender" {
 				self.storedValue?.value = (value as! Int) == 1 ? "male" : "female"
@@ -310,10 +310,10 @@ class EvaluationItem  {
 		var dependMax: Double?
 		
 		//var
-		print("--- \(components) ")
+		//print("--- \(components) ")
 		for strItem in components {
 			
-			print("    \(strItem)  ")
+			//print("    \(strItem)  ")
 			
 			let strTrimmed = strItem.trimmingCharacters(in: .whitespacesAndNewlines)
 			guard strTrimmed.hasPrefix("#") else { continue }
@@ -429,10 +429,10 @@ class EvaluationItem  {
 		
 		let suggestedHeight = self.form.suggestedHeight
 		
-		if [.label, .textLeft, .mail, .integerLeft, .decimalLeft].contains(where: { $0 == form.itemType }) {
+		if [.label, .separator, .textLeft, .mail, .integerLeft, .decimalLeft].contains(where: { $0 == form.itemType }) {
 			return suggestedHeight
 			
-		} else if [.simple, .separator, .disclosureControl, .disclosureControlExpandable, .disclosureRadio, .disclosureWeather,  .disclosureVieved, .disclosureSimple,
+		} else if [.simple, .disclosureControl, .disclosureControlExpandable, .disclosureRadio, .disclosureWeather,  .disclosureVieved, .disclosureSimple,
 		           .check, .radio, .textRight, .integerRight, .decimalRight, .minutesSeconds].contains(where: { $0 == form.itemType }) {
 			
 			var textWidth: CGFloat = 0.0

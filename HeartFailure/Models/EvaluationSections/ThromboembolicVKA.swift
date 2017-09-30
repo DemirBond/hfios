@@ -63,7 +63,6 @@ class MedicalIllness: EvaluationItem {
 	
 	let blnswelling = EvaluationItem(literal: Presentation.blnswelling)
 	let blnactivecancer = EvaluationItem(literal: Presentation.blnactivecancer)
-	let blnPVTE = EvaluationItem(literal: Presentation.blnPVTE)
 	let blnRF = EvaluationItem(literal: Presentation.blnRF)
 	let blnthrombo = EvaluationItem(literal: Presentation.blnthrombo)
 	let blnrecent = EvaluationItem(literal: Presentation.blnrecent)
@@ -75,7 +74,6 @@ class MedicalIllness: EvaluationItem {
 		return [
 			blnswelling,
 			blnactivecancer,
-			//blnPVTE,
 			blnRF,
 			blnthrombo,
 			blnrecent,

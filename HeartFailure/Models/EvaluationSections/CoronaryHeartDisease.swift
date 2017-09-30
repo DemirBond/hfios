@@ -42,7 +42,6 @@ class AcuteCoronarySyndrome: EvaluationItem {
 	let moreAnginaIn24Hours = EvaluationItem(literal: Presentation.moreAnginaIn24Hours)
 	let anginaMore20min = EvaluationItem(literal: Presentation.anginaMore20min)
 	let asaUseInPast1Week = EvaluationItem(literal: Presentation.ASAUseInPast1Week)
-	let postiveTropIorT = EvaluationItem(literal: Presentation.postiveTropIorT)
 	let moreTwoAntanginal = EvaluationItem(literal: Presentation.moreTwoAntanginal)
 	let stemi = STEMI(literal: Presentation.stemi)
 	let refractoryAngina = EvaluationItem(literal: Presentation.refractoryAngina)
@@ -53,7 +52,6 @@ class AcuteCoronarySyndrome: EvaluationItem {
 			moreAnginaIn24Hours,
 			anginaMore20min,
 			asaUseInPast1Week,
-			postiveTropIorT,
 			moreTwoAntanginal,
 			stemi,
 			refractoryAngina,
@@ -67,12 +65,14 @@ class AcuteCoronarySyndrome: EvaluationItem {
 
 class STEMI: EvaluationItem {
 	
+	let durationhoursSTEMI = EvaluationItem(literal: Presentation.durationhoursSTEMI)
 	let anteriorSTEMI = EvaluationItem(literal: Presentation.anteriorSTEMI)
 	let inferiorSTEMI = EvaluationItem(literal: Presentation.inferiorSTEMI)
 	let otherSTEMI = EvaluationItem(literal: Presentation.otherSTEMI)
 	
 	override var items: [EvaluationItem] {
 		return [
+			durationhoursSTEMI,
 			anteriorSTEMI,
 			inferiorSTEMI,
 			otherSTEMI

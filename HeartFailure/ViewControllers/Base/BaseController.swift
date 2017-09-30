@@ -11,9 +11,6 @@ import UIKit
 
 class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 	
-	@IBOutlet weak var accessoryBar: UINavigationBar!
-	@IBOutlet weak var segmentedControl: UISegmentedControl?
-	
 	var activeField: UITextField?
 	var activeModel: EvaluationItem?
 	var isCancelled = false
@@ -26,8 +23,6 @@ class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 	
 	weak var styleController: StyleController?
 	
-	var whiteView: UIView?
-	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -39,43 +34,12 @@ class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 			pageForm.form.status = .viewed
 		}
 		
-		whiteView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-		whiteView?.backgroundColor = UIColor.white
-		whiteView?.isHidden = true
-	}
-	
-	
-	func evaluateResponderChain() {
-		
-		var models = [EvaluationItem]()
-		
-		for (index, item) in pageForm.items.enumerated() {
-			
-			if [.textRight, .textLeft, .integerRight, .integerLeft, .decimalRight, .decimalLeft, .mail, .password].contains(where: { $0 == item.form.itemType }) {
-				item.modelIndexPath = IndexPath(row: index, section: 0)
-				models.append(item)
-			}
-		}
-		
-		self.modelChain = models
-		self.segmentedControl?.setEnabled(modelChain.count > 1, forSegmentAt: 0)
-		self.segmentedControl?.setEnabled(modelChain.count > 1, forSegmentAt: 1)
-	}
-	
-	
-	func setupFixedSpace(width: CGFloat) -> UIBarButtonItem {
-		let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-		item.width = width
-		return item
 	}
 	
 	
 	func setupAppearance() {
 		
-//		self.view.backgroundColor = UIColor(palette: ColorPalette.snow)
 		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style:.plain, target:nil, action:nil)
-		
-		self.accessoryBar?.tintColor = UIColor(palette: ColorPalette.warmGrey)
 		
 		let applyStyle = { (style: ControllerStyle) -> Void in
 			guard let appearanceInfo = style.styleInfo() else { return }
@@ -128,6 +92,29 @@ class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 	}
 	
 	
+	func evaluateResponderChain() {
+		
+		var models = [EvaluationItem]()
+		
+		for (index, item) in pageForm.items.enumerated() {
+			
+			if [.textRight, .textLeft, .integerRight, .integerLeft, .decimalRight, .decimalLeft, .mail, .password].contains(where: { $0 == item.form.itemType }) {
+				item.modelIndexPath = IndexPath(row: index, section: 0)
+				models.append(item)
+			}
+		}
+		
+		self.modelChain = models
+	}
+	
+	
+	func setupFixedSpace(width: CGFloat) -> UIBarButtonItem {
+		let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+		item.width = width
+		return item
+	}
+	
+	
 	func showCVDAlert(title: String, message: String?, actions: [CVDAction]) {
 		let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 		
@@ -154,15 +141,6 @@ class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 	
 	
 	// MARK: - Actions
-	
-	@IBAction func moveToItem(_ sender: UISegmentedControl) {
-		guard nil != activeField else { return }
-		if self.presentedViewController != nil {
-			self.dismiss(animated: false, completion: nil)
-		}
-	
-	}
-	
 	
 	@IBAction func doneAction(_ sender: AnyObject) {
 	}

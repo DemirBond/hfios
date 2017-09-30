@@ -18,17 +18,22 @@ class Laboratories: EvaluationItem {
 	let kmeql = EvaluationItem(literal: Presentation.kmeql)
 	let creatinineMgDl = EvaluationItem(literal: Presentation.creatinineMgDl)
 	let bunMgDl = EvaluationItem(literal: Presentation.bunMgDl)
+	let hco3 = EvaluationItem(literal: Presentation.hco3)
 	let fastingPlasmaGlucose = EvaluationItem(literal: Presentation.fastingPlasmaGlucose)
 	let gfrMlMin173M2 = EvaluationItem(literal: Presentation.gfrMlMin173M2)
 	let worseningRenalFx = EvaluationItem(literal: Presentation.worseningRenalFx)
 	
 	let othersLabel = EvaluationItem(literal: Presentation.othersLabel)
 	let hba1c = EvaluationItem(literal: Presentation.hba1c)
-	let crpMgl = EvaluationItem(literal: Presentation.crpMgl)
+	let albumin = EvaluationItem(literal: Presentation.albumin)
+	let inr = EvaluationItem(literal: Presentation.inr)
+	let ast = EvaluationItem(literal: Presentation.ast)
+	let bilirubin = EvaluationItem(literal: Presentation.bilirubin)
+	let hematocrit = EvaluationItem(literal: Presentation.hematocrit)
+	let platelet = EvaluationItem(literal: Presentation.platelet)
 	let ntProBNPPgMl = EvaluationItem(literal: Presentation.ntProBNPPgMl)
 	let bnpPgMl = EvaluationItem(literal: Presentation.bnpPgMl)
 	let albuminuriaMgGmOrMg24hr = EvaluationItem(literal: Presentation.albuminuriaMgGmOrMg24hr)
-	let abnormalurinsediment = AbnormalUrinSediment(literal: Presentation.abnormalurinsediment)
 	
 	override var items: [EvaluationItem] {
 		return [
@@ -37,17 +42,22 @@ class Laboratories: EvaluationItem {
 			kmeql,
 			creatinineMgDl,
 			bunMgDl,
+			hco3,
 			fastingPlasmaGlucose,
 			gfrMlMin173M2,
 			worseningRenalFx,
 						
 			othersLabel,
 			hba1c,
-			crpMgl,
+			albumin,
+			inr,
+			ast,
+			bilirubin,
+			hematocrit,
+			platelet,
 			ntProBNPPgMl,
 			bnpPgMl,
 			albuminuriaMgGmOrMg24hr,
-			abnormalurinsediment
 		]
 	}
 }

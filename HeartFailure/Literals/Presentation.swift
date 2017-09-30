@@ -92,7 +92,7 @@ struct Presentation {
 	static let name = 		"#id:name|      #title:Name|      #type:#textLeft |  #placeholder: Patient Name  | #maxLength: 50 | #mandatory: 1"
 	static let age = 			"#id:age |      #title:Age|       #type:#integerLeft|   #min:20|  #max:100| #placeholder: Patient Age | #mandatory: 1"
 	//static let gender = 		"#id:gender|    #title:Gender*|    #type:#disclosureSimple | #height: 60"
-	static let gender = 		"#id:gender|    #title:Gender*|    #type:#disclosureSimpleExpandable | #height: 60"
+	static let gender = 		"#id:gender|    #title:Gender*|    #type:#disclosureSimpleExpandable | #height: 60 | #mandatory: 1"
 	static let bmi = 		"#id:txtBMI|    #title:BMI|    #type:#integerLeft|   #min:10.0|  #max:50.0| #placeholder: BMI Value"
 	static let weight = 		"#id:weight|    #title:Weight|    #type:#integerLeft|   #min:40|  #max:400| #placeholder: Weight/kg"
 	static let heartRate = 	"#id:HR| #title:Heart Rate| #type:#integerLeft| #min:30|  #max:300| #placeholder: Heart Rate"
@@ -103,7 +103,7 @@ struct Presentation {
 	static let bioWaistCirc = "#id:waist | #title:Waist Circ. |  #type:#decimalLeft| #min:20|  #max:60| #placeholder: DBP mmHg "
 	static let bioAA = "#id:chkAsianCode  |  #title:AA |    #type:#check"
 	static let bioPregnancy = "#id:chkpreg |    #title:Pregnancy |    #type:#check"
-	static let bioO2sat = "#id:txtO2sat | #title:O2sat% |  #type:#decimalLeft| #min:50|  #max:100| #placeholder: O2sat% "
+	static let bioO2sat = "#id:txtO2sat | #title:RA O2 sat |  #type:#decimalLeft| #min:50|  #max:100| #placeholder: O2sat% "
 	
 	// Bio -> Gender: https://zpl.io/Z16UrC4
 	static let male = 		"#id:male|    #title:Male|    #type:#radio | #group: (male, female)"
@@ -150,7 +150,7 @@ struct Presentation {
 	static let ischemicPostMILess45Day = "#id:chkIschemic | #title:Ischemic Post MI < 45 days | #type:#check"
 	static let cardiotoxis = "#id:chkCardiotoxins | #title:Cardiotoxins | #type:#disclosureControl"
 	static let familiarCMPSuddenDeath = "#id:chkFamHXofCMP | #title:Familial CMP Associated with Sudden Death | #type:#check"
-	static let valvularHeartDisease = "#id:chkvalvular | #title:Valvular Heart Disease | #type:#disclosureWeather | #alert: Refer to Heart Failure Specialist for Management"
+	static let valvularHeartDisease = "#id:chkvalvular | #title:Valvular Heart Disease | #type:#check"
 	static let myocarditis = "#id:chkmyocarditis | #title:Myocarditis | #type:#check"
 	static let rvDysplasia = "#id:chkSuspectedRVDysplasia | #title:RV Dysplasia | #type:#check"
 	static let hocm = "#id:chkIschemicCMP| #title:HOCM | #type:#disclosureControl"
@@ -191,7 +191,7 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let pulmonaryEdema = "#id:chkpuledema  | #title:Pulmonary Edema | #type:#check"	
 	static let anyCNSSymptoms = "#id:chkAMS | #title:Any CNS Symptoms | #type:#check"
 	static let coldClammyExtremities = "#id:chkshock | #title:Cold Clammy Extremities | #type:#check"
-	static let cyanosisInHeartFailure = "#id:chkCyanosis | #title:Cyanosis | #type:#disclosureControl"
+	static let cyanosisInHeartFailure = "#id:chkCyanosis | #title:Cyanosis | #type:#check"
 	static let lowurine = "#id:chklowurine |  #title:Low Urine Output < 30ml/hr | #type: #check"
 	
 	// Heart Failure -> AHAStage
@@ -207,7 +207,7 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	// Heart Failure -> AHAStage -> AdvancedHF
 	static let calculateHFSS = "#id:CalculateHFSS | #title:Calculate HFSS, enter NAmeq, VO₂ max, Heart Rate, and ECG QRS Duration | #type:#label"
 	static let noSignificantComorbidities = "#id:chkcom | #title:No Significant Comorbidities |#type:#disclosureWeather | #alert: Refer to Heart Failure Specialist for Management"
-	static let vo2maxkg = "#id:vo2maxkg | #title:VO₂ max kg/ | #type:#decimalRight | #min:6 | #max:40 | #placeholder: "
+	static let vo2maxkg = "#id:vo2maxkg | #title:VO₂ max kg | #type:#decimalRight | #min:6 | #max:40 | #placeholder: "
 	
 	// Heart Failure -> Hometherapeutics
 	static let bBlocker = "#id:chkcar | #title:B Blocker | #type:#disclosureControl"
@@ -227,14 +227,26 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let metoproloIER100qd = "#id:chkMetoprololER100 | #title:MetoproloIER 100 qd | #type:#check"
 	static let metoproloIER150qd = "#id:chkMetoproloIER150 | #title:MetoproloIER 150 qd | #type:#check"
 	static let metoproloIER200qd = "#id:chkMetoprololER200 | #title:MetoproloIER 200 qd | #type:#check"
-	
+	static let bisoprolol25qd = "#id:chkbisoprolol25 | #titleBisoprolol 2.5 qd | #type:#check"
+	static let bisoprolol50qd = "#id:chkbisoprolol5 | #title:Bisoprolol 5 qd | #type:#check"
+	static let bisoprolol100qd = "#id:chkbisoprolol10 | #title:Bisoprolol 10 qd | #type:#check"
+		
 	// Heart Failure -> Hometherapeutics -> Acel/ARB
-	static let lisinopril5 = "#id:chklisinopril5 | #title:Lisinopril <10mg qd | #type:#check"
-	static let lisinopril10 = "#id:chklisinopril10| #title:Lisinopril 10-20mg qd | #type:#check"
-	static let lisinopril20 = "#id:chklisinopril20 | #title:Lisinopril 20mg qd | #type:#check"
-	static let losartan25 = "#id:chklosartan25 | #title:Lorsatan 25mg qd | #type:#check"
-	static let losartan50 = "#id:chklosartan50 | #title:Lorsatan 50mg qd | #type:#check"
-	static let losartan100 = "#id:chklosartan100 | #title:Lorsatan 100mg qd | #type:#check"
+	static let enalapril5 = "#id:chkenalapril5 | #title:Enalapril <=10mg qd | #type:#check"
+	static let enalapril10 = "#id:chkenalapril10 | #title:Enalapril >10mg qd | #type:#check"
+	static let ramipril5 = "#id:chkramipril5 | #title:Ramipril <=5mg qd | #type:#check"
+	static let ramipril25 = "#id:chkramipril25 | #title:Ramipril >5mg qd | #type:#check"
+	static let lisinopril5 = "#id:chklisinopril5 | #title:Lisinopril <=10mg qd | #type:#check"
+	static let lisinopril10 = "#id:chklisinopril10| #title:Lisinopril >10mg qd | #type:#check"
+	static let losartan25 = "#id:chklosartan25 | #title:Losartan <=50mg qd | #type:#check"
+	static let losartan50 = "#id:chklosartan50 | #title:Losartan >50mg qd | #type:#check"
+	static let olmesartan10 = "#id:chkolmesartan10 | #title:Olmesartan <=10mg qd | #type:#check"
+	static let olmesartan20 = "#id:chkolmesartan20 | #title:Olmesartan >10mg qd | #type:#check"
+	static let valsartan80 = "#id:chkvalsartan80 | #title:Valsartan <=160mg qd | #type:#check"
+	static let valsartan160 = "#id:chkvalsartan160 | #title:Valsartan >160mg qd | #type:#check"
+	static let sacibitril24 = "#id:chksacibitril24 | #title:Sacibitril/Val 24 | #type:#check"
+	static let sacibitril49 = "#id:chksacibitril49 | #title:Sacibitril/Val 49 | #type:#check"
+	static let sacibitril97 = "#id:chksacibitril97 | #title:Sacibitril/Val 97 | #type:#check"
 	
 	// Heart Failure -> Hometherapeutics -> PO Diuretic https://zpl.io/1FSlBB
 	static let furosemide40 = "#id:chkfurosemide40 | #title:Furosemide 40 | #type:#check"
@@ -269,10 +281,10 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let ultrafiltration = "#id:chkult | #title:Ultrafiltration | #type:#check"
 	static let iabp = "#id:chkIABP | #title:IABP | #type:#check"
 	static let temporaryPM = "#id:chkTPM | #title:Temporary PM | #type:#check"
-	static let onmaximumtole = "#id:chkonmaximumtole |  #title:On Maximum Tolerated or Intolerant Acel/ARB | #type: #check"
-	static let onmaximumtoleB = "#id:chkonmaximumtoleB |  #title:On Maximum Tolerated B Blocker | #type: #check"
-	static let chronicintro = "#id:chkchronicintro |  #title:Chronic Inotrope Dependence | #type: #check"
-	static let intermitt = "#id:chkintermitt |  #title:Intermittent Inotrope Dependence | #type: #check"
+	static let onmaximumtole = "#id:chkacea |  #title:On Maximum Tolerated or Intolerant Acel/ARB | #type: #check"
+	static let onmaximumtoleB = "#id:chkcara |  #title:On Maximum Tolerated B Blocker | #type: #check"
+	static let chronicintro = "#id:chkCID |  #title:Chronic Inotrope Dependence | #type: #check"
+	static let intermitt = "#id:chkIID |  #title:Intermittent Inotrope Dependence | #type: #check"
 	
 	// Heart Failure -> InHospitalTherapies -> IV Antiarrythmic https://zpl.io/2f248Q
 	static let continuousInAntiarrythmic = "#id:chkAAcon | #title:Continuous | #type:#check"
@@ -454,6 +466,7 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let systemicArterialHypertension = "#id:chkSAH | #title:Systemic Arterial Hypertension | #type:#disclosureControl" // WithCheck"
 	static let tobaccoUse = "#id:chkSmoke | #title:Tobacco Use | #type:#check"
 	static let familyHistory = "#id:chkFamily | #title:Family History | #type:#check"
+	static let ckd = "#id:chkckd | #title:CKD | #type:#check"
 	
 	// Major CV Risk Factors -> Diabetes https://zpl.io/2lz31S
 	static let typeIIDM = "#id:chkDM | #title:Type II DM | #type:#disclosureControl"
@@ -461,24 +474,24 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let gestationalDM = "#id:chkgestational | #title:Gestational DM | #type:#check"
 	static let retinopathy = "#id:chkRetinopathy | #title:Retinopathy | #type:#check"
 	
-	static let DMNP = "#id:chkDMNP | #title:Nephropathy | #type:#check"
-	static let DMCKD = "#id:chkDMCKD| #title:CKD | #type:#check"
-	static let DMother = "#id:chkDMother | #title:Other Kidney comp | #type:#check"
-	static let DMmono = "#id:chkDMmono | #title:Mononeuropathy| #type:#check"
-	static let DMpoly = "#id:chkDMpoly| #title:Polyneuropathy | #type:#check"
-	static let DMautonom = "#id:chkDMautonom | #title:Autonom neuropathy| #type:#check"
+	static let DMNP = "#id:chkDMNP | #title:Diabetic Nephropathy | #type:#check"
+	static let DMCKD = "#id:chkDMCKD| #title:Diabetic CKD | #type:#check"
+	static let DMother = "#id:chkDMother | #title:Other Kidney Complications | #type:#check"
+	static let DMmono = "#id:chkDMmono | #title:Diabetic Mononeuropathy | #type:#check"
+	static let DMpoly = "#id:chkDMpoly| #title:Diabetic Polyneuropathy | #type:#check"
+	static let DMautonom = "#id:chkDMautonom | #title:Diabetic Autonom neuropathy| #type:#check"
 	static let DMangio = "#id:chkDMangio | #title:Peripheral Angiopathy | #type:#check"
-	static let DMothercirc = "#id:chkDMothercirc| #title:Other circulatory comp| #type:#check"
+	static let DMothercirc = "#id:chkDMothercirc| #title:Other circulatory complications| #type:#check"
 	static let DMgangrene = "#id:chkDMgangrene | #title:Angiopathy with Gangrene | #type:#check"
-	static let DMarthro = "#id:chkDMarthro | #title:Arthropathy | #type:#check"
-	static let DMskin = "#id:chkDMskin | #title:Skin comp| #type:#check"
-	static let DMoral = "#id:chkDMoral| #title:Oral comp| #type:#check"
-	static let DMhypo = "#id:chkDMhypo | #title:Hypogycemia| #type:#check"
+	static let DMarthro = "#id:chkDMarthro | #title:Diabetic Arthropathy | #type:#check"
+	static let DMskin = "#id:chkDMskin | #title:Diabetic skin complications| #type:#check"
+	static let DMoral = "#id:chkDMoral| #title:Diabetic oral complications| #type:#check"
+	static let DMhypo = "#id:chkDMhypo | #title:Hypoglycemia| #type:#check"
 	static let DMhypocoma = "#id:chkDMhypocoma| #title:Hypoglycemia with coma | #type:#check"
 	static let DMhyper = "#id:chkDMhyper | #title:Hyperglycemia | #type:#check"
-	static let DMothercomp = "#id:chkDMothercomp | #title:Other comp| #type:#check"
-	static let DMunspec = "#id:chkDMunspec| #title:Unspecified comp | #type:#check"
-	static let DMwithout = "#id:chkDMwithout | #title:Without comp| #type:#check"
+	static let DMothercomp = "#id:chkDMothercomp | #title:Other specified complications| #type:#check"
+	static let DMunspec = "#id:chkDMunspec| #title:Unspecified complications | #type:#check"
+	static let DMwithout = "#id:chkDMwithout | #title:Without complications| #type:#check"
 	
 	// Major CV Risk Factors -> Systemic Arterial Hypertension https://zpl.io/18q0XF
 	static let ambSBP = "#id:ASBP | #title:Amb SBP | #type:#integerRight | #min:80 | #max:190 | #placeholder: Value"
@@ -511,7 +524,8 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let kmeql = "#id:txtHomo | #title:K meq/l |#type:#decimalRight | #min:2.0 | #max:9.0 | #placeholder: Value"
 	static let creatinineMgDl = "#id:txtcreatinine | #title:Creatinine mg/dl |#type:#decimalRight | #min:0.4 | #max:20.0 | #placeholder: Value"
 	static let bunMgDl = "#id:txtBUN | #title:BUN mg/dl |#type:#integerRight | #min:6 | #max:200 | #placeholder: Value"
-	static let fastingPlasmaGlucose = "#id:txtGlucose | #title:Fasting Plasma Glucose |#type:#integerRight | #min:35 | #max:1000 | #placeholder: Value"
+	static let hco3 = "#id:txthco3 | #title:HCO3 meq/lt |#type:#decimalRight | #min:0.0 | #max:50.0 | #placeholder: Value"
+	static let fastingPlasmaGlucose = "#id:txtGlucose | #title:Glucose mg/dl |#type:#integerRight | #min:35 | #max:1000 | #placeholder: Value"
 	static let gfrMlMin173M2 = "#id:txtGFR | #title:GFR ml/min/1.73 M2 |#type:#integerRight | #min:5 | #max:120 | #placeholder: Value"
 	static let worseningRenalFx = "#id:chkWG | #title:Worsening Renal Fx | #type:#check"
 	
@@ -529,7 +543,12 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	
 	static let othersLabel = "#id:othersLabel | #title:Others | #type:#label"
 	static let hba1c = "#id:txtHBA1C | #title:HBA1C |#type:#decimalRight | #min:4.9 | #max:19.99 | #placeholder: Value"
-	static let crpMgl = "#id:txtCRP | #title:CRP mg/l |#type:#decimalRight | #min:0.1 | #max:30.0 | #placeholder: Value"
+	static let albumin = "#id:txtalbumin | #title:Albumin g/dl |#type:#decimalRight | #min:0.1 | #max:30.0 | #placeholder: Value"
+	static let inr = "#id:txtINR | #title:INR |#type:#decimalRight | #min:0.5 | #max:100.0 | #placeholder: Value"
+	static let ast = "#id:txtAST | #title:AST U/ml |#type:#decimalRight | #min:0.5 | #max:100.0 | #placeholder: Value"
+	static let bilirubin = "#id:txtbilirubin | #title:Bilurubin mg/dl |#type:#integerRight | #min:1 | #max:100 | #placeholder: Value"
+	static let hematocrit = "#id:txthematocrit | #title:Hematocrit % |#type:#decimalRight | #min:0.5 | #max:100.0 | #placeholder: Value"
+	static let platelet = "#id:txtplatelet | #title:Platelet K/ml |#type:#decimalRight | #min:0.5 | #max:100.0 | #placeholder: Value"
 	static let ntProBNPPgMl = "#id:txtproBNP | #title:NT-proBNP pg/ml |#type:#integerRight | #min:50 | #max:100000 | #placeholder: Value"
 	static let bnpPgMl = "#id:txtBNP | #title:BNP pg/ml |#type:#integerRight | #min:10 | #max:100000 | #placeholder: Value"
 	static let albuminuriaMgGmOrMg24hr = "#id:txtMICRO | #title:Albuminuria Mg.Gm or Mg/24hr |#type:#integerRight | #min:1 | #max:10000 | #placeholder: Value"
@@ -549,15 +568,17 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let ekg = "#id:chkEKG | #title:EKG | #type:#disclosureControl"
 	static let stressTesting = "#id:chkDTS | #title:Stress Testing | #type:#disclosureControl"
 	static let echocardiography = "#id:chkEcho | #title:Echocardiography | #type:#disclosureControl"
+	static let hrct = "#id:chkHRCT | #title:High resolution CT | #type:#disclosureControl"
 	static let rhc = "#id:chkHC | #title:RHC | #type:#disclosureControl | #alert: Refer to Heart Failure Specialist for Management"
 	
 	// Diagnostics -> EKG
 	static let nsrInEKG = "#id:chkNSR| #title: Normal sinus rhtym| #type:#check"
-	static let svt = "#id:chkPSVT| #title:SVT | #type:#check"
+	static let svt = "#id:chkPSVT| #title:Supraventricular tachycardia | #type:#check"
 	static let atrialFibrillationInEKG = "#id:chkatrialfib | #title:Atrial Fibrillation | #type:#check"
 	static let atrialFlutter = "#id:chkflutter | #title:Atrial Flutter | #type:#disclosureControlExpandable"
 	static let prDuration  = "#id:txtPRduration | #title:PR Duration |#type:#integerRight | #min:0 | #max:10000 | #placeholder: Value"
 	static let qrsDuration = "#id:txtQRS | #title:QRS Duration |#type:#integerRight | #min:0 | #max:10000 | #placeholder: Value"
+	static let qtcDuration = "#id:txtQTC | #title:QTC Duration |#type:#integerRight | #min:0 | #max:10000 | #placeholder: Value"
 	static let nonspecificSTAbnormality = "#id:chknonspesific | #title:Nonspecific ST Abnormality | #type:#check"
 	static let stDeviation05mm = "#id:chkST| #title:ST Deviation ≥ 0.5mm | #type:#check"
 	static let tWaveInversion1mm = "#id:chkTWI | #title:T Wave Inversion > 1mm | #type:#check"
@@ -633,6 +654,17 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let lvLaterealAnnulusEE = "#id:txtMP | #title:LV Latereal Annulus E/E' |#type:#integerRight | #min:1 | #max:30 | #placeholder: Value"
 	static let lvefInEchocardiography = "#id:txtEF | #title:LVEF |#type:#integerRight | #min:10 | #max:80 | #placeholder: Value"
 	static let trjVelocityMsec = "#id:txtTRJ | #title:TRJ Velocity m/sec |#type:#integerRight | #min:1 | #max:6 | #placeholder: Value"
+	
+	// Diagnostics -> High resolution CT
+	static let ground = "#id:chkground | #title:Ground glass infiltrates | #type:#check"
+	static let septal = "#id:chkseptal | #title:Inter, intralobular septal thickening | #type:#check"
+	static let reticular = "#id:chkreticular | #title:Reticular infiltrates | #type:#check"
+	static let nodular = "#id:chknodular | #title:Nodules | #type:#check"
+	static let consolidate = "#id:chkconsolidate | #title:Consolidation | #type:#check"
+	static let honey = "#id:chkhoney | #title:Honey combing | #type:#check"
+	static let bronch = "#id:chkbronch | #title:Mediastinal lymphadenopathy | #type:#check"
+	static let medias = "#id:chkmedias | #title:Bronchiectasis | #type:#check"
+	static let pleuralthick = "#id:chkpleuralthick | #title:Pleural thickening | #type:#check"
 	
 	
 	//

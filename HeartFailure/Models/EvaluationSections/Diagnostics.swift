@@ -39,27 +39,14 @@ class EKG: EvaluationItem {
 	let atrialFlutter = AtrialFlutter(literal: Presentation.atrialFlutter)
 	let prDuration  = EvaluationItem(literal: Presentation.prDuration)
 	let qrsDuration = EvaluationItem(literal: Presentation.qrsDuration)
+	let qtcDuration = EvaluationItem(literal: Presentation.qtcDuration)
 	let nonspecificSTAbnormality = EvaluationItem(literal: Presentation.nonspecificSTAbnormality)
-	let stDeviation05mm = EvaluationItem(literal: Presentation.stDeviation05mm)
-	let tWaveInversion1mm = EvaluationItem(literal: Presentation.tWaveInversion1mm)
 	let lvh = EvaluationItem(literal: Presentation.lvh)
 	let lowVoltageQRS = EvaluationItem(literal: Presentation.lowVoltageQRS)
 	let abnormalQWaves = EvaluationItem(literal: Presentation.abnormalQWaves)
 	let lbbb = EvaluationItem(literal: Presentation.lbbb)
 	let bifascicular = EvaluationItem(literal: Presentation.bifascicular)
-	let lahb = EvaluationItem(literal: Presentation.lahb)
-	let lphb = EvaluationItem(literal: Presentation.lphb)
 	let wpw = EvaluationItem(literal: Presentation.wpw)
-	let vpace = EvaluationItem(literal: Presentation.vpace)
-	let rbbb = EvaluationItem(literal: Presentation.rbbb)
-	let intraventicularBlock = EvaluationItem(literal: Presentation.intraventicularBlock)
-	let atrialPrematureDepolarization = EvaluationItem(literal: Presentation.atrialPrematureDepolarization)
-	let junctionalPrematureDepolarization = EvaluationItem(literal: Presentation.junctionalPrematureDepolarization)
-	let frequentVentricularPacingOrEctopy = EvaluationItem(literal: Presentation.frequentVentricularPacingOrEctopy)
-	let infrequentVentricularPacingOrEctopy = EvaluationItem(literal: Presentation.infrequentVentricularPacingOrEctopy)
-	let firstDegreeAVBlock = EvaluationItem(literal: Presentation.firstDegreeAVBlock)
-	let secondDegreeAVBlock = SecondDegreeAVBlock(literal: Presentation.secondDegreeAVBlock)
-	let thirdDegreeAVBlock = EvaluationItem(literal: Presentation.thirdDegreeAVBlock)
 	
 	override var items: [EvaluationItem] {
 		return [
@@ -69,27 +56,14 @@ class EKG: EvaluationItem {
 			atrialFlutter,
 			prDuration,
 			qrsDuration,
+			qtcDuration,
 			nonspecificSTAbnormality,
-			stDeviation05mm,
-			tWaveInversion1mm,
 			lvh,
 			lowVoltageQRS,
 			abnormalQWaves,
 			lbbb,
 			bifascicular,
-			lahb,
-			lphb,
 			wpw,
-			vpace,
-			rbbb,
-			intraventicularBlock,
-			atrialPrematureDepolarization,
-			junctionalPrematureDepolarization,
-			frequentVentricularPacingOrEctopy,
-			infrequentVentricularPacingOrEctopy,
-			firstDegreeAVBlock,
-			secondDegreeAVBlock,
-			thirdDegreeAVBlock
 		]
 	}
 }
@@ -230,6 +204,36 @@ class Echocardiography: EvaluationItem {
 			lvLaterealAnnulusEE,
 			lvefInEchocardiography,
 			trjVelocityMsec
+		]
+	}
+}
+
+
+// MARK: - Diagnostics -> High Resolution CT
+
+class HRCT: EvaluationItem {
+	
+	let ground = EvaluationItem(literal: Presentation.ground)
+	let septal = EvaluationItem(literal: Presentation.septal)
+	let reticular = EvaluationItem(literal: Presentation.reticular)
+	let nodular = EvaluationItem(literal: Presentation.nodular)
+	let consolidate = EvaluationItem(literal: Presentation.consolidate)
+	let honey = EvaluationItem(literal: Presentation.honey)
+	let bronch = EvaluationItem(literal: Presentation.bronch)
+	let medias = EvaluationItem(literal: Presentation.medias)
+	let pleuralthick = EvaluationItem(literal: Presentation.pleuralthick)
+	
+	override var items: [EvaluationItem] {
+		return [
+			ground,
+			septal,
+			reticular,
+			nodular,
+			consolidate,
+			honey,
+			bronch,
+			medias,
+			pleuralthick
 		]
 	}
 }

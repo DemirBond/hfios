@@ -121,7 +121,7 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 			self.stopAnimating()
 			
 			guard error == nil else {
-				print("Server returned error \(String(describing: error))")
+				//print("Server returned error \(String(describing: error))")
 				
 				UIAlertController.infoAlert(message: error!.userInfo["message"] as? String, title: "Cannot Login".localized, viewcontroller: self, handler: {
 					self.passwordField.text = ""
@@ -132,6 +132,7 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 			
 			if data == "success" {
 				UserDefaults.standard.set(name, forKey: "loginName")
+				UserDefaults.standard.synchronize()
 				
 				let medicalStoriboard = UIStoryboard(name: "Medical", bundle: nil)
 				let destination = medicalStoriboard.instantiateInitialViewController()
@@ -145,7 +146,7 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	
 	@IBAction func registerAction(_ sender: AnyObject) {
 		hideKeyboard()
-		self.performSegue(withIdentifier: "gotoRegister", sender: nil)
+		self.performSegue(withIdentifier: LoginController.registerSegueID, sender: nil)
 	}
 	
 	
@@ -247,4 +248,3 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	*/
 	
 }
-

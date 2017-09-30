@@ -317,6 +317,9 @@ class BBlocker: EvaluationItem {
 	let metoproloIER100qd = EvaluationItem(literal: Presentation.metoproloIER100qd)
 	let metoproloIER150qd = EvaluationItem(literal: Presentation.metoproloIER150qd)
 	let metoproloIER200qd = EvaluationItem(literal: Presentation.metoproloIER200qd)
+	let bisoprolol25qd = EvaluationItem(literal: Presentation.bisoprolol25qd)
+	let bisoprolol50qd = EvaluationItem(literal: Presentation.bisoprolol50qd)
+	let bisoprolol100qd = EvaluationItem(literal: Presentation.bisoprolol100qd)
 	
 	override var items: [EvaluationItem] {
 		return [
@@ -328,7 +331,10 @@ class BBlocker: EvaluationItem {
 			metoproloIER50qd,
 			metoproloIER100qd,
 			metoproloIER150qd,
-			metoproloIER200qd
+			metoproloIER200qd,
+			bisoprolol25qd,
+			bisoprolol50qd,
+			bisoprolol100qd
 		]
 	}
 }
@@ -338,21 +344,39 @@ class BBlocker: EvaluationItem {
 
 class AcelARB: EvaluationItem {
 	
+	let enalapril5 = EvaluationItem(literal: Presentation.enalapril5)
+	let enalapril10 = EvaluationItem(literal: Presentation.enalapril10)
+	let ramipril5 = EvaluationItem(literal: Presentation.ramipril5)
+	let ramipril25 = EvaluationItem(literal: Presentation.ramipril25)
 	let lisinopril5 = EvaluationItem(literal: Presentation.lisinopril5)
 	let lisinopril10 = EvaluationItem(literal: Presentation.lisinopril10)
-	let lisinopril20 = EvaluationItem(literal: Presentation.lisinopril20)
 	let losartan25 = EvaluationItem(literal: Presentation.losartan25)
 	let losartan50 = EvaluationItem(literal: Presentation.losartan50)
-	let losartan100 = EvaluationItem(literal: Presentation.losartan100)
-	
+	let olmesartan10 = EvaluationItem(literal: Presentation.olmesartan10)
+	let olmesartan20 = EvaluationItem(literal: Presentation.olmesartan20)
+	let valsartan80 = EvaluationItem(literal: Presentation.valsartan80)
+	let valsartan160 = EvaluationItem(literal: Presentation.valsartan160)
+	let sacibitril24 = EvaluationItem(literal: Presentation.sacibitril24)
+	let sacibitril49 = EvaluationItem(literal: Presentation.sacibitril49)
+	let sacibitril97 = EvaluationItem(literal: Presentation.sacibitril97)
+
 	override var items: [EvaluationItem] {
 		return [
+			enalapril5,
+			enalapril10,
+			ramipril5,
+			ramipril25,
 			lisinopril5,
 			lisinopril10,
-			lisinopril20,
 			losartan25,
 			losartan50,
-			losartan100
+			olmesartan10,
+			olmesartan20,
+			valsartan80,
+			valsartan160,
+			sacibitril24,
+			sacibitril49,
+			sacibitril97
 		]
 	}
 }
@@ -449,6 +473,7 @@ class InHospitalTherapies : EvaluationItem {
 			ultrafil,
 			iabp,
 			temporarypm,
+			onmaximumtoleB,
 			onmaximumtole,
 			chronicinotro,
 			intermitt

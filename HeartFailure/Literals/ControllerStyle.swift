@@ -163,27 +163,23 @@ class CVDStyle {
 		}
 	}
 	
-	let symptomsLink = CVDLink(screens: ["bio"], link: "symptoms")
-	let reviewOfSystemLink = CVDLink(screens:["symptoms", "dyspnea", "chestpain", "syncope"], link: "reviewOfSystem")
-	let physicalExamLink = CVDLink(screens: ["reviewOfSystem"], link: "currentPastCVProfile")
-	let cvProfileLink = CVDLink(screens: ["currentPastCVProfile", "heartMurmurInPhysicalExam", "systolicMurmur",
-		"diastolicMurmur", "blnCresDecres", "blnPlateuShaped"], link: "cvProfile")
-	let s2AorticLink = CVDLink(screens:["siMitral"], link: "s2Aortic")
-	let p2PulmonicLink = CVDLink(screens:["s2Aortic"], link: "p2Pulmonic")
-	let s1TricuspidLink = CVDLink(screens:["p2Pulmonic"], link: "s1Tricuspid")
-	let murmurLink = CVDLink(screens:["s1Tricuspid"], link: "murmur")
+	let heartfailureLink = CVDLink(screens: ["bio"], link: "heartFailure")
+	let etiologyLink = CVDLink(screens: ["sechistory"], link: "secEtiology")
+	let clinicalLink = CVDLink(screens: ["secEtiology"], link: "secclinical")
+	let ahastageLink = CVDLink(screens: ["secclinical"], link: "secahastage")
+	let hometherapeuticsLink = CVDLink(screens: ["secahastage"], link: "sechometherapeutics")
+	let acutelyLink = CVDLink(screens: ["sechometherapeutics"], link: "secacutely")
+	let inhospitaltherapiesLink = CVDLink(screens: ["secacutely"], link: "secinhospital")
+	let dischargeLink = CVDLink(screens: ["secinhospital"], link: "secdischarge")
 	
-	let pulmonaryRenalLink = CVDLink(screens: ["cvProfile"], link: "pulmonary")
-	let renalLink = CVDLink(screens: ["pulmonary"], link: "renal")
-	let riskFactorsLink = CVDLink(screens: ["renal", "thromboembolicVKA", "ventricularTachyarrthymias", "bradyarrthymiaSyncope"], link: "riskFactors")
-	let heartFailureLink = CVDLink(screens: ["coronaryHeartDisease"], link: "heartFailure")
-	let atrialFibrillationLink = CVDLink(screens: ["heartFailure"], link: "atrialFibrillation")
+	let coronaryHeartDiseaseLink = CVDLink(screens: ["heartFailure", "secdischarge"], link: "coronaryHeartDisease")
+	let atrialFibrillationLink = CVDLink(screens: ["coronaryHeartDisease"], link: "atrialFibrillation")
 	let thromboembolicLink = CVDLink(screens: ["atrialFibrillation"], link: "thromboembolicVKA")
-	let pulmonaryLink = CVDLink(screens: ["valvularHeartDisease"], link: "pulmonaryHypertension")
-	let surgicalRiskLink = CVDLink(screens: ["riskFactors"], link: "surgicalRisk")
-	let laboratoriesLink = CVDLink(screens: ["surgicalRisk"], link: "laboratories")
+	let bradyarrthymiaLink = CVDLink(screens: ["thromboembolicVKA"], link: "bradyarrthymiaSyncope")
+	let ventricularLink = CVDLink(screens: ["bradyarrthymiaSyncope"], link: "ventricularTachyarrthymias")
+	let riskFactorsLink = CVDLink(screens: ["ventricularTachyarrthymias"], link: "riskFactors")
+	let laboratoriesLink = CVDLink(screens: ["riskFactors"], link: "laboratories")
 	let diagnosticsLink = CVDLink(screens: ["laboratories"], link: "diagnostics")
-	let nsrLink = CVDLink(screens: ["diagnostics"], link: "nsr")
 	let heartSpecialistLink = CVDLink(screens: ["nsr"], link: "heartSpecialistManagement")
 	
 	// Heart Management Specialist
@@ -195,10 +191,16 @@ class CVDStyle {
 	let rhcInHSMLink = CVDLink(screens: ["laboratoryEKG"], link: "rhcInHSM")
 	
 	var links: [CVDLink] {
-		return [symptomsLink, reviewOfSystemLink, physicalExamLink, cvProfileLink, s2AorticLink, p2PulmonicLink, s1TricuspidLink, murmurLink,
-		        pulmonaryRenalLink, renalLink,
-		        riskFactorsLink, heartFailureLink, atrialFibrillationLink, thromboembolicLink, pulmonaryLink, surgicalRiskLink,
-		        laboratoriesLink, diagnosticsLink, nsrLink, heartSpecialistLink,
+		return [heartfailureLink, etiologyLink, clinicalLink, ahastageLink, hometherapeuticsLink, acutelyLink, inhospitaltherapiesLink, dischargeLink,
+		        coronaryHeartDiseaseLink,
+		        atrialFibrillationLink,
+		        thromboembolicLink,
+		        bradyarrthymiaLink,
+		        ventricularLink,
+		        riskFactorsLink,
+		        laboratoriesLink,
+		        diagnosticsLink,
+		        heartSpecialistLink,
 		        pahLink,
 		        valvularInHSMLink,
 		        advancedLHFLink,
@@ -207,6 +209,7 @@ class CVDStyle {
 		        rhcInHSMLink,
 		]
 	}
+
 	
 	var fonts: [UIFont] {
 		var arr = [UIFont] ()
