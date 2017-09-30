@@ -227,7 +227,7 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let metoproloIER100qd = "#id:chkMetoprololER100 | #title:MetoproloIER 100 qd | #type:#check"
 	static let metoproloIER150qd = "#id:chkMetoproloIER150 | #title:MetoproloIER 150 qd | #type:#check"
 	static let metoproloIER200qd = "#id:chkMetoprololER200 | #title:MetoproloIER 200 qd | #type:#check"
-	static let bisoprolol25qd = "#id:chkbisoprolol25 | #titleBisoprolol 2.5 qd | #type:#check"
+	static let bisoprolol25qd = "#id:chkbisoprolol25 | #title:Bisoprolol 2.5 qd | #type:#check"
 	static let bisoprolol50qd = "#id:chkbisoprolol5 | #title:Bisoprolol 5 qd | #type:#check"
 	static let bisoprolol100qd = "#id:chkbisoprolol10 | #title:Bisoprolol 10 qd | #type:#check"
 		
