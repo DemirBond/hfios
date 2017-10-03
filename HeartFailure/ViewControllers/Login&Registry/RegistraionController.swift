@@ -134,11 +134,15 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 				return
 			}
 			
+			UserDefaults.standard.set(mail, forKey: "loginName")
+			UserDefaults.standard.synchronize()
+						
 			if data == "success" {
-				UserDefaults.standard.set(mail, forKey: "loginName")
-				UserDefaults.standard.synchronize()
+				let medicalStoriboard = UIStoryboard(name: "Medical", bundle: nil)
+				let destination = medicalStoriboard.instantiateInitialViewController()
+				UIApplication.shared.keyWindow?.rootViewController = destination
 				
-				self.performSegue(withIdentifier: RegistraionController.verificationCodeSegueID, sender: nil)
+				//self.performSegue(withIdentifier: RegistraionController.verificationCodeSegueID, sender: nil)
 			}
 		}
 		

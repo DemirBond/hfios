@@ -158,15 +158,15 @@ class DataManager {
 						
 					}
 					
-					let verified: Bool = responseJson["verified"].boolValue
+					completionHandler("success", nil)
+					/*let verified: Bool = responseJson["verified"].boolValue
 					if verified == false {
 						completionHandler("not_verified", nil)
 						return
 					}
 					else {
 						completionHandler("success", nil)
-					}
-					
+					}*/
 				},
 				
 				failure: { (error) in
@@ -205,15 +205,15 @@ class DataManager {
 					self.currentDoctor = doctor
 					self.fetchEvaluations()
 					
-					let verified: Bool = responseJson["verified"].boolValue
+					completionHandler("success", nil)
+					/*let verified: Bool = responseJson["verified"].boolValue
 					if verified == false {
 						completionHandler("not_verified", nil)
 						return
 					}
 					else {
 						completionHandler("success", nil)
-					}
-					
+					}*/					
 				},
 				failure: { (error) in
 					//TODO change this error with actual error coming from server
