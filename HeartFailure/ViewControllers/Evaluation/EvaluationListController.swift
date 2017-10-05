@@ -145,7 +145,7 @@ class EvaluationListController: BaseTableController, NVActivityIndicatorViewable
 		} else {
 			let patient = DataManager.manager.patients![indexPath.row - 1]
 			
-			if let evaluationID = patient.identifier, let _ = patient.evaluationData {
+			if let evaluationID = patient.evaluationUUID, let _ = patient.evaluationData {
 				if let _ = DataManager.manager.extractEvaluation(by: evaluationID) {
 					performSegue(withIdentifier: EvaluationListController.fromListEvaluationSegueID, sender: nil)
 					
@@ -157,7 +157,7 @@ class EvaluationListController: BaseTableController, NVActivityIndicatorViewable
 				
 				self.startAnimating()
 				
-				DataManager.manager.fetchEvaluationByIDFromRestAPI(id: Int(patient.identifier!)!, completionHandler: { (success, error) -> (Void) in
+				DataManager.manager.fetchEvaluationByIDFromRestAPI(id: Int(patient.evaluationUUID!)!, completionHandler: { (success, error) -> (Void) in
 					
 					self.stopAnimating()
 					

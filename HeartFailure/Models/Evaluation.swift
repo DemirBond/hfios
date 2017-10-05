@@ -38,6 +38,8 @@ class Evaluation: EvaluationItem {
 			completeScreen()
 		}
 	}
+	
+	var isSaved: Bool = false
 
 	override var itemDict: Dictionary<String, Any> {
 		var dict = super.itemDict
@@ -104,7 +106,7 @@ class Evaluation: EvaluationItem {
 	init() {
 		super.init()
 		
-		self.evaluationUUID = UUID().uuidString.lowercased()
+		//self.evaluationUUID = UUID().uuidString.lowercased()
 		let date = Date()
 		self.identifier = "evaluation"
 

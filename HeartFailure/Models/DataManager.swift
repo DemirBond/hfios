@@ -19,6 +19,8 @@ class DataManager {
 	
 	var currentDoctor: Doctor?
 	var patients: [Patient]?
+	
+	var evalCache: Evaluation?
 	var evaluation: Evaluation?
 	var isPAH = false
 	
@@ -260,7 +262,7 @@ class DataManager {
 		
 		if patients != nil && patients!.count > 0 {
 			for patient in self.patients! {
-				if patient.identifier == uuid {
+				if patient.evaluationUUID == uuid {
 					patient.setValue(formatter.string(from: Date()), forKey: "dateModified")
 					patient.setValue(evaluation!.bio.name.storedValue?.value, forKey: "patientName")
 					patient.setValue(evaluation!.bio.age.storedValue?.value, forKey: "patientAge")
@@ -307,7 +309,7 @@ class DataManager {
 		guard patients != nil, patients!.count > 0 else  { return nil }
 		
 		for patient in self.patients!{
-			if patient.identifier == uuid {
+			if patient.evaluationUUID == uuid {
 				do {
 					let dict = try JSONSerialization.jsonObject(with: patient.evaluationData! as Data,
 					                                            options: .mutableContainers) as! Dictionary<String, Any>
@@ -324,7 +326,7 @@ class DataManager {
 	}
 	
 	
-	func saveCurrentCompute(saveMode: Bool) {
+	func saveCurrentCompute() {
 		guard evaluation != nil && evaluation!.isBioCompleted  else { return }
 		
 		var isFound = false
@@ -332,14 +334,13 @@ class DataManager {
 		
 		if patients != nil && patients!.count > 0 {
 			for patient in self.patients! {
-				if patient.identifier == uuid {
+				if patient.evaluationUUID == uuid {
 					
-					patient.setValue(saveMode, forKey: "computeSaved")
 					patient.setValue(String(DataManager.manager.getPAHValue()), forKey: "computeEvaluationRequestPAH")
 					patient.setValue(evaluation!.bio.gender.storedValue?.value == "female" ? 2:1, forKey: "computeEvaluationRequestGender")
 					patient.setValue(Int((evaluation!.bio.sbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestSBP")
 					patient.setValue(Int((evaluation!.bio.dbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestDBP")
-					patient.setValue(self.getEvaluationItemsAsRequestInputsString(), forKey: "computeEvaluationRequestInputs")
+					patient.setValue(self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evaluation!), forKey: "computeEvaluationRequestInputs")
 					
 					patient.setValue(DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle, forKey: "computeEvaluationResultDiagnostics")
 					patient.setValue(DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle, forKey: "computeEvaluationResultTherapeutics")
@@ -358,7 +359,6 @@ class DataManager {
 			let entity =  NSEntityDescription.entity(forEntityName: "Patient", in: self.managedObjectContext)
 			let patient = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Patient
 			
-			patient.setValue(saveMode, forKey: "computeSaved")
 			patient.setValue(evaluation!.bio.name.storedValue?.value, forKey: "patientName")
 			patient.setValue(evaluation!.bio.age.storedValue?.value, forKey: "patientAge")
 			patient.setValue(evaluation!.dateCreated, forKey: "dateCreated")
@@ -370,7 +370,7 @@ class DataManager {
 			patient.setValue(evaluation!.bio.gender.storedValue?.value == "female" ? 2:1, forKey: "computeEvaluationRequestGender")
 			patient.setValue(Int((evaluation!.bio.sbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestSBP")
 			patient.setValue(Int((evaluation!.bio.dbp.storedValue?.value)!)!, forKey: "computeEvaluationRequestDBP")
-			patient.setValue(self.getEvaluationItemsAsRequestInputsString(), forKey: "computeEvaluationRequestInputs")
+			patient.setValue(self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evaluation!), forKey: "computeEvaluationRequestInputs")
 			
 			patient.setValue(DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle, forKey: "computeEvaluationResultDiagnostics")
 			patient.setValue(DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle, forKey: "computeEvaluationResultTherapeutics")
@@ -602,7 +602,7 @@ class DataManager {
 		
 		var deleteIndex: [String:Bool] = [String:Bool]()
 		for savedPatient: Patient in savedPatients! {
-			deleteIndex[savedPatient.identifier!] = true
+			deleteIndex[savedPatient.evaluationUUID!] = true
 		}
 		
 		RestClient.client.retrieveSavedEvaluations(success: {
@@ -614,13 +614,24 @@ class DataManager {
 				
 				if savedPatients != nil && savedPatients?.count != 0 {
 					for savedPatient: Patient in savedPatients! {
-						if patientJson["ID"].stringValue == savedPatient.identifier {
+						if patientJson["ID"].stringValue == savedPatient.evaluationUUID {
 							
 							isExist = true
-							deleteIndex[savedPatient.identifier!] = false
+							deleteIndex[savedPatient.evaluationUUID!] = false
 							
 							if patientJson["createdate"].stringValue != savedPatient.dateModified {
 								savedPatient.evaluationData = nil
+								
+								savedPatient.setValue(nil, forKey: "computeEvaluationRequestPAH")
+								savedPatient.setValue(nil, forKey: "computeEvaluationRequestGender")
+								savedPatient.setValue(nil, forKey: "computeEvaluationRequestSBP")
+								savedPatient.setValue(nil, forKey: "computeEvaluationRequestDBP")
+								savedPatient.setValue(nil, forKey: "computeEvaluationRequestInputs")
+								
+								savedPatient.setValue(nil, forKey: "computeEvaluationResultDiagnostics")
+								savedPatient.setValue(nil, forKey: "computeEvaluationResultTherapeutics")
+								savedPatient.setValue(nil, forKey: "computeEvaluationResultICD")
+								savedPatient.setValue(nil, forKey: "computeEvaluationResultReferences")
 							}
 						}
 					}
@@ -630,7 +641,6 @@ class DataManager {
 					let entity =  NSEntityDescription.entity(forEntityName: "Patient", in: self.managedObjectContext)
 					let patient = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Patient
 					
-					patient.setValue(true, forKey: "computeSaved")
 					patient.setValue(patientJson["Name"].stringValue, forKey: "patientName")
 					patient.setValue(patientJson["createdate"].stringValue, forKey: "dateCreated")
 					patient.setValue(patientJson["createdate"].stringValue, forKey: "dateModified")
@@ -640,7 +650,7 @@ class DataManager {
 			}
 			
 			for savedPatient: Patient in savedPatients! {
-				if deleteIndex[savedPatient.identifier!] == true {
+				if deleteIndex[savedPatient.evaluationUUID!] == true {
 					self.managedObjectContext.delete(savedPatient)
 				}
 			}
@@ -698,9 +708,9 @@ class DataManager {
 			// save evaluation
 			if self.patients != nil && self.patients!.count > 0 {
 				for patient in self.patients! {
-					if Int(patient.identifier!) == id {
+					if Int(patient.evaluationUUID!) == id {
 						
-						evaluation.identifier = patient.identifier!
+						evaluation.evaluationUUID = patient.evaluationUUID!
 						
 						var dict = evaluation.itemDict
 						dict["evaluationStatus"] = EvaluationStatus.evaluated.rawValue
@@ -723,6 +733,7 @@ class DataManager {
 			}
 			
 			self.evaluation = evaluation
+			self.evaluation?.isSaved = true
 			self.evaluation?.evaluationStatus = .evaluated
 			completionHandler("success", nil)
 			
@@ -804,55 +815,64 @@ class DataManager {
 	}
 	
 	
+	func setEvaluationCache()-> Void {
+		self.evalCache = Evaluation.init(with: (self.evaluation?.itemDict)!)
+	}
+	
+	
 	func isEvaluationChanged() -> Bool {
 		
-		var savedPatients: [Patient] = [Patient]()
-		
-		guard let loginName = currentDoctor?.loginName else { return true}
-		
-		let managedContext = managedObjectContext
-		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Patient")
-		fetchRequest.predicate = NSPredicate(format: "doctorLoginName == %@", loginName)
-		do {
-			savedPatients = try managedContext.fetch(fetchRequest) as! [Patient]
+		if DataManager.manager.evaluation?.isSaved == false { // compare for only computing
+			let prevInputs: String = self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evalCache!)
+			let currentInputs: String = self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evaluation!)
 			
-		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			return prevInputs == currentInputs ? false : true
+			
 		}
-		
-		let uuid = evaluation!.evaluationUUID
-		
-		if savedPatients.count > 0 {
-			for patient in savedPatients {
-				if patient.identifier == uuid {
-					
-					guard let cerPAH = patient.value(forKey: "computeEvaluationRequestPAH") as? String, !cerPAH.isEmpty,
-						let cerINPUTS = patient.value(forKey: "computeEvaluationRequestInputs") as? String, !cerINPUTS.isEmpty else {
-							return true
-					}
-					
-					let name = evaluation!.bio.name.storedValue?.value
-					let age = evaluation!.bio.age.storedValue?.value
-					let isPAH = String(DataManager.manager.getPAHValue())
-					let gender = evaluation!.bio.gender.storedValue?.value == "female" ? 2:1
-					let SBP = Int((evaluation!.bio.sbp.storedValue?.value)!)!
-					let DBP = Int((evaluation!.bio.dbp.storedValue?.value)!)!
-					let inputs = self.getEvaluationItemsAsRequestInputsString()
-					
-					if name == patient.value(forKey: "patientName") as? String &&
-						age == patient.value(forKey: "patientAge") as? String &&
-						isPAH == cerPAH &&
-						gender == patient.value(forKey: "computeEvaluationRequestGender") as! Int &&
-						SBP == patient.value(forKey: "computeEvaluationRequestSBP") as! Int &&
-						DBP == patient.value(forKey: "computeEvaluationRequestDBP") as! Int &&
-						inputs == cerINPUTS
-					{
-						DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle = patient.value(forKey: "computeEvaluationResultDiagnostics") as? String
-						DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle = patient.value(forKey: "computeEvaluationResultTherapeutics") as? String
-						DataManager.manager.evaluation!.outputInMain.icd10Result.subtitle = patient.value(forKey: "computeEvaluationResultICD") as? String
-						DataManager.manager.evaluation!.outputInMain.references.subtitle = patient.value(forKey: "computeEvaluationResultReferences") as? String
+		else { // compare for the saved evaluation
+			
+			var savedPatients: [Patient] = [Patient]()
+			
+			guard let loginName = currentDoctor?.loginName else { return true}
+			
+			let managedContext = managedObjectContext
+			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Patient")
+			fetchRequest.predicate = NSPredicate(format: "doctorLoginName == %@", loginName)
+			do {
+				savedPatients = try managedContext.fetch(fetchRequest) as! [Patient]
+				
+			} catch let error as NSError {
+				//print("Could not fetch \(error), \(error.userInfo)")
+			}
+			
+			let uuid = evaluation!.evaluationUUID
+			if uuid == nil {
+				return true
+			}
+			
+			if savedPatients.count > 0 {
+				for patient in savedPatients {
+					if patient.evaluationUUID == uuid {
 						
-						return false
+						guard let cerPAH = patient.value(forKey: "computeEvaluationRequestPAH") as? String, !cerPAH.isEmpty,
+							let cerINPUTS = patient.value(forKey: "computeEvaluationRequestInputs") as? String, !cerINPUTS.isEmpty else {
+								return true
+						}
+						
+						let prevInputs: String = self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evalCache!)
+						let currentInputs: String = self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evaluation!)
+						
+						if prevInputs == currentInputs {
+							DataManager.manager.evaluation!.outputInMain.diagnosticsResult.subtitle = patient.value(forKey: "computeEvaluationResultDiagnostics") as? String
+							DataManager.manager.evaluation!.outputInMain.therapeuticsResult.subtitle = patient.value(forKey: "computeEvaluationResultTherapeutics") as? String
+							DataManager.manager.evaluation!.outputInMain.icd10Result.subtitle = patient.value(forKey: "computeEvaluationResultICD") as? String
+							DataManager.manager.evaluation!.outputInMain.references.subtitle = patient.value(forKey: "computeEvaluationResultReferences") as? String
+							
+							return false
+						}
+						else {
+							return true
+						}
 					}
 				}
 			}
@@ -870,10 +890,10 @@ class DataManager {
 	}
 	
 	
-	func getEvaluationItemsAsRequestInputsString()->String{
+	func getEvaluationItemsAsRequestInputsString(evaluation: EvaluationItem)->String{
 		
 		var inputsStrings = [String]()
-		recursiveEvaluationItemsByString(evaluationItem: DataManager.manager.evaluation!, inputs: &inputsStrings)
+		recursiveEvaluationItemsByString(evaluationItem: evaluation, inputs: &inputsStrings)
 		//TODO remove empty and first | from the result
 		var result: String = "empty"
 		
