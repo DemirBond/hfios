@@ -823,6 +823,10 @@ class DataManager {
 	func isEvaluationChanged() -> Bool {
 		
 		if DataManager.manager.evaluation?.isSaved == false { // compare for only computing
+			if DataManager.manager.evalCache == nil {
+				return true
+			}
+			
 			let prevInputs: String = self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evalCache!)
 			let currentInputs: String = self.getEvaluationItemsAsRequestInputsString(evaluation: DataManager.manager.evaluation!)
 			

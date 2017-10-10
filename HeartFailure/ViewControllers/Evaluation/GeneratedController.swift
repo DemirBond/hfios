@@ -338,7 +338,9 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 		
 		self.startAnimating(CGSize(width:80, height:80), message: nil, messageFont: nil, type: NVActivityIndicatorType.ballPulse, color: UIColor(palette: ColorPalette.white), padding: nil, displayTimeThreshold: nil, minimumDisplayTime: nil, backgroundColor: NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR, textColor: nil)
 		
-		if !model.isSaved || DataManager.manager.isEvaluationChanged() {
+		if (isSaveMode && !model.isSaved) ||
+			(model.isSaved && DataManager.manager.isEvaluationChanged()) ||
+			(!isSaveMode && DataManager.manager.isEvaluationChanged()) {
 			
 			let client: RestClient = RestClient.client
 			let inputs = DataManager.manager.getEvaluationItemsAsRequestInputsString(evaluation: model)
