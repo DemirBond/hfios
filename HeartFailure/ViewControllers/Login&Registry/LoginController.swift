@@ -118,16 +118,13 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 		self.startAnimating()
 		
 		let completionHandler = { [unowned self] (data : String?, error: NSError?) -> Void in
-			
 			self.stopAnimating()
 			
 			guard error == nil else {
 				//print("Server returned error \(String(describing: error))")
-				
 				UIAlertController.infoAlert(message: error!.userInfo["message"] as? String, title: "Cannot Login".localized, viewcontroller: self, handler: {
 					self.passwordField.text = ""
 				})
-				
 				return
 			}
 			
@@ -135,18 +132,22 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 			UserDefaults.standard.synchronize()
 			
 			if data == "success" {
-				let medicalStoriboard = UIStoryboard(name: "Medical", bundle: nil)
-				let destination = medicalStoriboard.instantiateInitialViewController()
-				UIApplication.shared.keyWindow?.rootViewController = destination
+				DispatchQueue.main.async {
+					let medicalStoriboard = UIStoryboard(name: "Medical", bundle: nil)
+					let destination = medicalStoriboard.instantiateInitialViewController()
+					UIApplication.shared.keyWindow?.rootViewController = destination
+				}
 			}
 			/*else if data == "not_verified" {
-				UIAlertController.infoAlert(message: "", title: "Not authenticated".localized, viewcontroller: self, handler: {
-					self.performSegue(withIdentifier: LoginController.verificationCodeSegueID, sender: nil)
-				})
+			UIAlertController.infoAlert(message: "", title: "Not authenticated".localized, viewcontroller: self, handler: {
+			self.performSegue(withIdentifier: LoginController.verificationCodeSegueID, sender: nil)
+			})
 			}*/
 		}
 		
-		DataManager.manager.signIn(with: name, password: pass, completionHandler: completionHandler)
+		DispatchQueue.global().async {
+			DataManager.manager.signIn(with: name, password: pass, completionHandler: completionHandler)
+		}
 	}
 	
 	
