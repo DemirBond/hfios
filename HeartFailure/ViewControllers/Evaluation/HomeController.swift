@@ -60,7 +60,7 @@ class HomeController: BaseController, NVActivityIndicatorViewable {
 		
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 		self.navigationController?.navigationBar.shadowImage = UIImage()
-		self.navigationController?.navigationBar.tintColor = UIColor.black
+		self.navigationController?.navigationBar.tintColor = UIColor(palette: ColorPalette.purple)
 		self.navigationController?.navigationBar.isTranslucent = true
 		self.navigationController?.setToolbarHidden(true, animated: false)
 		
@@ -78,8 +78,8 @@ class HomeController: BaseController, NVActivityIndicatorViewable {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		self.navigationController?.navigationBar.barTintColor = UIColor(palette: ColorPalette.hanPurple)
-		self.navigationController?.navigationBar.tintColor = UIColor.black
+		self.navigationController?.navigationBar.barTintColor = UIColor(palette: ColorPalette.white)
+		self.navigationController?.navigationBar.tintColor = UIColor(palette: ColorPalette.purple)
 		self.navigationController?.navigationBar.isTranslucent = false
 		self.navigationController?.navigationBar.layer.borderWidth = 0.0
 		self.navigationController?.navigationBar.layer.shadowColor = UIColor(palette: ColorPalette.warmGrey)?.cgColor

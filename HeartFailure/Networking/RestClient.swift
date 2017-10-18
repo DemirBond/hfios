@@ -15,11 +15,13 @@ import SwiftyJSON
 class RestClient: NSObject {
 	
 	static let client = RestClient()
-	static let baseUrl: String = "http://api.calchfrisk.net/"
+//	static let baseUrl: String = "http://api.calchfrisk.net/"
+	static let baseUrl: String = "http://heart.xpsign.com/"
 	static let loginUrl: String = baseUrl + "token"
-	static let registerUrl: String = baseUrl + "api/account/register"
-	static let computeEvaluationUrl: String = baseUrl + "api/values"
-	static let retreiveEvaluationsUrl: String = baseUrl + "api/values"
+	static let registerUrl: String = baseUrl + "api/account/Register"
+	static let computeEvaluationUrl: String = baseUrl + "api/Values"
+	static let retreiveEvaluationsUrl: String = baseUrl + "api/Values"
+	static let deleteEvaluationUrl: String = baseUrl + "api/Values"
 	
 	var token: String = ""
 	var isLoggedIn: Bool = false
@@ -137,14 +139,34 @@ class RestClient: NSObject {
 		}
 	}
 	
-	func retrieveEvaluationByID(id: Int, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void)
+	func retrieveEvaluationByID(uuid: Int, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void)
 	{
-		let params: Dictionary = ["ID": id]
+		let params: Dictionary = ["ID": uuid]
 		let headers: HTTPHeaders = [
 			"Authorization": token,
 			"Accept": "application/json"
 		]
 		Alamofire.request(RestClient.retreiveEvaluationsUrl, method: .get, parameters: params, headers:headers).responseJSON {(responseObject) -> Void in
+			if responseObject.result.isSuccess {
+				let resJson = JSON(responseObject.result.value!)
+				success(resJson)
+			}
+			
+			if responseObject.result.isFailure {
+				let error : Error = responseObject.result.error!
+				failure(error)
+			}
+		}
+	}
+	
+	func deleteEvaluationByID(uuid: Int, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void)
+	{
+		let params: Dictionary = ["ID": uuid]
+		let headers: HTTPHeaders = [
+			"Authorization": token,
+			"Accept": "application/json"
+		]
+		Alamofire.request(RestClient.deleteEvaluationUrl, method: .delete, parameters: params, headers:headers).responseJSON {(responseObject) -> Void in
 			if responseObject.result.isSuccess {
 				let resJson = JSON(responseObject.result.value!)
 				success(resJson)

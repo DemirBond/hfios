@@ -345,7 +345,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 			let client: RestClient = RestClient.client
 			let inputs = DataManager.manager.getEvaluationItemsAsRequestInputsString(evaluation: model)
 			let saveMode: Bool = isSaveMode
-			let uuid: String? = model.isSaved ? model.evaluationUUID : nil
+			let uuid: String? = model.isSaved ? model.evaluationUUID : "0"
 			let patientname: String = isSaveMode ? (model.bio.name.storedValue?.value)! : "None"
 			let gender: Int = model.bio.gender.storedValue?.value == "male" ? 1 : 2
 			

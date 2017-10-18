@@ -35,9 +35,10 @@ class BaseTableController: UITableViewController, BuildAppearance, EvaluationEdi
 			pageForm.form.status = .viewed
 		}
 		
-		self.tableView.bounces = false
+		//self.tableView.bounces = false
 		self.tableView.showsVerticalScrollIndicator = false
-		self.tableView.backgroundColor = UIColor(palette: ColorPalette.hanPurple)
+		//self.tableView.backgroundColor = UIColor(palette: ColorPalette.hanPurple)
+		self.tableView.backgroundColor = UIColor(palette: ColorPalette.white)
 	 	
 	}
 	
