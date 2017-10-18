@@ -58,10 +58,11 @@ class Evaluation: EvaluationItem {
 			evaluationStatus = .diagnosticCompleted
 		} else if riskFactors.isFilled && (riskFactors.form.status == .viewed || riskFactors.form.status == .valued) {
 			evaluationStatus = .riskCompleted
-		} else if isBioViewed {
+		} else if isBioViewed || isBioCompleted {
 			evaluationStatus = .bioViewed
-		} else if isBioCompleted {
-			evaluationStatus = .bioCompleted
+			if isBioCompleted {
+				evaluationStatus = .bioCompleted
+			}
 		} else {
 			evaluationStatus = .initialized
 		}

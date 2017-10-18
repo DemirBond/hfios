@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,7 +18,7 @@
         <!--Code Autorization Controller-->
         <scene sceneID="ikp-44-D5S">
             <objects>
-                <viewController id="YZH-HD-ix9" customClass="CodeAutorizationController" customModule="Heart_Check" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YZH-HD-ix9" customClass="CodeAutorizationController" customModule="Heart_Failure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4OQ-gj-LZV"/>
                         <viewControllerLayoutGuide type="bottom" id="PpV-Wn-Xa4"/>
@@ -51,7 +51,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAx-YN-aYu">
                                         <rect key="frame" x="0.0" y="115" width="375" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123 456" borderStyle="roundedRect" placeholder="xxx xxx" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFu-ZU-ktw" userLabel="Verification Code">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123 456" borderStyle="roundedRect" placeholder="XXXXX" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFu-ZU-ktw" userLabel="Verification Code">
                                                 <rect key="frame" x="20" y="6" width="335" height="38"/>
                                                 <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -155,7 +155,7 @@
         <!--Reset Account Controller-->
         <scene sceneID="cy5-Xp-FQd">
             <objects>
-                <viewController id="uYr-7V-ok0" customClass="ResetAccountController" customModule="Heart_Check" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uYr-7V-ok0" customClass="ResetAccountController" customModule="Heart_Failure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ewZ-QF-uml"/>
                         <viewControllerLayoutGuide type="bottom" id="G6H-5b-8fK"/>
@@ -292,7 +292,7 @@
         <!--Registraion Controller-->
         <scene sceneID="bl5-WE-EWt">
             <objects>
-                <viewController id="4Ak-r5-MBg" customClass="RegistraionController" customModule="Heart_Check" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Ak-r5-MBg" customClass="RegistraionController" customModule="Heart_Failure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p0W-L8-ZaU"/>
                         <viewControllerLayoutGuide type="bottom" id="VQZ-NM-3Ju"/>
@@ -511,7 +511,7 @@
         <!--Splash Controller-->
         <scene sceneID="PLl-fz-XiU">
             <objects>
-                <viewController id="yTO-cg-JSI" customClass="SplashController" customModule="Heart_Check" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yTO-cg-JSI" customClass="SplashController" customModule="Heart_Failure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a3h-9M-mbt"/>
                         <viewControllerLayoutGuide type="bottom" id="2eg-dy-y0l"/>
@@ -571,7 +571,7 @@
         <!--Login Controller-->
         <scene sceneID="hPA-5F-hDo">
             <objects>
-                <viewController id="L11-P4-7bA" customClass="LoginController" customModule="Heart_Check" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L11-P4-7bA" customClass="LoginController" customModule="Heart_Failure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="18v-fI-9Me"/>
                         <viewControllerLayoutGuide type="bottom" id="MUe-WH-1aw"/>
@@ -765,6 +765,6 @@
         <image name="splash" width="320" height="569"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WwU-zQ-qbO"/>
+        <segue reference="cB6-dO-WgG"/>
     </inferredMetricsTieBreakers>
 </document>
