@@ -262,7 +262,8 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			self.showCVDAlert(title: alertTitle, message: alertDescription, actions: [navigateAction, cancelAction])
 			
 		} else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted {
-			
+			let alertDescription = "Please fill out the form \(model.riskFactors.title)"
+			showAlert(title: alertTitle, description: alertDescription, models: [model.riskFactors])
 		}
 			
 		// Removed because of task CVD-220 [IOS] Unable to compute evaluation

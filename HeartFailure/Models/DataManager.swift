@@ -291,7 +291,7 @@ class DataManager {
 			patient.setValue(evaluation!.bio.age.storedValue?.value, forKey: "patientAge")
 			patient.setValue(evaluation!.dateCreated, forKey: "dateCreated")
 			patient.setValue(evaluation!.dateCreated, forKey: "dateModified")
-			patient.setValue(evaluation!.evaluationUUID, forKey: "identifier")
+			patient.setValue(evaluation!.evaluationUUID, forKey: "evaluationUUID")
 			patient.setValue(currentDoctor?.loginName ?? "unknown", forKey: "doctorLoginName")
 			do {
 				let data = try JSONSerialization.data(withJSONObject: evaluation!.itemDict, options: .prettyPrinted) as NSData?
@@ -366,7 +366,7 @@ class DataManager {
 			patient.setValue(evaluation!.bio.age.storedValue?.value, forKey: "patientAge")
 			patient.setValue(evaluation!.dateCreated, forKey: "dateCreated")
 			patient.setValue(evaluation!.dateCreated, forKey: "dateModified")
-			patient.setValue(evaluation!.evaluationUUID, forKey: "identifier")
+			patient.setValue(evaluation!.evaluationUUID, forKey: "evaluationUUID")
 			patient.setValue(currentDoctor?.loginName ?? "unknown", forKey: "doctorLoginName")
 			
 			patient.setValue(String(DataManager.manager.getPAHValue()), forKey: "computeEvaluationRequestPAH")
@@ -652,7 +652,7 @@ class DataManager {
 					patient.setValue(patientJson["Name"].stringValue, forKey: "patientName")
 					patient.setValue(patientJson["createdate"].stringValue, forKey: "dateCreated")
 					patient.setValue(patientJson["createdate"].stringValue, forKey: "dateModified")
-					patient.setValue(patientJson["ID"].stringValue, forKey: "identifier")
+					patient.setValue(patientJson["ID"].stringValue, forKey: "evaluationUUID")
 					patient.setValue(self.currentDoctor?.loginName ?? "unknown", forKey: "doctorLoginName")
 				}
 			}
