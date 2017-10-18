@@ -49,30 +49,30 @@ class DataManager {
 		}
 		
 		let registerReq = RegisterRequest(name: doctorName, username: loginName, password: password, confirmPassword: password)
-		RestClient.client.register(registerRequest: registerReq, success: { (registerResponse) in
-			
-			if (registerResponse.isSuccess) {
+		RestClient.client.register(registerRequest: registerReq,
+			success: { (registerResponse) in
 				
-				let entity =  NSEntityDescription.entity(forEntityName: "Doctor", in: self.managedObjectContext)
-				let doc = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Doctor
-				doc.setValue(loginName, forKey: "loginName")
-				doc.setValue(password, forKey: "password")
-				doc.setValue(doctorName, forKey: "doctorName")
-				self.saveContext()
-				self.currentDoctor = doc
-				completionHandler("success", nil)
-				
-			} else {
-				let returnError: String = registerResponse.message
-				let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
-				completionHandler(nil, error)
-			}
+				if (registerResponse.isSuccess) {
+					let entity =  NSEntityDescription.entity(forEntityName: "Doctor", in: self.managedObjectContext)
+					let doc = NSManagedObject(entity: entity!, insertInto: self.managedObjectContext) as! Doctor
+					doc.setValue(loginName, forKey: "loginName")
+					doc.setValue(password, forKey: "password")
+					doc.setValue(doctorName, forKey: "doctorName")
+					self.saveContext()
+					self.currentDoctor = doc
+					completionHandler("success", nil)
+					
+				} else {
+					let returnError: String = registerResponse.message
+					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+					completionHandler(nil, error)
+				}
+												
+			}, failure: { (error) in
 			
-		}, failure: { (error) in
-			
-			let returnError: String = "This email was used for sign up"
-			let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
-			completionHandler(nil, error)
+				//let returnError: String = "This email was used for sign up"
+				//let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+				completionHandler(nil, error as NSError)
 		})
 	}
 	
@@ -91,7 +91,7 @@ class DataManager {
 			}
 			
 		}, failure: { (error) in
-			completionHandler(nil, NSError(domain: "RegisterManagerDomain", code: 501, userInfo: ["message" : error.localizedDescription]))
+			completionHandler(nil, error as NSError)
 			
 		})
 	}
@@ -177,9 +177,9 @@ class DataManager {
 					UserDefaults.standard.set(nil, forKey: "loginName")
 					UserDefaults.standard.synchronize()
 					
-					let returnError: String = "UserName or Password is incorrect"
-					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
-					completionHandler(nil, error)
+					//let returnError: String = "UserName or Password is incorrect"
+					//let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+					completionHandler(nil, error as NSError)
 					
 				}
 			)
@@ -223,9 +223,9 @@ class DataManager {
 					UserDefaults.standard.set(nil, forKey: "loginName")
 					UserDefaults.standard.synchronize()
 					
-					let returnError: String = "UserName or Password is incorrect"
-					let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
-					completionHandler(nil, error)
+					//let returnError: String = "UserName or Password is incorrect"
+					//let error = NSError(domain: "LoginManagerDomain", code: 501, userInfo: ["message" : returnError])
+					completionHandler(nil, error as NSError)
 				}
 			)
 		}
@@ -274,7 +274,7 @@ class DataManager {
 						saveContext()
 						
 					} catch let err as NSError {
-						//NSLog(err.localizedDescription)
+						print(err.localizedDescription)
 					}
 					
 					isFound = true
@@ -299,7 +299,7 @@ class DataManager {
 				patients?.append(patient)
 				saveContext()
 			} catch let err as NSError {
-				//NSLog(err.localizedDescription)
+				print(err.localizedDescription)
 			}
 		}
 	}
@@ -321,7 +321,7 @@ class DataManager {
 					return evaluation
 					
 				} catch let err as NSError {
-					//print("Error : \(err.localizedDescription)")
+					print(err.localizedDescription)
 				}
 			}
 		}
@@ -386,7 +386,7 @@ class DataManager {
 				patients?.append(patient)
 				saveContext()
 			} catch let err as NSError {
-				NSLog(err.localizedDescription)
+				print(err.localizedDescription)
 			}
 		}
 	}
@@ -471,7 +471,7 @@ class DataManager {
 				// Replace this implementation with code to handle the error appropriately.
 				// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 				let nserror = error as NSError
-				NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+				print("Unresolved error \(nserror), \(nserror.userInfo)")
 				abort()
 			}
 		}
@@ -501,7 +501,7 @@ class DataManager {
 			return array.count > 0 ? array : nil
 			
 		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			print("Could not fetch \(error), \(error.userInfo)")
 			return nil
 		}
 	}
@@ -527,7 +527,7 @@ class DataManager {
 			return array.count > 0 ? array[0] : nil
 			
 		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			print("Could not fetch \(error), \(error.userInfo)")
 			return nil
 		}
 	}
@@ -546,7 +546,7 @@ class DataManager {
 			self.saveContext()
 			
 		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			print("Could not fetch \(error), \(error.userInfo)")
 		}
 	}
 	
@@ -564,7 +564,7 @@ class DataManager {
 			self.saveContext()
 			
 		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			print("Could not fetch \(error), \(error.userInfo)")
 		}
 	}
 	
@@ -582,7 +582,7 @@ class DataManager {
 			patients = try managedContext.fetch(fetchRequest) as? [Patient]
 			
 		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			print("Could not fetch \(error), \(error.userInfo)")
 		}
 	}
 	
@@ -600,7 +600,7 @@ class DataManager {
 			savedPatients = try managedContext.fetch(fetchRequest) as? [Patient]
 			
 		} catch let error as NSError {
-			//print("Could not fetch \(error), \(error.userInfo)")
+			print("Could not fetch \(error), \(error.userInfo)")
 		}
 		
 		var deleteIndex: [String:Bool] = [String:Bool]()
@@ -738,7 +738,7 @@ class DataManager {
 							self.saveContext()
 							
 						} catch let err as NSError {
-							//NSLog(err.localizedDescription)
+							print(err.localizedDescription)
 						}
 						
 						break
@@ -860,7 +860,7 @@ class DataManager {
 				savedPatients = try managedContext.fetch(fetchRequest) as! [Patient]
 				
 			} catch let error as NSError {
-				//print("Could not fetch \(error), \(error.userInfo)")
+				print("Could not fetch \(error), \(error.userInfo)")
 			}
 			
 			let uuid = evaluation!.evaluationUUID
