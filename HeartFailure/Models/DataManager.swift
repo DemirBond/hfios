@@ -235,7 +235,7 @@ class DataManager {
 	}
 	
 	
-	func signOut() {
+	func signOut(completeHandler: @escaping (() -> Void) ) {
 		
 		let name = currentDoctor?.value(forKey: "loginName")
 		let doctors: [Doctor]? = fetchDoctor(loginName: name as! String)
@@ -251,6 +251,8 @@ class DataManager {
 		evaluation = nil
 		currentDoctor = nil
 		RestClient.client.isLoggedIn = false
+		
+		completeHandler();
 	}
 	
 	
