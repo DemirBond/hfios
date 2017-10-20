@@ -146,6 +146,7 @@
                     <connections>
                         <outlet property="codeField" destination="jFu-ZU-ktw" id="Akq-n7-KnF"/>
                         <outlet property="submitButton" destination="umw-2q-uBr" id="sBD-ca-mY2"/>
+                        <segue destination="L11-P4-7bA" kind="show" identifier="loginSegueID" id="oOp-rq-Dbg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13C-uD-EGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -765,6 +766,7 @@
         <image name="splash" width="320" height="569"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cB6-dO-WgG"/>
+        <segue reference="oOp-rq-Dbg"/>
+        <segue reference="WwU-zQ-qbO"/>
     </inferredMetricsTieBreakers>
 </document>
