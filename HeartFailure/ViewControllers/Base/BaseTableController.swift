@@ -91,6 +91,12 @@ class BaseTableController: UITableViewController, BuildAppearance, EvaluationEdi
 			cvdToolbar.sizeToFit()
 			self.toolbarItems = cvdToolbar.barItems
 			
+			self.navigationController?.toolbar.layer.shadowColor = UIColor(palette: ColorPalette.warmGrey)?.cgColor
+			self.navigationController?.toolbar.layer.shadowOffset = CGSize(width: 1.0, height: -2.0)
+			self.navigationController?.toolbar.layer.shadowRadius = 2.0
+			self.navigationController?.toolbar.layer.shadowOpacity = 0.8
+			self.navigationController?.toolbar.layer.masksToBounds = false
+			
 		}
 		
 		// get  User Interface Info
