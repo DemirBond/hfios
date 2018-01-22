@@ -168,6 +168,8 @@ class BioController: BaseTableController, NVActivityIndicatorViewable { //, UITa
 	
 	
 	override func leftButtonAction(_ sender: UIBarButtonItem) {
+		self.hideKeyboard()
+		
 		if (DataManager.manager.evaluation?.isSaved)! {
 			DataManager.manager.evaluation?.evaluationStatus = .evaluated
 		}

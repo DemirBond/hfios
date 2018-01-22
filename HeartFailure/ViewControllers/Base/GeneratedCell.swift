@@ -165,6 +165,12 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			self.backgroundColor = UIColor(palette: ColorPalette.lighterPurple)
 			//self.backgroundColor = UIColor(palette: ColorPalette.white)
 		}
+		
+		// PHILLIPs if itemtype is label then change to requested background color.
+		if cellModel.form.itemType == .label {
+			self.backgroundColor = UIColor(palette: ColorPalette.hanPurple)
+		}
+		
 		let title = cellModel?.title ?? ""
 		self.titleLabel?.text = title + (isMandatory ? "*" : "")
 		
@@ -446,6 +452,18 @@ class CheckBoxCell: GeneratedCell {
 		super.updateCell()
 		self.icon?.image = isCheckedButton ? UIImage(named: "checkDown") : UIImage(named: "checkUp")
 		self.icon?.highlightedImage = isCheckedButton ? UIImage(named: "checkDownPressed") : UIImage(named: "checkUpPressed")
+
+		// PHILLIPs Set for radio button disclosure fix
+//		if cellModel.storedValue?.reopenedFromSave == true && cellModel.storedValue?.isChecked == true {
+//			guard let loop = cellModel.storedValue?.looped else {
+//				return
+//			}
+//			cellModel.storedValue?.looped += 1;
+//			if loop == 1 {
+//				isCheckedButton = true
+//				cellModel.storedValue?.reopenedFromSave = false
+//			}
+//		}
 	}
 	
 	@IBAction func pressActionDown(_ sender: UIButton) {
@@ -533,6 +551,10 @@ class DisclosureControlCellExpandable:  DisclosureControlCell {
 			subCellModelOne = theitems[0]
 			self.subLabelOne?.text = subCellModelOne?.title
 			self.subLabelOne?.font = CVDStyle.style.currentFont
+			
+			if subCellModelOne?.storedValue?.isChecked == true {
+				updateCellOne()
+			}
 		}
 		
 		if(cellModel.subCellsCount == 2) {
@@ -542,6 +564,14 @@ class DisclosureControlCellExpandable:  DisclosureControlCell {
 			self.subLabelTwo?.text = subCellModelTwo?.title
 			self.subLabelOne?.font = CVDStyle.style.currentFont
 			self.subLabelOne?.font = CVDStyle.style.currentFont
+			
+			if subCellModelOne?.storedValue?.isChecked == true {
+				updateCellOne()
+			}
+			if subCellModelTwo?.storedValue?.isChecked == true {
+				updateCellTwo()
+			}
+			
 		}
 		
 		if(cellModel.subCellsCount == 3) {
@@ -554,6 +584,17 @@ class DisclosureControlCellExpandable:  DisclosureControlCell {
 			self.subLabelOne?.font = CVDStyle.style.currentFont
 			self.subLabelTwo?.font = CVDStyle.style.currentFont
 			self.subLabelThree?.font = CVDStyle.style.currentFont
+			
+			if subCellModelOne?.storedValue?.isChecked == true {
+				updateCellOne()
+			}
+			if subCellModelTwo?.storedValue?.isChecked == true {
+				updateCellTwo()
+			}
+			if subCellModelThree?.storedValue?.isChecked == true {
+				updateCellThree()
+			}
+			
 		}
 
 	}
@@ -867,6 +908,8 @@ class DisclosureSimpleCellExpandable: GeneratedCell { // GeneratedCell {
 		self.iconTwo?.image = isCheckedButtonTwo ? UIImage(named: "radioDown") : UIImage(named: "radioUp")
 		self.iconTwo?.highlightedImage = isCheckedButtonTwo ? UIImage(named: "radioDownPressed") : UIImage(named: "radioUpPressed")
 		
+		
+		
 	}
 	
 	
@@ -1032,7 +1075,7 @@ class LabelCell: GeneratedCell {
 	override func setupCell() {
 		super.setupCell()
 //		self.titleLabel?.textColor = CVDStyle.style.subtitleColor
-		self.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CVDStyle.style.currentFont.pointSize)!
+		self.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: CVDStyle.style.currentFont.pointSize)!
 	}
 }
 
@@ -1100,8 +1143,8 @@ class OutputResultsCell: GeneratedCell {
 		//self.titleLabel?.font = CVDStyle.style.fonts.last
 		//self.subtitleLabel?.font = CVDStyle.style.fonts.first
 		//self.subtitleLabel?.textColor = CVDStyle.style.subtitleColor
-		self.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 24.0)
-		self.subtitleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 19.0)
+		self.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 24.0)
+		self.subtitleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 19.0)
 		self.subtitleLabel?.textColor = CVDStyle.style.defaultFontColor
 	}
 }

@@ -82,7 +82,7 @@ class TextItemStyle {
 	class var fontSize:  CGFloat { return 17.0 }
 	class var fontColor: UIColor { return UIColor(palette: ColorPalette.almostBlack)! }
 	class var tintColor: UIColor { return UIColor(palette: ColorPalette.lighterPurple)! }
-	class var fontName:  String? { return "HelveticaNeue-Medium" }
+	class var fontName:  String? { return "OpenSans-SemiBold" }
 
 	class var textFont: UIFont {
 		if nil != fontName {
@@ -145,7 +145,7 @@ class CVDStyle {
 	
 	static var style = CVDStyle()
 	
-	let defaultFontName: String = "HelveticaNeue-Medium"
+	let defaultFontName: String = "OpenSans-SemiBold"
 	let defaultFontSize: CGFloat = 17.0
 	let defaultFontColor = UIColor(palette: ColorPalette.almostBlack)!
 	let subtitleColor = UIColor(palette: ColorPalette.spanishGray)!

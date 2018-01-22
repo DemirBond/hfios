@@ -13,6 +13,7 @@
 		78BF73EF1E3F640F0040EC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78BF73EE1E3F640F0040EC81 /* Assets.xcassets */; };
 		78BF73FD1E3F640F0040EC81 /* HeartFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF73FC1E3F640F0040EC81 /* HeartFailureTests.swift */; };
 		78BF74081E3F640F0040EC81 /* HeartFailureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */; };
+		958A867D201194CB001A4F05 /* Open_Sans in Resources */ = {isa = PBXBuildFile; fileRef = 958A867C201194CB001A4F05 /* Open_Sans */; };
 		BA2EF1F81F6CA35E00098BC0 /* HeartFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1F71F6CA35E00098BC0 /* HeartFailure.swift */; };
 		BA2EF1FA1F6CA91C00098BC0 /* CoronaryHeartDisease.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1F91F6CA91C00098BC0 /* CoronaryHeartDisease.swift */; };
 		BA2EF1FC1F6CA96700098BC0 /* AtrialFibrilation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2EF1FB1F6CA96700098BC0 /* AtrialFibrilation.swift */; };
@@ -128,6 +129,7 @@
 		78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartFailureUITests.swift; sourceTree = "<group>"; };
 		78BF74091E3F640F0040EC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78BF74171E3F690F0040EC81 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
+		958A867C201194CB001A4F05 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Open_Sans; sourceTree = "<group>"; };
 		B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartFailure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2EF1F71F6CA35E00098BC0 /* HeartFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartFailure.swift; sourceTree = "<group>"; };
 		BA2EF1F91F6CA91C00098BC0 /* CoronaryHeartDisease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaryHeartDisease.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 		BA49CD341F33A71D0040060A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				958A867C201194CB001A4F05 /* Open_Sans */,
 				78BF74161E3F68EA0040EC81 /* Resources */,
 				789268A31E6478C80018FEF5 /* Evaluation.xcdatamodeld */,
 				78BF73F31E3F640F0040EC81 /* Info.plist */,
@@ -640,8 +643,8 @@
 				TargetAttributes = {
 					78BF73E31E3F640F0040EC81 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 34A2LRNN4X;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 2HKB4E2646;
+						ProvisioningStyle = Automatic;
 					};
 					78BF73F71E3F640F0040EC81 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -683,6 +686,7 @@
 				BADA70541F7662EE00B83DC4 /* KBNumberPad.xib in Resources */,
 				BAFC129D1F6B79E600EF37FB /* Output.storyboard in Resources */,
 				BAFC129B1F6B79E600EF37FB /* Main.storyboard in Resources */,
+				958A867D201194CB001A4F05 /* Open_Sans in Resources */,
 				BAFC129C1F6B79E600EF37FB /* Medical.storyboard in Resources */,
 				BADA70531F7662E900B83DC4 /* KBNumberPad.xcassets in Resources */,
 				BA49CD171F33A62D0040060A /* TextSizeView.xib in Resources */,
@@ -1044,8 +1048,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Demir Bay (34A2LRNN4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Demir Bay (34A2LRNN4X)";
-				DEVELOPMENT_TEAM = 34A2LRNN4X;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HKB4E2646;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1058,8 +1063,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.superlight.HeartFailure;
 				PRODUCT_NAME = "Heart Failure";
-				PROVISIONING_PROFILE = "a79c4d29-69f6-4cd1-b8ee-66ad0a86bd70";
-				PROVISIONING_PROFILE_SPECIFIER = HF_AdHoc_Profile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1070,8 +1075,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Demir Bay (34A2LRNN4X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Demir Bay (34A2LRNN4X)";
-				DEVELOPMENT_TEAM = 34A2LRNN4X;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HKB4E2646;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1084,8 +1090,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.superlight.HeartFailure;
 				PRODUCT_NAME = "Heart Failure";
-				PROVISIONING_PROFILE = "a79c4d29-69f6-4cd1-b8ee-66ad0a86bd70";
-				PROVISIONING_PROFILE_SPECIFIER = HF_AdHoc_Profile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -34,7 +34,7 @@ struct MenuButton {
 		self.button.setTitle(action.title, for: UIControlState.normal)
 		self.button.setTitleColor(textColor, for: UIControlState.normal)
 		self.button.setTitleColor(highlightedColor, for: UIControlState.highlighted)
-		self.button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 16)
+		self.button.titleLabel?.font = UIFont(name: "OpenSans", size: 16)
 		self.button.addTarget(target, action: #selector(SideMenuController.buttonAction), for: UIControlEvents.touchUpInside)
 	}
 }

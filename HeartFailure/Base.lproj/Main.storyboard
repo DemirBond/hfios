@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F7d-dA-IAq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F7d-dA-IAq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue-Medium</string>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
         </array>
     </customFonts>
     <scenes>
@@ -35,7 +37,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="09A-b8-v3l"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -44,7 +46,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="XxU-zq-akl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -54,7 +56,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123 456" borderStyle="roundedRect" placeholder="XXXXX" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFu-ZU-ktw" userLabel="Verification Code">
                                                 <rect key="frame" x="20" y="6" width="335" height="38"/>
                                                 <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="YZH-HD-ix9" id="3tn-6m-K8X"/>
@@ -80,7 +82,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="4Am-HI-wgO"/>
                                                     <constraint firstAttribute="width" constant="200" id="cbM-dn-alu"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                 <state key="normal" title="Submit">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -102,7 +104,7 @@
                                             <constraint firstAttribute="height" constant="40" id="0a2-cJ-cdb"/>
                                             <constraint firstAttribute="width" constant="258" id="dQ2-E3-986"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="Cannot Sign In? - Contact Administrator">
                                             <color key="titleColor" white="0.39958147319999998" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -173,7 +175,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="fjf-yN-8Al"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -182,7 +184,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="rx4-BD-Oay"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -192,7 +194,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email, Phone or Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lME-Va-J0Z" userLabel="User Name label">
                                                 <rect key="frame" x="20" y="6" width="335" height="38"/>
                                                 <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="uYr-7V-ok0" id="TgX-Wt-dNu"/>
@@ -218,7 +220,7 @@
                                                     <constraint firstAttribute="width" constant="200" id="bWJ-dc-Wlh"/>
                                                     <constraint firstAttribute="height" constant="40" id="kKQ-cc-oaV"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                 <state key="normal" title="Submit">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -240,7 +242,7 @@
                                             <constraint firstAttribute="height" constant="40" id="5fL-J6-wjf"/>
                                             <constraint firstAttribute="width" constant="303" id="XF1-q4-Zoo"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <state key="normal" title="Cannot reset account? - Contact Administrator">
                                             <color key="titleColor" white="0.39958147319999998" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -324,7 +326,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="RTg-rX-AI0"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4Ak-r5-MBg" id="nAp-dY-ImA"/>
@@ -343,7 +345,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="jWe-Ea-DcC"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4Ak-r5-MBg" id="Lic-dX-NWA"/>
@@ -362,7 +364,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="YBM-Px-QRa"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4Ak-r5-MBg" id="0y8-cI-Fbl"/>
@@ -381,7 +383,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="ks5-3Q-hGX"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4Ak-r5-MBg" id="9nk-HY-z5s"/>
@@ -401,7 +403,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="gjQ-FO-jli"/>
                                                             <constraint firstAttribute="width" constant="200" id="zjy-9V-8Ga"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                                         <state key="normal" title="REGISTER">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -415,7 +417,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="FgQ-81-RAS"/>
                                                             <constraint firstAttribute="height" constant="40" id="sIE-os-bw6"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Already a member? Login">
                                                             <color key="titleColor" white="0.39958147319999998" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -603,7 +605,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="0N7-zV-Ky6"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="L11-P4-7bA" id="lZK-Nn-02i"/>
@@ -622,7 +624,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="EAg-Xt-2j4"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.1215686275" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="L11-P4-7bA" id="HqX-mc-NBk"/>
@@ -642,7 +644,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="MiJ-uy-JS5"/>
                                                             <constraint firstAttribute="height" constant="40" id="jwM-09-ayk"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                                         <state key="normal" title="LOGIN">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -656,7 +658,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="JXh-jG-BTl"/>
                                                             <constraint firstAttribute="height" constant="40" id="XAe-Of-CsI"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="No account yet? Create one">
                                                             <color key="titleColor" white="0.39958147319999998" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -671,7 +673,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="36F-HQ-Kva"/>
                                                             <constraint firstAttribute="width" constant="200" id="mPi-qc-HFn"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Forgot password?">
                                                             <color key="titleColor" white="0.39958147319999998" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>

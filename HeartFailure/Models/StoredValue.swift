@@ -18,6 +18,11 @@ class StoredValue {
 	let isMandatory: Bool
 	var radioGroup: RadioGroup?
 	
+	//PHILLIP's reopened Set for radio disclosure expandable bug
+//	var reopenedFromSave: Bool = false
+//	var looped = 0
+//
+	
 	var isFilled: Bool {
 		return isMandatory == false || isMandatory && value != nil
 	}

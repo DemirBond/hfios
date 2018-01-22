@@ -12,6 +12,9 @@ class Output: EvaluationItem {
 	let outputCell = EvaluationItem(literal: OutputPresentation.outputSampleCell)
 	let resultOutput = EvaluationItem(literal: OutputPresentation.resultOutputCaution)
 	
+	// PHILLIPS edit. added assesment
+	let assessmentResult = EvaluationItem(literal: OutputPresentation.assessmentOutput)
+	
 	let diagnosticsResult = EvaluationItem(literal: OutputPresentation.diagnosticsResult)
 	let therapeuticsResult =  EvaluationItem(literal: OutputPresentation.therapeuticsResult)
 	let icd10Result = EvaluationItem(literal: OutputPresentation.icd10Result)
@@ -28,6 +31,11 @@ class Output: EvaluationItem {
 		resultItems.append(partnerCard)
 		
 		for (_,_) in outputs {
+			//PHILLIPS Fixme. Added assessment outputs
+			if (outputs["Assessment"])! {
+				self.resultItems.append(assessmentResult)
+			}
+			
 			if(outputs["Diagnostics"])!{
 				self.resultItems.append(diagnosticsResult)
 			}
@@ -51,6 +59,7 @@ class Output: EvaluationItem {
 		return [
 			//resultOutput,
 			//partnerCard,
+			assessmentResult,
 			diagnosticsResult,
 			therapeuticsResult,
 			icd10Result,

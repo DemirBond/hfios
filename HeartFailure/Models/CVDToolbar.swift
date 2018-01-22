@@ -45,7 +45,7 @@ class CVDToolbar: UIToolbar {
 			
 			let button = UIButton(frame: CGRect(x: 24, y: 0, width: screenSize.width - 80, height: 56) )
 			button.setTitle(rightBottom, for: .normal)
-			button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 19)
+			button.titleLabel?.font = UIFont(name: "OpenSans", size: 19)
 			button.setTitleColor(UIColor(palette: ColorPalette.lighterPurple), for: UIControlState.normal)
 			//button.backgroundColor = UIColor(palette: ColorPalette.lighterPurple)
 			//button.layer.cornerRadius = 5

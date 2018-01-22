@@ -89,21 +89,21 @@ struct Presentation {
 	//
 	// MARK: - Bio: https://zpl.io/27Yx0I
 	//
-	static let name = 		"#id:name|      #title:Name|      #type:#textLeft |  #placeholder: Patient Name  | #maxLength: 50 | #mandatory: 1"
-	static let age = 			"#id:age |      #title:Age|       #type:#integerLeft|   #min:20|  #max:100| #placeholder: Patient Age | #mandatory: 1"
+	static let name = 		"#id:name|      #title:Name|      #type:#textLeft | #maxLength: 50 | #mandatory: 1"
+	static let age = 			"#id:age |      #title:Age|       #type:#integerLeft|   #min:20|  #max:100| #mandatory: 1"
 	//static let gender = 		"#id:gender|    #title:Gender*|    #type:#disclosureSimple | #height: 60"
 	static let gender = 		"#id:gender|    #title:Gender|    #type:#disclosureSimpleExpandable | #height: 60 | #mandatory: 1"
-	static let bmi = 		"#id:txtBMI|    #title:BMI|    #type:#integerLeft|   #min:10.0|  #max:50.0| #placeholder: BMI Value"
-	static let weight = 		"#id:weight|    #title:Weight|    #type:#integerLeft|   #min:40|  #max:400| #placeholder: Weight/kg"
-	static let heartRate = 	"#id:HR| #title:Heart Rate| #type:#integerLeft| #min:30|  #max:300| #placeholder: Heart Rate"
-	static let bioSBP = 		"#id:sbp|       #title:SBP|  #type:#decimalLeft| #min:60|  #max:300| #placeholder: SBP mmHg | #mandatory: 1"
-	static let bioDBP = 		"#id:dbp|       #title:DBP|  #type:#decimalLeft| #min:30|  #max:160| #placeholder: DBP mmHg | #mandatory: 1"
-	static let bioOrthostaticSBP = 		"#id:OrthostaticSBP|       #title:Orthostatic SBP|  #type:#decimalLeft| #min:0|  #max:240| #placeholder: DBP mmHg"
+	static let bmi = 		"#id:txtBMI|    #title:BMI|    #type:#integerLeft|   #min:10.0|  #max:50.0"
+	static let weight = 		"#id:weight|    #title:Weight|    #type:#integerLeft|   #min:40|  #max:400"
+	static let heartRate = 	"#id:HR| #title:Heart Rate| #type:#integerLeft| #min:30|  #max:300"
+	static let bioSBP = 		"#id:sbp|       #title:SBP|  #type:#decimalLeft| #min:60|  #max:300| #mandatory: 1"
+	static let bioDBP = 		"#id:dbp|       #title:DBP|  #type:#decimalLeft| #min:30|  #max:160 | #mandatory: 1"
+	static let bioOrthostaticSBP = 		"#id:txtOrthostaticSBP|       #title:Orthostatic SBP|  #type:#decimalLeft| #min:0|  #max:240"
 	static let bioOrthostaticSymptoms = "#id:chkSymptomatic|    #title:Orthostatic Symptoms | #type:#check"
-	static let bioWaistCirc = "#id:waist | #title:Waist Circ. |  #type:#decimalLeft| #min:20|  #max:60| #placeholder: DBP mmHg "
+	static let bioWaistCirc = "#id:waist | #title:Waist Circ. |  #type:#decimalLeft| #min:20|  #max:60"
 	static let bioAA = "#id:chkAsianCode  |  #title:AA |    #type:#check"
 	static let bioPregnancy = "#id:chkpreg |    #title:Pregnancy |    #type:#check"
-	static let bioO2sat = "#id:txtO2sat | #title:RA O2 sat |  #type:#decimalLeft| #min:50|  #max:100| #placeholder: O2sat% "
+	static let bioO2sat = "#id:txtO2sat | #title:RA O2 sat |  #type:#decimalLeft| #min:50|  #max:100"
 	
 	// Bio -> Gender: https://zpl.io/Z16UrC4
 	static let male = 		"#id:male|    #title:Male|    #type:#radio | #group: (male, female)"

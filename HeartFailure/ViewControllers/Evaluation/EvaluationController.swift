@@ -117,7 +117,11 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 		switch model.evaluationStatus {
 			case .initialized:
 				lockItems(array: [model.riskFactors, model.laboratories, model.diagnostics])
-			
+		// PHILLIPS FIXME: This is phillips edit to push user to Bio Page when new evaluation is set
+				let storyboard = UIStoryboard(name: "Medical", bundle: nil)
+				let controller = storyboard.instantiateViewController(withIdentifier: "BioControllerID") as! BioController
+				controller.pageForm = DataManager.manager.evaluation!.items[0]
+				self.navigationController?.pushViewController(controller, animated: true)
 			case .bioViewed:
 				()
 			
