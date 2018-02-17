@@ -17,8 +17,8 @@ class HeartSpecialistManagement: EvaluationItem {
 	let pah = PAH(literal: Presentation.pah)
 	let valvularInHSM = Valvular(literal: Presentation.valvularInHSM)
 	let advancedLHF = AdvancedLHF(literal: Presentation.advancedLHF)
-	let echocardiographyInHSM = EchocardiographyInHSM(literal: Presentation.echocardiographyInHSM)
-	let laboratoryEKG = LaboratoryEKG(literal: Presentation.laboratoryEKG)
+	//let echocardiographyInHSM = EchocardiographyInHSM(literal: Presentation.echocardiographyInHSM)
+	//let laboratoryEKG = LaboratoryEKG(literal: Presentation.laboratoryEKG)
 	let rhcInHSM = RHCInHSM(literal: Presentation.rhcInHSM)
 	
 	override var items: [EvaluationItem] {
@@ -27,8 +27,8 @@ class HeartSpecialistManagement: EvaluationItem {
 			pah,
 			valvularInHSM,
 			advancedLHF,
-			echocardiographyInHSM,
-			laboratoryEKG,
+//			echocardiographyInHSM,
+//			laboratoryEKG,
 			rhcInHSM
 		]
 	}
@@ -552,13 +552,33 @@ class AdvancedLHF: EvaluationItem {
 	//	ddOnsetMonth
 	//	ddOnsetYear
 	
+	let echocardiographyInHSM = EchocardiographyInHSM(literal: Presentation.echocardiographyInHSM)
+	let laboratoryEKG = LaboratoryEKG(literal: Presentation.laboratoryEKG)
+	
+	let blncara = EvaluationItem(literal: HMS.blncara)
+	let blnacea = EvaluationItem(literal: HMS.blnacea)
+	let blnCID = EvaluationItem(literal: HMS.blnCID)
+	let blnIID = EvaluationItem(literal: HMS.blnIID)
+	
+	let seperator = EvaluationItem(literal: Presentation.separator)
+	
 	override var items: [EvaluationItem] {
 		return [
 			blnHF,
-			blnnewHF,
-			ddOnsetMonthYear
+			echocardiographyInHSM,
+			laboratoryEKG,
+			seperator,
+			blncara,
+			blnacea,
+			blnCID,
+			blnIID,
+			
+			//blnnewHF,
+			//ddOnsetMonthYear
 			//	ddOnsetMonth
 			//	ddOnsetYear
+			
+			
 		]
 	}
 }
@@ -567,6 +587,8 @@ class AdvancedLHF: EvaluationItem {
 // MARK: - HMS -> Advanced LHF -> Heart Failure
 
 class HeartFailureInHMS: EvaluationItem {
+	
+	let heartfailureDuration = HFduration(literal: HMS.heartfailureDuration)
 	
 	let txtdur = EvaluationItem(literal: HMS.txtdur)
 	let blnD1 = EvaluationItem(literal: HMS.blnD1)
@@ -586,6 +608,27 @@ class HeartFailureInHMS: EvaluationItem {
 	let arrthymias = Arrthymias(literal: HMS.arrthymias)
 	let homeTherapeutics = HomeTherapeutics(literal: HMS.homeTherapeutics)
 	let therapeutics = Therapeutics(literal: HMS.therapeutics)
+	
+	class HFduration: EvaluationItem {
+		let atxtdur = EvaluationItem(literal: HMS.txtdur)
+		let ablnD1 = EvaluationItem(literal: HMS.blnD1)
+		let ablnD2 = EvaluationItem(literal: HMS.blnD2)
+		let ablnD3 = EvaluationItem(literal: HMS.blnD3)
+		
+		let blnCRTI = EvaluationItem(literal: HMS.blnCRTI)
+		
+		override var items: [EvaluationItem] {
+			return [
+				atxtdur,
+				blnCRTI,
+				
+				ablnD1,
+				ablnD2,
+				ablnD3
+			]
+		}
+		
+	}
 	
 	class Clinics: EvaluationItem {
 		
@@ -825,10 +868,10 @@ class HeartFailureInHMS: EvaluationItem {
 				blnIABP,
 				blnTPM,
 				blnVAD,
-				blncara,
-				blnacea,
-				blnCID,
-				blnIID
+//				blncara,
+//				blnacea,
+//				blnCID,
+//				blnIID
 			]
 		}
 	}
@@ -919,17 +962,20 @@ class HeartFailureInHMS: EvaluationItem {
 	
 	override var items: [EvaluationItem] {
 		return [
-			txtdur,
-			blnD1,
-			blnD2,
-			blnD3,
+//			txtdur,
+//			blnD1,
+//			blnD2,
+//			blnD3,
 			//blnD4,
 			//blnD5,
 			//blnD6,
-			blnHFPLVF,
-			blnfoutpt,
-			blnLVEF,
-			blnCRTI,
+			
+			heartfailureDuration,
+			
+			//blnHFPLVF,
+			//blnfoutpt,
+			//blnLVEF,
+			//blnCRTI,
 			clinics,
 			etiology,
 			stageClass,

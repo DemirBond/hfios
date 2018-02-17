@@ -49,7 +49,7 @@ class History : EvaluationItem {
 	let chestpain = EvaluationItem(literal: Presentation.chestpain)
 	let weightgain = EvaluationItem(literal: Presentation.weightGain)
 	let dyspneaonexe = Dyspneaonexe(literal: Presentation.dyspneaonexe)
-	let dyspneaatrest = EvaluationItem(literal: Presentation.dyspneaAtRestOrphopnea)
+	let dyspneaatrest = DyspneaonRest(literal: Presentation.dyspneaAtRestOrphopnea)
 	let spicd = EvaluationItem(literal: Presentation.spicd)
 	let spbivppm = EvaluationItem(literal: Presentation.spbivppm)
 	let spppmrv = EvaluationItem(literal: Presentation.spppmrv)
@@ -81,13 +81,38 @@ class Dyspneaonexe : EvaluationItem {
 	let class2 = EvaluationItem(literal: Presentation.class2)
 	let class3 = EvaluationItem(literal: Presentation.class3)
 	
+	let seperator = EvaluationItem(literal: Presentation.separator)
+	
+	let NYHACCSVClass1 = EvaluationItem(literal: Presentation.nyhaccvsClass1)
+	let NYHACCSVClass2 = EvaluationItem(literal: Presentation.nyhaccvsClass2)
+	let NYHACCSVClass3 = EvaluationItem(literal: Presentation.nyhaccvsClass3)
+	
 	override var items: [EvaluationItem]{
 		return [
 			class1,
 			class2,
-			class3
+			class3,
+			
+			seperator,
+			
+			NYHACCSVClass1,
+			NYHACCSVClass2,
+			NYHACCSVClass3
+			
 		]
 	}
+}
+
+class DyspneaonRest: EvaluationItem {
+	let NYHACCSVClass4 = EvaluationItem(literal: Presentation.nyhaccvsClass4)
+	
+	override var items: [EvaluationItem] {
+		return [
+		NYHACCSVClass4,
+		
+		]
+	}
+	
 	
 }
 

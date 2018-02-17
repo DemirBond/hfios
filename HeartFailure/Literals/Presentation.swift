@@ -95,7 +95,7 @@ struct Presentation {
 	static let gender = 		"#id:gender|    #title:Gender|    #type:#disclosureSimpleExpandable | #height: 60 | #mandatory: 1"
 	static let bmi = 		"#id:txtBMI|    #title:BMI|    #type:#integerLeft|   #min:10.0|  #max:50.0"
 	static let weight = 		"#id:weight|    #title:Weight|    #type:#integerLeft|   #min:40|  #max:400"
-	static let heartRate = 	"#id:HR| #title:Heart Rate| #type:#integerLeft| #min:30|  #max:300"
+	static let heartRate = 	"#id:txtHR| #title:Heart Rate| #type:#integerLeft| #min:30|  #max:300"
 	static let bioSBP = 		"#id:sbp|       #title:SBP|  #type:#decimalLeft| #min:60|  #max:300| #mandatory: 1"
 	static let bioDBP = 		"#id:dbp|       #title:DBP|  #type:#decimalLeft| #min:30|  #max:160 | #mandatory: 1"
 	static let bioOrthostaticSBP = 		"#id:txtOrthostaticSBP|       #title:Orthostatic SBP|  #type:#decimalLeft| #min:0|  #max:240"
@@ -134,15 +134,15 @@ struct Presentation {
 	static let chestpain = "#id:chkTA |    #title:Chest Pain | #type: #check"
 	static let weightGain = "#id:chkWeight|    #title:Weight Gain|    #type:#check"
 	static let dyspneaonexe = "#id:chkDOE | #title:Dyspnea on exertion | #type:#disclosureControl"
-	static let dyspneaAtRestOrphopnea = "#id:chkdysp|    #title:Dyspnea at Rest|    #type:#check"
+	static let dyspneaAtRestOrphopnea = "#id:chkdysp|    #title:Dyspnea at Rest|    #type:#disclosureControlExpandable"
 	static let spicd = "#id:chkICD |    #title:S/P AICD|    #type:#check"
 	static let spbivppm = "#id:chkCRTI |    #title:S/P BIVPACER | #type: #check"
 	static let spppmrv = "#id:chkPPM |    #title:S/P PPM RV LEAD ONLY | #type: #check"
 	
 	// Heart Failure -> History -> Dyspneaonexe
-	static let class1 = "#id:chkclass1 |    #title:Dyspnea on strenous exertion | #type: #check"
-	static let class2 = "#id:chkclass2 |    #title:Dyspnea on more than routine activities | #type: #check"
-	static let class3 = "#id:chkclass3 |    #title:Dyspnea on minimun activities | #type: #check"
+	static let class1 = "#id:chkclass1 |    #title:Dyspnea on strenous exertion | #type: #radio | #group:(chkclass1, chkclass2, chkclass3)"
+	static let class2 = "#id:chkclass2 |    #title:Dyspnea on more than routine activities | #type: #radio | #group:(chkclass1, chkclass2, chkclass3)"
+	static let class3 = "#id:chkclass3 |    #title:Dyspnea on minimun activities | #type: #radio | #group:(chkclass1, chkclass2, chkclass3)"
 	
 	// Heart Failure -> Etiology
 	static let idiopathicDCMNonischemic = "#id:chkNonischemicCMP | #title:Idiopathic/DCM/Nonischemic | #type:#check"
@@ -199,9 +199,9 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let structuralHeartDeseaseNoSymptoms = "#id:chkB| #title:Structural Heart Disease, but without signs/symptoms of HF|    #type:#check"
 	static let structuralHeartDeseaseSymptoms = "#id:chkC| #title:Structural Heart Diseasewith prior or current symptoms of HF|    #type:#check"
 	static let advancedHF = "#id:chkadvancedHF | #title:Advanced HF | #type:#disclosureControl"
-	static let nyhaccvsClass1 = "#id:chkNYHA1 | #title: NYHA/CCVS Class 1 | #type:#check"
-	static let nyhaccvsClass2 = "#id:chkNYHA2 | #title: NYHA/CCVS Class 2 | #type:#check"
-	static let nyhaccvsClass3 = "#id:chkNYHA3 | #title: NYHA/CCVS Class 3 | #type:#check"
+	static let nyhaccvsClass1 = "#id:chkNYHA1 | #title: NYHA/CCVS Class 1 | #type:#radio | #group: (chkNYHA1, chkNYHA2, chkNYHA3)"
+	static let nyhaccvsClass2 = "#id:chkNYHA2 | #title: NYHA/CCVS Class 2 | #type:#radio | #group: (chkNYHA1, chkNYHA2, chkNYHA3)"
+	static let nyhaccvsClass3 = "#id:chkNYHA3 | #title: NYHA/CCVS Class 3 | #type:#radio | #group: (chkNYHA1, chkNYHA2, chkNYHA3)"
 	static let nyhaccvsClass4 = "#id:chkNYHA4 | #title: NYHA/CCVS Class 4 | #type:#check"
 	
 	// Heart Failure -> AHAStage -> AdvancedHF
@@ -446,7 +446,7 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	//
 	// MARK: - Bradyarrthymia
 	//
-	static let clinicalSynscopeBradyarrthymia = "#id:clinicalSynscope | #title:Clinical Synscope | #type:#check"
+	static let clinicalSynscopeBradyarrthymia = "#id:chksyncope | #title:Clinical Synscope | #type:#check"
 	static let symptomaticSinusNodeDysfunction = "#id:chkSinusNodeDysfunction | #title:Symptomatic Sinus Node Dysfunction | #type:#check"
 	static let highGradeAVNodeDisease = "#id:chkAVNodeDisease | #title:High Grade AV Node Disease | #type:#check"
 	static let isolatedNeurocardionegicUnexplainedSyncope = "#id:chkVasoDepressorSyncope | #title:Isolated Neurocardionegic / Unexplained Syncope | #type:#check"
@@ -674,8 +674,8 @@ static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight| 
 	static let pah = "#id:pah | #title:PAH | #type:#disclosureWeather"
 	static let valvularInHSM = "#id:valvularInHSM | #title:Valvular | #type:#disclosureWeather"
 	static let advancedLHF = "#id:advancedLHF | #title:Advanced LHF | #type:#disclosureWeather"
-	static let echocardiographyInHSM = "#id:echocardiographyInHSM | #title:Echocardiography | #type:#disclosureWeather"
-	static let laboratoryEKG = "#id:laboratoryEKG | #title:Laboratory/EKG | #type:#disclosureWeather"
+	static let echocardiographyInHSM = "#id:echocardiographyInHSM | #title:Echocardiography | #type:#disclosureControl"
+	static let laboratoryEKG = "#id:laboratoryEKG | #title:Laboratory/EKG | #type:#disclosureControl"
 	static let rhcInHSM = "#id:rhcInHSM | #title:RHC | #type:#disclosureWeather"
 	
 	static let pah1 = "#id:pah1 | #title:Page 1 | #type:#segment"

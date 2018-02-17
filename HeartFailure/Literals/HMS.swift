@@ -56,6 +56,8 @@ struct HMS {
 	static let txt6MWT = "#id:txt6MWT | #title:6MW Distance | #type:#integerRight | #min:50 | #max:600 | #placeholder:  "
 	static let TxtVO2 = "#id:TxtVO2 | #title:Max VO² mg/kg/min | #type:#integerRight | #min:6 | #max:40 | #placeholder:  "
 	
+	static let heartfailureDuration = "#id:heartfailureDuration| #title:Heart Failure Duration| #type:#disclosureControl"
+	
 	// Main -> PAH 1
 	static let txtSVR = "#id:txt6MWT | #title:6MW Distance | #type:#integerRight | #min:50 | #max:500 | #placeholder:  "
 	static let blnCongenita = "#id:chkCongenita | #title:Congenital | #type:#disclosureControl"
@@ -210,16 +212,16 @@ struct HMS {
 	// Advanced LHF -> Heart Failure
 	static let txtdur = "#id:txtdur| #title:Heart Failure Duration/Week | #type:#integerRight | #min:0 | #max:9999 | #placeholder: "
 	
-	static let blnD1 = "#id:chkD1| #title:Day 1 | #type:#check"
-	static let blnD2 = "#id:chkD2| #title:Day 2 | #type:#check"
-	static let blnD3 = "#id:chkD3| #title:Day 3 | #type:#check"
+	static let blnD1 = "#id:chkD1| #title:In Hospital D1 | #type:#check"
+	static let blnD2 = "#id:chkD2| #title:In Hospital D2 | #type:#check"
+	static let blnD3 = "#id:chkD3| #title:In Hospital D3 | #type:#check"
 	static let blnD4 = "#id:chkD4| #title:Day 4 | #type:#check"
 	static let blnD5 = "#id:chkD5| #title:Day 5 | #type:#check"
 	static let blnD6 = "#id:chkD6| #title:Day 6 | #type:#check"
 	static let blnHFPLVF = "#id:chkHFPLVF| #title:HFPLVF | #type:#check"
 	static let blnfoutpt = "#id:chkfoutpt| #title:Failed Outpt Rx | #type:#check"
 	static let blnLVEF = "#id:txtLVEF |    #title:LVEF|    #type:#integerRight"
-	static let blnCRTI = "#id:chkCRTI| #title:CRT/ICD | #type:#check"
+	static let blnCRTI = "#id:chkCRTI| #title:SP CRT | #type:#check"
 	
 	static let clinics = "#id:clinics| #title:Clinics | #type:#disclosureWeather"
 	static let etiology = "#id:etiology| #title:Etiology | #type:#disclosureWeather"
