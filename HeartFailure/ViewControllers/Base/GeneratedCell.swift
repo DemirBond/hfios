@@ -1143,8 +1143,12 @@ class OutputResultsCell: GeneratedCell {
 		//self.titleLabel?.font = CVDStyle.style.fonts.last
 		//self.subtitleLabel?.font = CVDStyle.style.fonts.first
 		//self.subtitleLabel?.textColor = CVDStyle.style.subtitleColor
-		self.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 24.0)
-		self.subtitleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 19.0)
+//		self.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 24.0)
+//		self.subtitleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 19.0)
+		
+		self.titleLabel?.font = UIFont(name: CVDStyle.style.currentFont.familyName, size: CVDStyle.style.currentFont.pointSize + 10)
+		self.subtitleLabel?.font = CVDStyle.style.currentFont
+		
 		self.subtitleLabel?.textColor = CVDStyle.style.defaultFontColor
 	}
 }

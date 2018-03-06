@@ -42,7 +42,9 @@ class CodeAutorizationController: BaseController, UITextFieldDelegate, MFMailCom
 	
 	override func leftButtonAction(_ sender: UIBarButtonItem) {
 		hideKeyboard()
-		self.dismiss(animated: true, completion: nil)
+		//self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popViewController(animated: true)
+		//print("is being pressed")
 	}
 	
 	

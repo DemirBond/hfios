@@ -25,7 +25,11 @@ class TermsController: BaseController {
 	
 	// MARK: - Actions
 	
-	@IBAction func printAction(_ sender: AnyObject) {
+    @IBAction func okAction(_ sender: Any) {
+       self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func printAction(_ sender: AnyObject) {
 		let str: NSAttributedString =  textView.attributedText
 		let print = UISimpleTextPrintFormatter(attributedText: str)
 			

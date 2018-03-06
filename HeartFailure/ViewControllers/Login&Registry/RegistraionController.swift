@@ -30,6 +30,8 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	static let segueFromRegisterToAuthorization = "verificationCodeSegueID"
 	
 	override var createdID: String! { return "registration" }
+    
+    
 	
 	
 	override func viewDidLoad() {
@@ -87,7 +89,13 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	
 	// MARK: - Actions
 	
-	override func leftButtonAction(_ sender: UIBarButtonItem) {
+    @IBAction func termOfServiceAction(_ sender: Any) {
+        let termsVC: TermsController = UIStoryboard(name: "Medical", bundle: nil).instantiateViewController(withIdentifier: "TermsControllerID") as! TermsController
+
+        self.navigationController?.present(termsVC, animated: true, completion: nil)
+        
+    }
+    override func leftButtonAction(_ sender: UIBarButtonItem) {
 		hideKeyboard()
 		self.navigationController?.popViewController(animated: true)
 	}

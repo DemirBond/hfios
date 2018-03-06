@@ -4661,29 +4661,42 @@ These Terms and Conditions are governed by the substantive laws of the State of 
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vv-xH-bB8">
-                                <rect key="frame" x="127.5" y="608" width="120" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="JW8-Xy-FVW"/>
-                                    <constraint firstAttribute="width" constant="120" id="KFt-3P-Pvg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Print" backgroundImage="outline">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="printAction:" destination="feu-df-ti3" eventType="touchUpInside" id="a6T-n0-cHS"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PCN-jq-iLq">
+                                <rect key="frame" x="24" y="595" width="327" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vv-xH-bB8">
+                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="44"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                        <state key="normal" title="Print" backgroundImage="outline">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="printAction:" destination="feu-df-ti3" eventType="touchUpInside" id="a6T-n0-cHS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeM-ad-nT6">
+                                        <rect key="frame" x="163.5" y="0.0" width="163.5" height="44"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                        <state key="normal" title="OK" backgroundImage="outline">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="okAction:" destination="feu-df-ti3" eventType="touchUpInside" id="GTU-a3-OfV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L6z-vo-2Gf" firstAttribute="top" secondItem="1Vv-xH-bB8" secondAttribute="bottom" constant="15" id="1tf-Fv-4Fq"/>
-                            <constraint firstItem="1Vv-xH-bB8" firstAttribute="centerX" secondItem="usR-7U-9P5" secondAttribute="centerX" id="9Mt-o1-OOC"/>
+                            <constraint firstItem="PCN-jq-iLq" firstAttribute="top" secondItem="9Ia-DT-CjM" secondAttribute="bottom" constant="8" id="4Cf-eP-pzM"/>
                             <constraint firstAttribute="trailing" secondItem="9Ia-DT-CjM" secondAttribute="trailing" constant="8" id="Ihn-it-vp1"/>
                             <constraint firstItem="9Ia-DT-CjM" firstAttribute="top" secondItem="usR-7U-9P5" secondAttribute="top" constant="8" id="Qjr-5V-jRh"/>
+                            <constraint firstItem="PCN-jq-iLq" firstAttribute="centerX" secondItem="usR-7U-9P5" secondAttribute="centerX" id="RZg-SH-LX0"/>
                             <constraint firstItem="L6z-vo-2Gf" firstAttribute="top" secondItem="9Ia-DT-CjM" secondAttribute="bottom" constant="80" id="S9L-H0-Kn5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PCN-jq-iLq" secondAttribute="trailing" constant="8" id="cas-Ww-P2m"/>
                             <constraint firstItem="9Ia-DT-CjM" firstAttribute="leading" secondItem="usR-7U-9P5" secondAttribute="leading" constant="8" id="erh-MR-N7C"/>
+                            <constraint firstItem="PCN-jq-iLq" firstAttribute="leading" secondItem="usR-7U-9P5" secondAttribute="leadingMargin" constant="8" id="pQ7-2j-Z5m"/>
                         </constraints>
                     </view>
                     <connections>
