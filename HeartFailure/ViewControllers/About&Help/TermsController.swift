@@ -26,7 +26,12 @@ class TermsController: BaseController {
 	// MARK: - Actions
 	
     @IBAction func okAction(_ sender: Any) {
+        termsAccepted = true
        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func printAction(_ sender: AnyObject) {

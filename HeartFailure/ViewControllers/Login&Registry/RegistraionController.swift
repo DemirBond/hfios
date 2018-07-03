@@ -104,6 +104,10 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 	@IBAction func submitAction(_ sender: AnyObject) {
 		hideKeyboard()
 		
+		if termsAccepted == false {
+			UIAlertController.infoAlert(message: "Please open Terms and Accept", title: "Terms must be accepted", viewcontroller: self, handler:{})
+		}
+		
 		guard let name = nameField.text, !name.isEmpty,
 			let mail = emailField.text, !mail.isEmpty,
 			let password = passwordField.text, !password.isEmpty else {
@@ -125,6 +129,8 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 			UIAlertController.infoAlert(message: "Please enter passwords again".localized, title: "The repeat password doesn't match password".localized, viewcontroller: self, handler: {} )
 			return
 		}
+		
+		
 		
 		self.startAnimating()
 		

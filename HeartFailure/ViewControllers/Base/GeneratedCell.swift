@@ -166,7 +166,7 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			//self.backgroundColor = UIColor(palette: ColorPalette.white)
 		}
 		
-		// PHILLIPs if itemtype is label then change to requested background color.
+		// PHILLIPS FIX if itemtype is label then change to requested background color.
 		if cellModel.form.itemType == .label {
 			self.backgroundColor = UIColor(palette: ColorPalette.hanPurple)
 		}
@@ -425,6 +425,21 @@ class SeparatorCell: GeneratedCell {
 
 
 // Check Cells ------------------------------------------
+// Phillips Edit
+// This is to allow the problem of symptoms mapping that demir requested
+var forDyspneaEx = false
+var forDyspneaRest = false
+var forWeightGain = false
+var forHepatoJugular = false
+var forPulmonaryEdema = false
+
+//var currentNYHA: nyha?
+//enum nyha {
+//	case class1
+//	case class2
+//	case class3
+//	case class4
+//}
 
 class CheckBoxCell: GeneratedCell {
 	
@@ -432,8 +447,124 @@ class CheckBoxCell: GeneratedCell {
 		get {
 			if (cellModel.storedValue == nil){
 				//print("!!!!!!!!!!!!! ffffuuuuuuuuuuu ------ ")
+				
 				return false
 			}
+			
+//			// Phillips Edit from here
+//			if cellModel.title == "Dyspnea on exertion" {
+//				if forDyspneaEx == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//
+//			if cellModel.title == "Dyspnea at Rest" {
+//				if forDyspneaRest == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "Weight gain" {
+//				if forWeightGain == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "Hepatojugular reflux" {
+//				if forHepatoJugular == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "Pulmonary edema" {
+//				if forDyspneaRest == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//
+//			// For hms
+//			if cellModel.title == "Dyspnea on Exertion" {
+//				if forDyspneaEx == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//
+//			if cellModel.title == "Dyspnea at Rest > 2Hrs after Rx/Orthopnea" {
+//				if forDyspneaRest == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "Weight Gain" {
+//				if forWeightGain == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "Hepatojugular Reflux" {
+//				if forHepatoJugular == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "Pulmonary Edema" {
+//				if forDyspneaRest == true {
+//					cellModel.storedValue?.isChecked = true
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			// To here
+			
+			if cellModel.identifier == "chkDOE" {
+				if forDyspneaEx == true {
+					cellModel.storedValue?.isChecked = true
+				} else {
+					cellModel.storedValue?.isChecked = false
+				}
+			}
+			if cellModel.identifier == "chkdysp" {
+				if forDyspneaRest == true {
+					cellModel.storedValue?.isChecked = true
+				} else {
+					cellModel.storedValue?.isChecked = false
+				}
+			}
+			if cellModel.identifier == "chkWeight" {
+				print("its chkweight")
+				if forWeightGain == true {
+					cellModel.storedValue?.isChecked = true
+				} else {
+					cellModel.storedValue?.isChecked = false
+				}
+			}
+			if cellModel.identifier == "forHJR" {
+				if forHepatoJugular == true {
+					cellModel.storedValue?.isChecked = true
+				} else {
+					cellModel.storedValue?.isChecked = false
+				}
+			}
+			if cellModel.identifier == "chkpuledema" {
+				if forPulmonaryEdema == true {
+					cellModel.storedValue?.isChecked = true
+				} else {
+					cellModel.storedValue?.isChecked = false
+				}
+			}
+			
 			return cellModel.storedValue!.isChecked
 		}
 		set {
@@ -441,6 +572,66 @@ class CheckBoxCell: GeneratedCell {
 				//print("!!!!!!!!!!!!! set ffffuuuuuuuuuuu ------ ")
 				return
 			}
+			if cellModel.identifier == "chkDOE" {
+				forDyspneaEx = !forDyspneaEx
+			}
+			if cellModel.identifier == "chkdysp" {
+				forDyspneaRest = !forDyspneaRest
+			}
+			if cellModel.identifier == "chkWeight"{
+				forWeightGain = !forWeightGain
+			}
+			if cellModel.identifier == "chkHJR" {
+				forHepatoJugular = !forHepatoJugular
+			}
+			if cellModel.identifier == "chkpuledema" {
+				forPulmonaryEdema = !forPulmonaryEdema
+			}
+			
+			// Phillips edit here -----
+//			if cellModel.title == "Dyspnea on exertion" {
+//				forDyspneaEx = !forDyspneaEx
+//			}
+//			if cellModel.title == "Dyspnea at Rest" {
+//				forDyspneaRest = !forDyspneaRest
+//			}
+//			if cellModel.title == "Weight gain" {
+//				forWeightGain = !forWeightGain
+//			}
+//			if cellModel.title == "Hepatojulular reflux"{
+//				forHepatoJugular = !forHepatoJugular
+//			}
+//			if cellModel.title == "Pulmonary edema" {
+//				forPulmonaryEdema = !forPulmonaryEdema
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 4"{
+//				currentNYHA = .class4
+//			}
+//			// For hms
+//			if cellModel.title == "Dyspnea on Exertion" {
+//				forDyspneaEx = !forDyspneaEx
+//			}
+//			if cellModel.title == "Dyspnea at Rest > 2Hrs after Rx/Orthopnea" {
+//				forDyspneaRest = !forDyspneaRest
+//			}
+//			if cellModel.title == "Weight Gain" {
+//				forWeightGain = !forWeightGain
+//			}
+//			if cellModel.title == "Hepatojulular Reflux"{
+//				forHepatoJugular = !forHepatoJugular
+//			}
+//			if cellModel.title == "Pulmonary Edema" {
+//				forPulmonaryEdema = !forPulmonaryEdema
+//			}
+	
+
+			
+			
+				print(cellModel.title)
+			print(cellModel.storedValue?.isChecked)
+			
+			// to here
+			
 			cellModel.storedValue!.isChecked = newValue
 			updateCell()
 			// self.delegate?.evaluationValueDidChange(model: cellModel)
@@ -789,6 +980,7 @@ class DisclosureControlCell: CheckBoxCell {
 class DisclosureControlCellWithCheck: CheckBoxCell {
 	
 	override func setupCell() {
+		print("we have a disclosure control cell with check")
 		super.setupCell()
 		self.titleLabel?.textColor = CVDStyle.style.purpleColor
 		// isCheckedButton = true;
@@ -821,12 +1013,89 @@ class RadioButtonCell: GeneratedCell {
 	
 	var isCheckedButton: Bool {
 		get {
+//			//PHILS EDIT FORM HERE
+//			if cellModel.storedValue?.radioGroup?.group == ["chkNYHA1","chkNYHA2","chkNYHA3", "chkNYHA4"] {
+//				print("here it issss")
+//				print()
+//				cellModel.storedValue?.isChecked = false
+//				//return cellModel.storedValue?.radioGroup?.selectedRadioItem == chkNYHA
+//			}
+//
+//			if cellModel.title == "NYHA/CCVS Class 1" {
+//				//print("class 1 being accessed")
+//				if currentNYHA == .class1 {
+//					cellModel.storedValue?.isChecked = true
+//					cellModel.storedValue?.radioGroup?.selectedRadioItem?.removeAll()
+//					cellModel.storedValue?.radioGroup?.selectItem(id: "chkNYHA1")
+//
+//					//return cellModel.storedValue?.radioGroup?.selectedRadioItem == "NYHA/CCVS Class 1"
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 2" {
+//				//print("class 2 being accessed")
+//				if currentNYHA == .class2 {
+//					cellModel.storedValue?.isChecked = true
+//					cellModel.storedValue?.radioGroup?.selectedRadioItem?.removeAll()
+//					cellModel.storedValue?.radioGroup?.selectItem(id: "chkNYHA2")
+//					//return cellModel.storedValue?.radioGroup?.selectedRadioItem == "NYHA/CCVS Class 2"
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 3" {
+//				//print("class 3 being accessed")
+//				if currentNYHA == .class3 {
+//					cellModel.storedValue?.isChecked = true
+//					cellModel.storedValue?.radioGroup?.selectedRadioItem?.removeAll()
+//					cellModel.storedValue?.radioGroup?.selectItem(id: "chkNYHA3")
+//					//return cellModel.storedValue?.radioGroup?.selectedRadioItem == "NYHA/CCVS Class 3"
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 4" {
+//				//print("class 4 being accessed")
+//				if currentNYHA == .class4 {
+//					cellModel.storedValue?.radioGroup?.selectedRadioItem?.removeAll()
+//					cellModel.storedValue?.radioGroup?.selectItem(id: "chkNYHA4")
+//
+//					cellModel.storedValue?.isChecked = true
+//					//return cellModel.storedValue?.radioGroup?.selectedRadioItem == "NYHA/CCVS Class 4"
+//
+//
+//				} else {
+//					cellModel.storedValue?.isChecked = false
+//				}
+//			}
+//
+
+				
+			
+
+			
 			return cellModel.storedValue?.radioGroup!.selectedRadioItem == cellModel.identifier
 		}
 		set {
 			cellModel.storedValue?.radioGroup!.selectItem(id: cellModel.identifier)
 			updateCell()
 			self.delegate?.evaluationValueDidChange(model: cellModel)
+//			print("radio button chekced")
+//			if cellModel.title == "NYHA/CCVS Class 1" {
+//				currentNYHA = .class1
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 2" {
+//				currentNYHA = .class2
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 3" {
+//				currentNYHA = .class3
+//			}
+//			if cellModel.title == "NYHA/CCVS Class 4" {
+//				currentNYHA = .class4
+//			}
+//			print(currentNYHA)
+			//TO HERE
 		}
 	}
 	
@@ -1146,7 +1415,7 @@ class OutputResultsCell: GeneratedCell {
 //		self.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 24.0)
 //		self.subtitleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 19.0)
 		
-		self.titleLabel?.font = UIFont(name: CVDStyle.style.currentFont.familyName, size: CVDStyle.style.currentFont.pointSize + 10)
+		self.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: CVDStyle.style.currentFont.pointSize + 5)
 		self.subtitleLabel?.font = CVDStyle.style.currentFont
 		
 		self.subtitleLabel?.textColor = CVDStyle.style.defaultFontColor

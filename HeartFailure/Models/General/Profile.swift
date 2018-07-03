@@ -8,6 +8,8 @@
 
 import UIKit
 
+var termsAccepted: Bool = false
+
 class Profile : EvaluationItem {
 	
 	var name: String? {

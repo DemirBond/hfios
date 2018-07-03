@@ -16,26 +16,46 @@ class AtrialFibrilation: EvaluationItem {
 	let atrialFibrillationLabel = EvaluationItem(literal: Presentation.atrialFibrillationLabel)
 	let ventricularRateControl = EvaluationItem(literal: Presentation.ventricularRateControl)
 	let rhythmControl = EvaluationItem(literal: Presentation.rhythmControl)
+	let heartRateWithActivity = EvaluationItem(literal: Presentation.heartRateWithActivity)
+	
 	let durationDays = EvaluationItem(literal: Presentation.durationDays)
 	let symptomatic = Symptomatic(literal: Presentation.symptomatic)
-	let previousTIACVA = EvaluationItem(literal: Presentation.previousTIACVA)
+	let previousTIACVA = PreviousTIACVA(literal: Presentation.previousTIACVA)
 	let lastthromboembolicevent = EvaluationItem(literal: Presentation.lastthromboembolicevent)
+	let thyro = EvaluationItem(literal: Presentation.thyrotoxicosis)
 	
 	override var items: [EvaluationItem] {
 		return [
 			atrialFibrillationLabel,
 			rhythmControl,
 			ventricularRateControl,
+			heartRateWithActivity,
 			symptomatic,
 			durationDays,
 			previousTIACVA,
-			lastthromboembolicevent
+			thyro
+			//lastthromboembolicevent
 		]
 	}
 }
 
 
 // MARK: - Atrial Fibrillation -> Select VR Control
+
+class PreviousTIACVA: EvaluationItem {
+	let lastThrom = EvaluationItem(literal: Presentation.lastthromboembolicevent)
+	
+	override var items: [EvaluationItem] {
+		return [
+			lastThrom,
+		
+		]
+	}
+	
+	
+	
+}
+
 
 class AtrialFibrilationLabel: EvaluationItem {
 	let ventricularRateControl = VentricularRateControl(literal: Presentation.ventricularRateControl)
@@ -95,7 +115,9 @@ class CurrentAntiarrythmicTherapy: EvaluationItem {
 
 class Symptomatic: EvaluationItem {
 	
+	//let acutely = EvaluationItem(literal: Presentation.acutely)
 	let acutely = EvaluationItem(literal: Presentation.acutely)
+	
 	
 	override var items: [EvaluationItem] {
 		return [acutely]

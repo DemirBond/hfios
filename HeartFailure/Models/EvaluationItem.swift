@@ -251,6 +251,7 @@ class EvaluationItem  {
 			
 			if prefix == "chk" {
 				self.storedValue?.isChecked = true
+				//print(self.identifier)
 				//self.storedValue?.reopenedFromSave = true
 			} else {
 				self.storedValue?.value = String(describing: value)

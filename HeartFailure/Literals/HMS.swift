@@ -56,7 +56,7 @@ struct HMS {
 	static let txt6MWT = "#id:txt6MWT | #title:6MW Distance | #type:#integerRight | #min:50 | #max:600 | #placeholder:  "
 	static let TxtVO2 = "#id:TxtVO2 | #title:Max VO² mg/kg/min | #type:#integerRight | #min:6 | #max:40 | #placeholder:  "
 	
-	static let heartfailureDuration = "#id:heartfailureDuration| #title:Heart Failure Duration| #type:#disclosureControl"
+	static let heartfailureDuration = "#id:heartfailureDuration| #title:History| #type:#disclosureWeather"
 	
 	// Main -> PAH 1
 	static let txtSVR = "#id:txt6MWT | #title:6MW Distance | #type:#integerRight | #min:50 | #max:500 | #placeholder:  "
@@ -205,15 +205,15 @@ struct HMS {
 	static let otherCardiacInOSR = "#id:chkcardiac| #title:Other Cardiac | #type:#check"
 	
 	// Advanced LHF
-	static let blnHF = "#id:blnHF| #title:Heart Failure | #type:#disclosureControl"
+	static let blnHF = "#id:chkHF| #title:Refractory Heart Failure | #type:#disclosureControl"
 	static let blnnewHF = "#id:chkNewHF| #title:New Onset Heart Failure/Initial Evaluation | #type:#check"
 	static let ddOnsetMonthYear = "#id:ddOnsetMonthYear | #title:On Set of Heart Failure | #type:#date | #placeholder: "
 	
 	// Advanced LHF -> Heart Failure
 	static let txtdur = "#id:txtdur| #title:Heart Failure Duration/Week | #type:#integerRight | #min:0 | #max:9999 | #placeholder: "
 	
-	static let blnD1 = "#id:chkD1| #title:In Hospital D1 | #type:#check"
-	static let blnD2 = "#id:chkD2| #title:In Hospital D2 | #type:#check"
+	static let blnD1 = "#id:chkD1| #title:In Hospital D1 | #type:#radio | #group: (chkD1, chkD2)"
+	static let blnD2 = "#id:chkD2| #title:In Hospital D2 | #type:#radio | #group: (chkD1, chkD2)"
 	static let blnD3 = "#id:chkD3| #title:In Hospital D3 | #type:#check"
 	static let blnD4 = "#id:chkD4| #title:Day 4 | #type:#check"
 	static let blnD5 = "#id:chkD5| #title:Day 5 | #type:#check"
@@ -223,7 +223,7 @@ struct HMS {
 	static let blnLVEF = "#id:txtLVEF |    #title:LVEF|    #type:#integerRight"
 	static let blnCRTI = "#id:chkCRTI| #title:SP CRT | #type:#check"
 	
-	static let clinics = "#id:clinics| #title:Clinics | #type:#disclosureWeather"
+	static let clinics = "#id:clinics| #title:Findings | #type:#disclosureWeather"
 	static let etiology = "#id:etiology| #title:Etiology | #type:#disclosureWeather"
 	static let stageClass = "#id:stageClass| #title:Stage/Class | #type:#disclosureWeather"
 	static let arrthymias = "#id:arrthymias| #title:Arrthymias | #type:#disclosureWeather"
@@ -235,15 +235,18 @@ struct HMS {
 	static let txtO2sat = "#id:txtO2sat| #title: O2sat% | #type:#integerRight | #min:50 | #max:100 | #placeholder: "
 	static let txtproBNP = "#id:txtproBNP| #title:NT-proBNP pg/ml | #type:#integerRight | #min:50 | #max:100000 | #placeholder: "
 	
+	//static let blnPEd = "#id:chkPEd| #title:Pulmonary Edema | #type:#check"
 	static let blnPEd = "#id:chkPEd| #title:Pulmonary Edema | #type:#check"
 	static let blnS3 = "#id:chkS3| #title:S3 or S4 Gallop | #type:#check"
 	static let blnshock = "#id:chkshock| #title:Cardio Shock | #type:#check"
 	static let blnDOE = "#id:chkDOE| #title:Dyspnea on Exertion | #type:#check"
 	static let blndysp = "#id:chkdysp| #title:Dyspnea at Rest > 2Hrs after Rx/Orthopnea | #type:#check"
 	static let blnMR = "#id:chkMR| #title:New Ralles | #type:#check"
-	static let blnhepato = "#id:chkhepato| #title:Hepatojugular Reflux | #type:#check"
+	
+	//static let blnhepato = "#id:chkhepato| #title:Hepatojugular Reflux | #type:#check"
+	static let blnhepato = "#id:chkHJR| #title:Hepatojugular Reflux | #type:#check"
 	static let blnJVD = "#id:chkJVD| #title:Jugular Venous Distention | #type:#check"
-	static let blnweight = "#id:chkweight| #title:Weight Gain | #type:#check"
+	static let blnweight = "#id:chkWeight| #title:Weight Gain | #type:#check"
 	static let blnAMS = "#id:chkAMS| #title:Any CNS Symptoms | #type:#check"
 	static let blnWG = "#id:chkWG| #title:Worsening Renal Fx | #type:#check"
 	static let blnedema = "#id:chkedema| #title:Edema | #type:#check"

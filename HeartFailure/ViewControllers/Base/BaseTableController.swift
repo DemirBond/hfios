@@ -234,7 +234,7 @@ class BaseTableController: UITableViewController, BuildAppearance, EvaluationEdi
 			navigation?.pushViewController(controller, animated: true)
 			DataManager.manager.setPAHValue(pah: true)
 			
-			DataManager.manager.resetAllPAHItems()
+			//DataManager.manager.resetAllPAHItems()
 			
 			DataManager.manager.equalizeAllItems()
 		}

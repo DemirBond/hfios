@@ -22,7 +22,7 @@ class Output: EvaluationItem {
 	let partnerCard = EvaluationItem(literal: OutputPresentation.piedmostPartnerCard)
 	
 	var resultItems : [EvaluationItem] = []
-	
+	let seperator = EvaluationItem(literal: Presentation.separator)
 	func setResultOutputs()->Void{
 		
 		var outputs: [String:Bool]
@@ -45,7 +45,7 @@ class Output: EvaluationItem {
 			if(outputs["ICD"])!{
 				self.resultItems.append(icd10Result)
 			}
-			if(outputs["References"])!{
+			if(outputs["References"])!{				
 				self.resultItems.append(references)
 			}
 		}
@@ -55,14 +55,19 @@ class Output: EvaluationItem {
 	// Add dynamic result sections for incoming JSON output
 	
 	override var items: [EvaluationItem] {
+
 		
 		return [
 			//resultOutput,
 			//partnerCard,
-			assessmentResult,
+			//assessmentResult,
+			seperator,
 			diagnosticsResult,
+			seperator,
 			therapeuticsResult,
+			seperator,
 			icd10Result,
+			seperator,
 			references
 		]
 //		return resultItems

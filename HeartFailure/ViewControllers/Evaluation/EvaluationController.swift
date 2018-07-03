@@ -181,6 +181,12 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 		var actions = [CVDAction] ()
 		actions.append(CVDAction(title: "Yes, I'm sure".localized, type: CVDActionType.done, handler: {
 			//DataManager.manager.deleteTempEvaluations()
+			//currentNYHA = nil
+			forPulmonaryEdema = false
+			forHepatoJugular = false
+			forWeightGain = false
+			forDyspneaRest = false
+			forDyspneaEx = false
 			
 			self.navigationController?.popViewController(animated: true)
 			

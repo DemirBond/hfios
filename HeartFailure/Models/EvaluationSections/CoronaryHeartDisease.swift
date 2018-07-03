@@ -133,7 +133,7 @@ class StableAng: EvaluationItem {
 			nyhaccvsClass1,
 			nyhaccvsClass2,
 			nyhaccvsClass3,
-			nyhaccvsClass4
+			//nyhaccvsClass4
 		]
 	}
 }

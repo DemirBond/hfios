@@ -18,7 +18,7 @@ class HeartFailure: EvaluationItem {
 	let clinical = Clinical(literal: Presentation.clinical)
 	let ahastage = AHAStage(literal: Presentation.ahastage)
 	let hometherapeutics = Hometherapeutics(literal: Presentation.hometherapeutics)
-	let acutely = Acutely(literal: Presentation.acutely)
+	let acutely = Acutely(literal: Presentation.acutely1)
 	let inhospitaltherapies = InHospitalTherapies(literal: Presentation.inhospitaltherapies)
 	let discharge = Discharge(literal: Presentation.discharge)
 	
@@ -53,11 +53,13 @@ class History : EvaluationItem {
 	let spicd = EvaluationItem(literal: Presentation.spicd)
 	let spbivppm = EvaluationItem(literal: Presentation.spbivppm)
 	let spppmrv = EvaluationItem(literal: Presentation.spppmrv)
+	let seperator = EvaluationItem(literal: Presentation.separator)
 	
 	override var items : [EvaluationItem] {
 		return [
 			newonset,
 			chronicHF,
+			seperator,
 			hfdiagnosis,
 			oneormorehf,
 			twounscheduled,
@@ -93,11 +95,11 @@ class Dyspneaonexe : EvaluationItem {
 			class2,
 			class3,
 			
-			seperator,
-			
-			NYHACCSVClass1,
-			NYHACCSVClass2,
-			NYHACCSVClass3
+//			seperator,
+//			
+//			NYHACCSVClass1,
+//			NYHACCSVClass2,
+//			NYHACCSVClass3
 			
 		]
 	}
@@ -456,7 +458,6 @@ class Acutely : EvaluationItem {
 		return [
 			day1,
 			day2,
-			day3,
 			predischarge
 		]
 	}

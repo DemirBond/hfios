@@ -27,8 +27,6 @@ class HeartSpecialistManagement: EvaluationItem {
 			pah,
 			valvularInHSM,
 			advancedLHF,
-//			echocardiographyInHSM,
-//			laboratoryEKG,
 			rhcInHSM
 		]
 	}
@@ -295,7 +293,7 @@ class Valvular: EvaluationItem {
 
 class ValvularInValvular: EvaluationItem {
 	
-	let lvef = EvaluationItem(literal: HMS.lvef)
+	let lvef = EvaluationItem(literal: Presentation.lvef)
 	let newOnsetAtrialFibrillation = EvaluationItem(literal: HMS.newOnsetAtrialFibrillation)
 	let pregnancyInValvular = EvaluationItem(literal: HMS.pregnancyInValvular)
 	let aorticStenosis = AorticStenosis(literal: HMS.aorticStenosis)
@@ -624,7 +622,7 @@ class HeartFailureInHMS: EvaluationItem {
 				
 				ablnD1,
 				ablnD2,
-				ablnD3
+				
 			]
 		}
 		
@@ -632,13 +630,14 @@ class HeartFailureInHMS: EvaluationItem {
 	
 	class Clinics: EvaluationItem {
 		
-		let txtCHF = EvaluationItem(literal: HMS.txtCHF)
+		let txtCHF = EvaluationItem(literal: Presentation.lvef)
 		let txtO2sat = EvaluationItem(literal: HMS.txtO2sat)
 		let txtproBNP = EvaluationItem(literal: HMS.txtproBNP)
 		let blnPEd = EvaluationItem(literal: HMS.blnPEd)
 		let blnS3 = EvaluationItem(literal: HMS.blnS3)
 		let blnshock = EvaluationItem(literal: HMS.blnshock)
 		let blnDOE = EvaluationItem(literal: HMS.blnDOE)
+		//old dyspnea
 		let blndysp = EvaluationItem(literal: HMS.blndysp)
 		let blnMR = EvaluationItem(literal: HMS.blnMR)
 		let blnhepato = EvaluationItem(literal: HMS.blnhepato)
@@ -726,10 +725,10 @@ class HeartFailureInHMS: EvaluationItem {
 				blnB,
 				blnC,
 				blnD,
-				blnNYHA1,
-				blnNYHA2,
-				blnNYHA3,
-				blnNYHA4
+//				blnNYHA1,
+//				blnNYHA2,
+//				blnNYHA3,
+//				blnNYHA4
 			]
 		}
 	}
