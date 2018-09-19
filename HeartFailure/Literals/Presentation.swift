@@ -89,7 +89,9 @@ struct Presentation {
 	//
 	// MARK: - Bio: https://zpl.io/27Yx0I
 	//
-	static let name = 		"#id:name|      #title:Name|      #type:#textLeft | #maxLength: 50 | #mandatory: 1"
+	//static let name = 		"#id:name|      #title:Name|      #type:#textLeft | #maxLength: 50 | #mandatory: 1"
+	
+	static let name = 		"#id:name|      #title:Patient ID|      #type:#textLeft | #maxLength: 50 | #mandatory: 1"
 	static let age = 			"#id:age |      #title:Age|       #type:#integerLeft|   #min:20|  #max:100| #mandatory: 1"
 	//static let gender = 		"#id:gender|    #title:Gender*|    #type:#disclosureSimple | #height: 60"
 	static let gender = 		"#id:gender|    #title:Gender|    #type:#disclosureSimpleExpandable | #height: 60 | #mandatory: 1"

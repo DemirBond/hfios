@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		789268A51E6478C80018FEF5 /* Evaluation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 789268A31E6478C80018FEF5 /* Evaluation.xcdatamodeld */; };
+		7893A5E42144969700FE6B71 /* VideoTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */; };
 		78AD64FE48E351E06A7C3DE3 /* Pods_HeartFailure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */; };
 		78BF73E81E3F640F0040EC81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF73E71E3F640F0040EC81 /* AppDelegate.swift */; };
 		78BF73EF1E3F640F0040EC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78BF73EE1E3F640F0040EC81 /* Assets.xcassets */; };
@@ -128,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		789268A41E6478C80018FEF5 /* Evaluation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Evaluation.xcdatamodel; sourceTree = "<group>"; };
+		7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTutorialViewController.swift; sourceTree = "<group>"; };
 		78BF73E41E3F640F0040EC81 /* Heart Failure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Failure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78BF73E71E3F640F0040EC81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HeartFailure/AppDelegate.swift; sourceTree = "<group>"; };
 		78BF73EE1E3F640F0040EC81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HeartFailure/Assets.xcassets; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				BA49CC931F33A0C90040060A /* PoliciesController.swift */,
 				BA49CC971F33A0C90040060A /* TermsController.swift */,
 				BA49CC921F33A0C90040060A /* HelpSupportController.swift */,
+				7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */,
 			);
 			path = "About&Help";
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				BA49CC9B1F33A0C90040060A /* ProfileController.swift in Sources */,
 				BA49CC6D1F339AC80040060A /* SplashController.swift in Sources */,
 				BA49CC771F339FDD0040060A /* CodeAutorizationController.swift in Sources */,
+				7893A5E42144969700FE6B71 /* VideoTutorialViewController.swift in Sources */,
 				BA49CCF21F33A35E0040060A /* ObjectLoader.swift in Sources */,
 				BA2EF1FE1F6CA98500098BC0 /* ThromboembolicVKA.swift in Sources */,
 				BA49CD381F33D1F90040060A /* LoginController.swift in Sources */,

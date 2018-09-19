@@ -47,7 +47,7 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 		registerButton.layer.borderWidth = 2.0
 		
 		self.view.backgroundColor = UIColor.white
-		
+		termsAccepted = false
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegistraionController.hideKeyboard))
 		self.view.addGestureRecognizer(tapRecognizer)
 		
@@ -106,6 +106,7 @@ class RegistraionController: BaseController, UIGestureRecognizerDelegate, NVActi
 		
 		if termsAccepted == false {
 			UIAlertController.infoAlert(message: "Please open Terms and Accept", title: "Terms must be accepted", viewcontroller: self, handler:{})
+			return
 		}
 		
 		guard let name = nameField.text, !name.isEmpty,

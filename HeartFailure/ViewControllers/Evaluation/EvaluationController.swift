@@ -139,7 +139,11 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 				()
 		}
 	}
-	
+	func eraseAllFieldsAction() {
+		DataManager.manager.evaluation = Evaluation()
+		self.tableView.reloadData()
+	}
+
 	
 	
 	// MARK: - Override Actions
@@ -156,6 +160,10 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 		// Save evaluation
 		actions.append(MenuAction(title: "Save Evaluation".localized, handler: {
 			self.computeEvaluation(isSaveMode: true)
+		}))
+		
+		actions.append(MenuAction(title: "Erase All Fields", handler: {
+			self.eraseAllFieldsAction()
 		}))
 		
 		// Exit evaluation
